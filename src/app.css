@@ -40,7 +40,7 @@ body:has(.backdrop) {
   }
 
   nav ul li {
-    @apply w-12 h-12 flex justify-center items-center rounded-lg hover:bg-base-300;
+    @apply w-12 h-12 flex justify-center items-center rounded-lg;
   }
 
   nav ul li a {

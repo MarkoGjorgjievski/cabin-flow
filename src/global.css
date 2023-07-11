@@ -100,7 +100,7 @@ body:has(.backdrop) {
   }
 
   .divider {
-    @apply my-1 opacity-50;
+    @apply opacity-50;
   }
 
   .divider::before,
@@ -168,7 +168,7 @@ body:has(.backdrop) {
   }
 
   .position-zone h2 {
-    @apply text-xl uppercase font-semibold text-neutral-content absolute top-1/2 -translate-y-1/2 -z-10;
+    @apply text-xl uppercase font-semibold text-primary/20 absolute top-1/2 -translate-y-1/2;
   }
 
   .spml-collapse .collapse-title {
@@ -181,8 +181,7 @@ body:has(.backdrop) {
     padding-top: 0;
   }
 
-  .spml-collapse:not(.collapse-close)
-    :where(input[type="checkbox"]:checked ~ .collapse-content) {
+  .spml-collapse:not(.collapse-close) :where(input[type="checkbox"]:checked ~ .collapse-content) {
     @apply p-0 mt-2;
   }
 

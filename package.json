@@ -25,6 +25,7 @@
   },
   "type": "module",
   "dependencies": {
-    "clsx": "^1.2.1"
+    "clsx": "^1.2.1",
+    "svelte-dnd-action": "^0.9.24"
   }
 }

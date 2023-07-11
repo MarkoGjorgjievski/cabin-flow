@@ -173,3 +173,13 @@ export const CREW = {
     }
   ],
 }
+
+export const JUMP_SEATS = [
+  [{ id: 'L1', crew: [], seat: 'L1', type: 'CSD' }, { id: 'L1A', crew: [], seat: 'L1A', type: 'F1' }, { id: 'empty1', crew: [], seat: false }, { id: 'R1', crew: [], seat: 'R1', type: 'F1' }],
+  [{ id: 'L2', crew: [], seat: 'L2', type: 'F1' }, { id: 'empty2', crew: [], seat: false }, { id: 'empty3', crew: [], seat: false }, { id: 'R2', crew: [], seat: 'R2', type: 'F1' }],
+  [{ id: 'L2A', crew: [], seat: 'L2A', type: 'F1' }, { id: 'empty4', crew: [], seat: false }, { id: 'empty5', crew: [], seat: false }, { id: 'R2A', crew: [], seat: 'R2A', type: 'F1' }],
+  [{ id: 'L3', crew: [], seat: 'L3', type: 'F2' }, { id: 'empty6', crew: [], seat: false }, { id: 'empty7', crew: [], seat: false }, { id: 'R3', crew: [], seat: 'R3', type: 'F2' }],
+  [{ id: 'L4', crew: [], seat: 'L4', type: 'F2' }, { id: 'empty8', crew: [], seat: false }, { id: 'empty9', crew: [], seat: false }, { id: 'R4', crew: [], seat: 'R4', type: 'F2' }],
+  [{ id: 'L4A', crew: [], seat: 'L4A', type: 'F2' }, { id: 'empty9', crew: [], seat: false }, { id: 'empty10', crew: [], seat: false }, { id: 'R5C', crew: [], seat: 'R5C', type: 'F1' }],
+  [{ id: 'L5', crew: [], seat: 'L5', type: 'CS' }, { id: 'L5A', crew: [], seat: 'L5A', type: 'F2' }, { id: 'R5A', crew: [], seat: 'R5A', type: 'F2' }, { id: 'R5', crew: [], seat: 'R5', type: 'F2' }]
+];

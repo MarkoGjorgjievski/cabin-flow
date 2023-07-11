@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --range-shdw: transparent !important
+;
+}
+
+html,
+body,
+#app {
+  font-family: "Inter", sans-serif;
+  user-select: none;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body:has(.backdrop) {
+  overflow-y: hidden;
+}
+
+#app {
+  width: 1024px;
+  min-height: 768px;
+  height: 100%;
+}
+
+@layer base {
+  h1 {
+    @apply text-2xl font-medium;
+  }
+
+  h2 {
+    @apply text-xl font-medium;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
+
+  nav ul li {
+    @apply w-12 h-12 flex justify-center items-center rounded-lg;
+  }
+
+  nav ul li a {
+    @apply w-6 h-6;
+  }
+
+  hr {
+    @apply border-base-200;
+  }
+
+  span[slot="left"],
+  span[slot="right"] {
+    width: 100%;
+  }
+
+  h1:focus,
+  h2:focus,
+  h3:focus,
+  h4:focus,
+  h5:focus,
+  h6:focus {
+    outline: transparent;
+  }
+}
+
+@layer components {
+  .backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    z-index: 20;
+  }
+
+  .card {
+    @apply bg-base-100 border-base-200;
+  }
+
+  .card-body {
+    @apply p-4 shadow-none;
+  }
+
+  .card-title {
+    @apply text-xl py-0.5 font-normal opacity-80 leading-5;
+  }
+
+  .card-headline {
+    @apply text-4xl;
+  }
+
+  .card.image-full:before {
+    opacity: 0.6;
+  }
+
+  .divider {
+    @apply my-1 opacity-50;
+  }
+
+  .divider::before,
+  .divider::after {
+    height: 1.5px;
+    width: 1px;
+  }
+
+  .tabs {
+    backdrop-filter: blur(1px);
+  }
+
+  .shadow-soft {
+    box-shadow:
+      rgba(50, 50, 105, 0.15) 0 2px 5px 0,
+      rgba(0, 0, 0, 0.05) 0 1px 1px 0;
+  }
+
+  .shadow-border-sm {
+    box-shadow:
+      rgba(9, 30, 66, 0.1) 0 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0 0 0 1px;
+  }
+
+  .shadow-border {
+    box-shadow:
+      rgba(9, 30, 66, 0.25) 0 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0 0 0 1px;
+  }
+
+  .shadow-lifted {
+    box-shadow:
+      rgba(17, 17, 26, 0.1) 0 1px 0,
+      rgba(17, 17, 26, 0.1) 0 8px 24px,
+      rgba(17, 17, 26, 0.1) 0 16px 48px;
+  }
+
+  .shadow-lifted-lg {
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0 30px 60px -30px;
+  }
+
+  .shadow-seat {
+    box-shadow:
+      rgba(31, 31, 31, 0.2) 0 2px 4px,
+      rgba(44, 44, 44, 0.2) 0 7px 11px -3px,
+      rgba(107, 107, 107, 0.1) 0 -3px 0 inset;
+  }
+
+  .position-zone {
+    @apply relative border-2 border-base-200 border-dashed rounded-lg text-center flex justify-center items-center w-full h-full;
+  }
+
+  .position-zone .crew-card {
+    @apply h-full py-0.5 px-2 text-sm;
+  }
+
+  .position-zone-empty {
+    @apply border-none bg-base-200/50 shadow-none;
+  }
+
+  .position-zone-empty h2 {
+    visibility: hidden;
+  }
+
+  .position-zone h2 {
+    @apply text-xl uppercase font-semibold text-neutral-content absolute top-1/2 -translate-y-1/2 -z-10;
+  }
+
+  .spml-collapse .collapse-title {
+    @apply px-0 pb-0 text-base font-normal;
+  }
+
+  .spml-collapse .collapse-title,
+  :where(.collapse > input[type="checkbox"]) {
+    min-height: fit-content !important;
+    padding-top: 0;
+  }
+
+  .spml-collapse:not(.collapse-close)
+    :where(input[type="checkbox"]:checked ~ .collapse-content) {
+    @apply p-0 mt-2;
+  }
+
+  .nav-item {
+    @apply w-12 h-12 flex justify-center items-center rounded-lg hover:bg-base-300;
+  }
+
+  .divide-y {
+    @apply border-base-200;
+  }
+
+  .label-badge {
+    @apply whitespace-nowrap justify-start uppercase opacity-90 border-none font-semibold overflow-hidden;
+  }
+
+  .slider::-webkit-slider-thumb {
+    background: transparent !important;
+  }
+
+  .slider::-moz-range-thumb {
+    background: transparent !important;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .table {
+    @apply text-base;
+  }
+
+  .table :where(thead, tfoot) {
+    @apply text-sm;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-10%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}

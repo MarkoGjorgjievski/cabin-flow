@@ -1,1 +1,5 @@
-<h1>Cabin Flow</h1>
+<script>
+  import { FlightInfoTemplate } from "../lib/components/templates";
+</script>
+
+<FlightInfoTemplate />

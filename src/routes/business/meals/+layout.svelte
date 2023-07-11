@@ -1,7 +1,6 @@
-<h1>Services</h1>
+<h1 class='text-primary'>Services</h1>
 
 <h2>Galleys</h2>
-
 
   <ul>
     <li>

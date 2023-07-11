@@ -1,5 +1,7 @@
 <script>
-  import { FlightInfoTemplate } from "../lib/components/templates";
+  import { PageTitle } from "$organisms";
+  import { FlightInfoTemplate } from "$templates";
 </script>
 
+<PageTitle title='Flight Information' />
 <FlightInfoTemplate />

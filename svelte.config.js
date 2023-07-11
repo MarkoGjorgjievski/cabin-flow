@@ -18,6 +18,7 @@ const config = {
       '$molecules': 'src/lib/components/molecules',
       '$organisms': 'src/lib/components/organisms',
       '$templates': 'src/lib/components/templates',
+      '$system': 'src/lib/system',
     }
   },
 };

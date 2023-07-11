@@ -6,6 +6,6 @@
   export let my = 2;
 </script>
 
-<div class={clsx("divider", vertical && 'divider-horizontal', lastHidden && 'last:hidden', `my-${my}`)}>
+<div class={clsx("divider", vertical && 'divider-horizontal', lastHidden && 'last:hidden', [`my-${my}`])}>
   <slot />
 </div>

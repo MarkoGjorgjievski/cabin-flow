@@ -183,3 +183,623 @@ export const JUMP_SEATS = [
   [{ id: 'L4A', crew: [], seat: 'L4A', type: 'F2' }, { id: 'empty9', crew: [], seat: false }, { id: 'empty10', crew: [], seat: false }, { id: 'R5C', crew: [], seat: 'R5C', type: 'F1' }],
   [{ id: 'L5', crew: [], seat: 'L5', type: 'CS' }, { id: 'L5A', crew: [], seat: 'L5A', type: 'F2' }, { id: 'R5A', crew: [], seat: 'R5A', type: 'F2' }, { id: 'R5', crew: [], seat: 'R5', type: 'F2' }]
 ];
+
+export const MENU = {
+  business: {
+    drinks: {
+      wine: {
+        red: {
+          label: 'Red',
+          options: [
+            {
+              id: 1,
+              title: 'St. Hallett',
+              vintage: '2014',
+              region: 'Barossa Valley, Australia',
+              grape: 'Shiraz',
+              label: 'Shiraz',
+              color: 'red',
+              quantity: 4
+            },
+            {
+              id: 2,
+              title: 'Losada',
+              vintage: '2011',
+              region: 'Leon, Spain',
+              grape: 'Mencia',
+              label: 'Mencia',
+              color: 'red',
+              quantity: 4
+            },
+            {
+              id: 3,
+              title: 'Chateau Smith Haut Lafitte',
+              vintage: '2011',
+              region: 'Bordeaux, France',
+              grape: 'Merlot & Cabernet',
+              label: 'Merlo Caber',
+              color: 'red',
+              quantity: 4
+            },
+          ]
+        },
+        white: {
+          label: 'White',
+          options: [
+            {
+              id: 4,
+              title: 'La Chablisienne',
+              vintage: '2013',
+              region: 'Burgundy, France',
+              grape: 'Chardonnay',
+              label: 'Chardo',
+              color: 'teal'
+            },
+            {
+              id: 5,
+              title: 'Yealands Estate',
+              vintage: '2014',
+              region: 'Marlborough, New Zealand',
+              grape: 'Sauvignon Blanc',
+              label: 'Sov Blanc',
+              color: 'lime'
+            },
+            {
+              id: 6,
+              title: 'Comte de la Boisserie',
+              vintage: '2013',
+              region: 'Loire Valley, France',
+              grape: 'Chenin Blanc',
+              label: 'Chenin',
+              color: 'lime'
+            },
+            {
+              id: 7,
+              title: 'Chateau Petit Vedrines',
+              vintage: '2011',
+              region: 'Bordeaux, France',
+              grape: 'Semillon & Sauvignon Blanc',
+              label: 'Semi Sov',
+              color: 'lime'
+            },
+          ]
+        },
+        port: {
+          label: 'Port',
+          options: [
+            {
+              id: 8,
+              title: "Dow's",
+              vintage: '2013',
+              region: 'Douro Valley, Portugal',
+              grape: 'Port',
+              label: 'Port',
+              color: 'purple'
+            },
+          ]
+        },
+        champagne: {
+          label: 'Champagne',
+          options: [
+            {
+              id: 9,
+              title: "Billecart-Salmon",
+              vintage: '2020',
+              region: 'France',
+              grape: 'Brut',
+              label: 'Brut',
+              color: 'green'
+            },
+            {
+              id: 10,
+              title: "Lanson",
+              vintage: '2020',
+              region: 'France',
+              grape: 'Brut Rose',
+              label: 'Rose',
+              color: 'pink'
+            },
+          ]
+        },
+      },
+      spirits: {
+        liquors: {
+          label: 'Liquors',
+          options: [
+            {
+              id: 11,
+              title: 'Campari',
+              label: 'Campari',
+              color: 'orange'
+            },
+            {
+              id: 12,
+              title: 'Bacardi',
+              label: 'Bacardi',
+              color: 'white'
+            },
+            {
+              id: 13,
+              title: 'Belvedere',
+              label: 'Belvedere',
+              color: 'blue'
+            },
+            {
+              id: 14,
+              title: 'Bombay Sapphire',
+              label: 'Bombay',
+              color: 'cyan'
+            },
+            {
+              id: 15,
+              title: 'Chivas Regal 12 years old',
+              label: 'Chivas',
+              color: 'orange'
+            },
+            {
+              id: 16,
+              title: 'Glenfiddich 15 years old',
+              label: 'Glenfidich',
+              color: 'orange'
+            },
+            {
+              id: 17,
+              title: "Jack Daniel's",
+              label: 'Jack',
+              color: 'orange'
+            },
+            {
+              id: 18,
+              title: "Martini Extra Dry",
+              label: 'Martini',
+              color: 'red'
+            },
+            {
+              id: 19,
+              title: "Camus XO Elegance",
+              label: 'Camus',
+              color: 'orange'
+            },
+          ]
+        },
+        beer: {
+          label: 'Beer',
+          options: [
+            {
+              id: 20,
+              title: 'Corona Extra',
+              label: 'Corona',
+              color: 'yellow'
+            },
+            {
+              id: 21,
+              title: 'Guinness',
+              label: 'Guinness',
+              color: 'stone'
+            },
+            {
+              id: 22,
+              title: 'Heineken',
+              label: 'Heineken',
+              color: 'green'
+            },
+          ]
+        },
+        liqueurs: {
+          label: 'Liqueurs',
+          options: [
+            {
+              id: 23,
+              title: "Baileys",
+              label: 'Baileys',
+              color: 'white'
+            },
+            {
+              id: 24,
+              title: 'Cointreau',
+              label: 'Cointreau',
+              color: 'white'
+            },
+            {
+              id: 25,
+              title: 'Kahlua',
+              label: 'Kahlua',
+              color: 'white'
+            },
+          ]
+        },
+      },
+      coldDrinks: {
+        softDrinks: {
+          label: 'Soft drinks',
+          options: [
+            {
+              id: 26,
+              title: 'Coca Cola',
+              label: 'Coke',
+              color: 'stone'
+            },
+            {
+              id: 27,
+              title: 'Diet Coca Cola',
+              label: 'Diet Coke',
+              color: 'stone'
+            },
+            {
+              id: 28,
+              title: 'Sprite',
+              label: 'Sprite',
+              color: 'white'
+            },
+            {
+              id: 29,
+              title: 'Diet Sprite',
+              label: 'Diet Sprite',
+              color: 'white'
+            },
+            {
+              id: 30,
+              title: 'Fanta',
+              label: 'Fanta',
+              color: 'orange'
+            },
+            {
+              id: 31,
+              title: 'Ginger Ale',
+              label: 'Ginger Ale',
+              color: 'orange'
+            },
+            {
+              id: 32,
+              title: 'Soda Water',
+              label: 'Soda',
+              color: 'white'
+            },
+            {
+              id: 33,
+              title: 'Tonic Water',
+              label: 'Tonic',
+              color: 'yellow'
+            },
+          ]
+        },
+        juices: {
+          label: 'Juices',
+          options: [
+            {
+              id: 34,
+              title: 'Apple',
+              label: 'Apple',
+              color: 'rose'
+            },
+            {
+              id: 35,
+              title: 'Cranberry',
+              label: 'Cranb',
+              color: 'pink'
+            },
+            {
+              id: 36,
+              title: 'Mango',
+              label: 'Mango',
+              color: 'orange'
+            },
+            {
+              id: 37,
+              title: 'Orange',
+              label: 'Orange',
+              color: 'orange'
+            },
+            {
+              id: 38,
+              title: 'Pineapple',
+              label: 'Pineapl',
+              color: 'yellow'
+            },
+            {
+              id: 39,
+              title: 'Tomato',
+              label: 'Tomato',
+              color: 'red'
+            },
+          ]
+        },
+      },
+      hotDrinks: {
+        tea: {
+          label: 'Tea',
+          options: [
+            {
+              id: 40,
+              title: 'English Breakfast',
+              label: 'English',
+              color: 'slate'
+            },
+            {
+              id: 41,
+              title: 'Earl Gray',
+              label: 'Earl Gray',
+              color: 'stone'
+            },
+            {
+              id: 42,
+              title: 'Jasmine',
+              label: 'Jasmine',
+              color: 'lime'
+            },
+          ]
+        },
+        coffee: {
+          label: 'Coffee',
+          options: [
+            {
+              id: 43,
+              title: 'Americano',
+              label: 'Americano',
+              color: 'stone'
+            },
+            {
+              id: 44,
+              title: 'Cappuccino',
+              label: 'Cappuccino',
+              color: 'white'
+            },
+            {
+              id: 45,
+              title: 'Espresso',
+              label: 'Espresso',
+              color: 'stone'
+            },
+            {
+              id: 46,
+              title: 'Latte',
+              label: 'Latte',
+              color: 'white'
+            },
+            {
+              id: 47,
+              title: 'Macchiato',
+              label: 'Macchiato',
+              color: 'white'
+            },
+          ]
+        },
+        hotChocolate: {
+          label: 'Hot chocolate',
+          options: [
+            {
+              id: 48,
+              title: 'Hot chocolate',
+              label: 'Hot choco',
+              color: 'white'
+            },
+          ]
+        }
+      },
+    },
+    food: {
+      'Lunch/Dinner': {
+        soup: {
+          slug: 'soup',
+          label: 'Soup',
+          options: [
+            {
+              id: 49,
+              title: 'Soup of the day',
+              label: 'Soup',
+              color: 'lime'
+            }
+          ],
+        },
+        appetisers: {
+          slug: 'appetisers',
+          label: 'Appetisers',
+          options: [
+            {
+              id: 50,
+              title: 'Classic Arabic mezzet',
+              description: 'hummus, baba ghanoush and tabouleh served with Arabic bread',
+              label: 'Mezze',
+              color: 'emerald'
+            },
+            {
+              id: 51,
+              title: 'Lobster cocktail with marinated pan-fried jumbo prawn',
+              description: 'pickled radish, compressed rock melon and tomato wedge',
+              label: 'Prawn',
+              color: 'sky',
+            },
+          ],
+        },
+        mains: {
+          slug: 'mains',
+          label: 'Mains',
+          options: [
+            {
+              id: 52,
+              title: 'Lobster Thermidor',
+              description: 'creamy herb fettuccine pasta and steamed seasonal vegetables',
+              label: 'Lobster',
+              color: 'rose'
+            },
+            {
+              id: 53,
+              title: "Za'atar lamb chops with red pepper sauce",
+              description: 'halloumi Arabic rice and grilled vegetables',
+              label: 'Lamb',
+              color: 'red',
+            },
+            {
+              id: 54,
+              title: "Chicken roulade with spinach and smoked turkey stuffing",
+              description: 'parsley mashed potato, seasonal garden vegetables and chicken jus',
+              label: 'Chicken',
+              color: 'yellow'
+            },
+            {
+              id: 55,
+              title: "Paneer pasanda with jeera rice",
+              description: 'okra onion curry with dal makhani',
+              label: 'Paneer',
+              color: 'green'
+            },
+          ],
+        },
+        cheese: {
+          slug: 'cheese',
+          label: 'Cheese',
+          options: [{ id: 56, title: 'Cheese plate', label: 'Cheese', color: 'yellow' }],
+        },
+        desserts: {
+          slug: 'desserts',
+          label: 'Desserts',
+          options: [
+            { id: 57, title: 'Dulce ginger and orange cake', description: 'red berry sauce', label: 'Cake', color: 'orange' },
+            { id: 58, title: 'Fresh berries with rose water syrup', label: 'Berries', color: 'blue' },
+            { id: 59, title: 'Gourmet ice cream selection', label: 'Ice cream', color: 'stone' },
+          ],
+        },
+      },
+      'Light Options': {
+        lightOptions: {
+          slug: 'light-options',
+          label: 'Light options',
+          options: [
+            {
+              id: 60,
+              title: 'Detox rocket salad',
+              description: 'mixed berries, pomegranate seeds and red radish',
+              label: 'Salad',
+              color: 'green',
+            },
+            {
+              id: 61,
+              title: 'North Indian achari chicken curry',
+              description: 'tadka rice and papadum',
+              label: 'Curry',
+              color: 'yellow',
+            },
+            {
+              id: 62,
+              title: 'Afternoon tea',
+              description: 'fresh finger sandwiches, warm scones, clotted cream and French pastries',
+              label: 'Afternoon tea',
+              color: 'orange',
+            },
+            {
+              id: 63,
+              title: 'Hot pot pulled oxtail on toasted brioche',
+              description: 'frisée salad and lemon dressing',
+              label: 'brioche',
+              color: 'yellow',
+            },
+          ],
+        },
+      },
+      'Breakfast': {
+        starters: {
+          slug: 'starters',
+          label: 'Starters',
+          options: [
+            { id: 64, title: 'Platter of seasonal cut fruits', label: 'Fruit', color: 'rose', },
+            {
+              id: 65,
+              title: 'Greek yoghurt, passion fruit and mango coulis, toasted granola with nuts',
+              label: 'Yoghurt',
+              color: 'white',
+            },
+            {
+              id: 66,
+              title: 'Assiette of cold cuts',
+              description: 'smoked balik salmon, smoked mackerel, caper berry, goat cheese and egg mimosa',
+              label: 'CUTS',
+              color: 'pink',
+            },
+          ],
+        },
+        mains: {
+          slug: 'mains',
+          label: 'Mains',
+          options: [
+            {
+              id: 67,
+              title: 'Traditional Arabic breakfast',
+              description: 'feta cheese, tomato, cucumber and olives served with fout medames and Arabic bread',
+              label: 'ARAB',
+              color: 'teal',
+            },
+            {
+              id: 68,
+              title: 'Omelette with grilled veal sausage',
+              description: 'roasted boby potato and creamy spinach',
+              label: 'Omelette',
+              color: 'orange',
+            },
+            {
+              id: 69,
+              title: 'Baked doughnut with Nutella',
+              description: 'fresh berries, apple compote and crème Anglaise',
+              label: 'DONUT',
+              color: 'pink',
+            },
+            { id: 70, title: 'Steel-cut oats served with berries and cream', label: 'OATS', color: 'white', },
+          ]
+        },
+      },
+    }
+  },
+  economy: {
+    drinks: [],
+    food: [
+      {
+        slug: 'breakfast',
+        acronym: 'HB',
+        name: 'Hot Breakfast',
+        options: [
+          {
+            title: 'Scrambled eggs with breakfast sausage',
+            description: 'potato wadges and herb tomato',
+            label: 'Eggs',
+            color: 'yellow'
+          },
+          {
+            title: 'Beef congee',
+            description: 'fried ginger, shirtake and spring onions',
+            label: 'Congee',
+            color: 'blue'
+          },
+          { title: 'Stir-fried egg noodles', label: 'Noodles', color: 'green' },
+        ]
+      },
+      {
+        slug: 'warm-sandwich',
+        acronym: 'WS',
+        name: 'Warm Sandwich',
+        options: [
+          { title: 'Tuna sandwich', label: 'Tuna', color: 'pink' },
+          { title: 'Veggie sandwich', label: 'Veggie', color: 'green' },
+        ]
+      },
+      {
+        slug: 'lunch-dinner',
+        acronym: 'LD',
+        name: 'Lunch/Dinner',
+        options: [
+          {
+            title: 'Chicken kapsa',
+            description: 'Tomato rice, fried onions and raisins',
+            label: 'Chicken',
+            color: 'yellow'
+          },
+          {
+            title: 'Braised beef with mushroom sauce',
+            description: 'parsley mashed potato and vegetables',
+            label: 'Beef',
+            color: 'red'
+          },
+          { title: 'Risotto with garden peas', description: 'mixed herbs and cheese', label: 'Pasta', color: 'green' },
+        ]
+      },
+    ]
+  }
+};

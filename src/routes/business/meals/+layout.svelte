@@ -1,14 +1,8 @@
-<h1 class='text-primary'>Services</h1>
+<script>
+  import { PageTitle } from "$organisms";
+  import { CONFIGURATION } from "$lib/constants";
+</script>
 
-<h2>Galleys</h2>
-
-  <ul>
-    <li>
-      <a href='FWD'>FWD</a>
-      <a href='AFT'>AFT</a>
-    </li>
-  </ul>
+<PageTitle title='Meals' tabs='{CONFIGURATION.business.galleys}' direction='col-reverse' />
 
 <slot />
-
-<h3>Total meals</h3>

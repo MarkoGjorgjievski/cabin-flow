@@ -3,8 +3,6 @@
   import { CrewInfoList, PassengerInfoTable } from "$organisms";
 </script>
 
-<h1 class='py-4'>Flight Information</h1>
-
 <div class='flex flex-col gap-4 h-fit pb-4'>
   <div class='flex gap-4'>
     <Card title='B787-8' headline='QR 001' subtitle='7h 35min' className='shadow-border' />

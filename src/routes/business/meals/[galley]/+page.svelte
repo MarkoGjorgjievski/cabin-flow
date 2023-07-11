@@ -1,5 +1,8 @@
 <script>
+  import { BusinessMealList } from "$organisms";
+
   export let data;
 </script>
 
-<h1>{data.galley}</h1>
+<h3 class='font-mono'>{data.galley} galley</h3>
+<BusinessMealList />

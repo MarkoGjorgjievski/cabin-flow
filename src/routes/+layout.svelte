@@ -34,7 +34,7 @@
       </li>
 
       <!-- This is supposed to be: first zone, first position-> zones, position [0]   -->
-      <li class={clsx($page.url.pathname.includes('/business/seat-chart') && "bg-primary text-primary-content")}><a href='/business/seat-chart/FWD/left'><ClipboardIcon /></a></li>
+      <li class={clsx($page.url.pathname.includes('/business/seat-chart') && "bg-primary text-primary-content")}><a href='/business/seat-chart/FWD/L1'><ClipboardIcon /></a></li>
       <Divider />
 
       <li class={clsx($page.url.pathname.includes('/economy/meals') && "bg-primary text-primary-content")}><a href='/economy/meals/options'><CakeIcon /></a></li>

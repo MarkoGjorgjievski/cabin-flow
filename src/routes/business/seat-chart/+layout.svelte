@@ -1,24 +1,23 @@
 <script>
-  import SeatingMap from "../../../lib/components/organisms/SeatingMap.svelte";
+  import { onMount } from "svelte";
+  import { PageTitle } from "../../../lib/components/organisms";
+  import { CONFIGURATION } from "../../../lib/constants";
 
-  export let data
+  /*** Derive this from zones ***/
+  const zones = Object.values(CONFIGURATION.business.positions).reduce((acc, curr) => {
+    const tabObj = curr.cabin.map(zone => zone.map(position => ({ label: position, slug: position })));
+    return [...acc, ...tabObj];
+  }, []);
+
+
+  onMount(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+  });
 </script>
 
-<header class='flex justify-between'>
-<h1>Seat chart</h1>
 
-  <ul>
-    <li>
-      <a class='btn' href='/business/seat-chart/FWD/left'>FWD/left</a>
-      <a class='btn' href='/business/seat-chart/FWD/right'>FWD/right</a>
-      <a class='btn' href='/business/seat-chart/AFT/left'>AFT/left</a>
-      <a class='btn' href='/business/seat-chart/AFT/right'>AFT/left</a>
-    </li>
-  </ul>
-</header>
-
-
-<div class='flex w-full'>
-  <SeatingMap />
-  <slot />
+<div class='sticky top-4 z-10'>
+  <PageTitle title='Seat Chart' stackedTabs='{zones}'  />
 </div>
+
+<slot />

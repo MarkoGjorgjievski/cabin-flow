@@ -1,9 +1,9 @@
 <script>
+  import { ServiceMenu } from "$organisms";
+
   export let data;
 </script>
 
-<h1>{data.galley}</h1>
-
 <slot />
-
+<ServiceMenu />
 

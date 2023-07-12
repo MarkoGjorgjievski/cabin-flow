@@ -683,7 +683,7 @@ export const MENU = {
               id: 62,
               title: 'Afternoon tea',
               description: 'fresh finger sandwiches, warm scones, clotted cream and French pastries',
-              label: 'Afternoon tea',
+              label: 'Afternu',
               color: 'orange',
             },
             {

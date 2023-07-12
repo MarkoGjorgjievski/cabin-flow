@@ -1,7 +1,7 @@
 <script>
   import clsx from "clsx";
   import { Divider } from "$atoms";
-  import { MealOption } from "$molecules";
+  import { OptionLabel } from "$molecules";
   import { SpecialMealList } from "$organisms";
 
   export let editable = false;
@@ -48,7 +48,7 @@
           {#each Object.values(service) as item}
             <h6 class='text-xs uppercase pt-2 pl-1'>{item.label}</h6>
             {#each item.options as option, i}
-              <MealOption {option} {hideQuantity} size='small' cabin='business' />
+              <OptionLabel {option} showQuantity />
             {/each}
           {/each}
         {/each}
@@ -59,7 +59,7 @@
       <div class='flex flex-col justify-between'>
         <div class='flex flex-col gap-2'>
           {#each options as option}
-            <MealOption option={{...option, title: false }} {hideQuantity} size='small' counter={editMode && counter} />
+            <OptionLabel {option} {hideQuantity} size='small' counter={editMode && counter} />
           {/each}
         </div>
       </div>

@@ -1,5 +1,5 @@
 <script>
-  import { Divider, Toggle } from "$atoms";
+  import { Divider, Toggle, Badge } from "$atoms";
   import {
     ArrowUpRight,
     BellAlertIcon,
@@ -10,7 +10,7 @@
     StillWaterIcon,
     WineGlassIcon
   } from "$icons";
-  import { LabelBadge, MealOption } from "$molecules";
+  import { OptionLabel } from "$molecules";
   import { dndzone } from "svelte-dnd-action";
   import { flip } from "svelte/animate";
   import { slide } from "svelte/transition";
@@ -70,7 +70,7 @@
                  use:dndzone={{ items: seats[row].drinks, type: 'drinks' }}>
               {#each seats[row].drinks as item (item.id)}
                 <span animate:flip class='flex items-center'>
-                  <LabelBadge label='{item.label}' color='{item.color}' />
+                  <Badge label='{item.label}' color='{item.color}' />
                 </span>
               {/each}
             </div>
@@ -95,7 +95,7 @@
                use:dndzone={{ items: seats[row].food, type: 'food' }}>
             {#each seats[row].food as item (item.id)}
                 <span animate:flip class='flex items-center'>
-                  <MealOption option={{ ...item, title: false }} hideQuantity />
+                  <OptionLabel option={item} hideQuantity />
                 </span>
             {/each}
           </div>
@@ -110,7 +110,7 @@
                use:dndzone={{ items: seats[row].drinks, type: 'drinks' }}>
             {#each seats[row].drinks as item (item.id)}
                 <span animate:flip class='flex items-center'>
-                  <LabelBadge label='{item.label}' color='{item.color}' />
+                  <Badge label='{item.label}' color='{item.color}' />
                 </span>
             {/each}
           </div>

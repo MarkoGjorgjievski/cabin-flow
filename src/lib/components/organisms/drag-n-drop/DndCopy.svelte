@@ -1,10 +1,10 @@
 <script>
   import { TRIGGERS, SHADOW_ITEM_MARKER_PROPERTY_NAME } from 'svelte-dnd-action';
-  import { MealOption } from "$molecules";
+  import { OptionLabel } from "$molecules";
   import { DndZone } from "$organisms";
 
   export let items;
-  export let itemComponent = MealOption
+  export let itemComponent = OptionLabel
   export let className
   export let dropFromOthersDisabled
   export let type

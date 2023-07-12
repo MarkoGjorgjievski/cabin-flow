@@ -1,7 +1,7 @@
 <script>
   import { Divider } from "$atoms";
-  import { ChevronRight } from "$icons";
-  import { Counter, LabelBadge } from "$molecules";
+  import { OptionCounter } from "$molecules";
+  import { OptionLabel } from "../../molecules";
 
   export let option;
   export let showDescription;
@@ -18,17 +18,14 @@
 
       <Divider my='{0.5}' />
 
-      <div class='flex justify-between gap-2 w-full items-center text-sm'>
+      <div class='flex justify-between w-full items-end text-sm'>
         <p class='opacity-60'>Label</p>
-        <div class='flex gap-2 items-center'>
-          <LabelBadge color='{option.color}' label='{option.label}' />
-          <ChevronRight size='{4}' />
-        </div>
+        <OptionLabel {option} />
       </div>
     </div>
 
     {#if counter}
-      <Counter {editMode} />
+      <OptionCounter {editMode} />
     {/if}
   </div>
 

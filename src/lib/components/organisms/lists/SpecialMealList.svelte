@@ -10,7 +10,7 @@
   <div class='absolute top-[5.8rem] left-0 w-full h-80 bg-base-100' transition:slide>
     <div class='h-full overflow-y-auto px-4 flex flex-col gap-1 scrollbar'>
         {#each SPECIAL_MEALS as option}
-          <OptionLabel {option} />
+          <OptionLabel {option} showQuantity />
         {/each}
     </div>
   </div>

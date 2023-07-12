@@ -1,8 +1,8 @@
 <script>
-  import { SeatingMap } from "../../../lib/components/organisms";
+  import { PageTitle, SeatingMap } from "$organisms";
 </script>
 
-<h1>Zones</h1>
+<PageTitle title='Zones' />
 
 <SeatingMap />
 <slot />

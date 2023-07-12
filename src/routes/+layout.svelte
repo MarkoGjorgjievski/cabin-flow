@@ -15,7 +15,7 @@
 </script>
 
 <IPad>
-<div id='app' data-theme="cupcake" class='scrollbar flex'>
+<div id='app' data-theme="cupcake" class='scrollbar flex w-full'>
   <nav class='w-fit sticky top-0 flex h-full flex-col gap-2 justify-between bg-base-200 p-2'>
     <div class='pt-2'>
         <a class='flex flex-col leading-0 text-xs text-center items-center font-medium text-primary' href='/'>
@@ -48,7 +48,7 @@
     </ul>
   </nav>
 
-  <div class='p-4 h-full min-h-full bg-base-200/10'>
+  <div class='p-4 h-full min-h-full bg-base-200/10 w-full'>
     <slot />
   </div>
 </div>

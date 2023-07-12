@@ -17,3 +17,12 @@ export const getDividers = (config, zones) => config.map((_, i) => {
   }
   return [];
 });
+
+export const truncateString = (str, num = 15) => {
+  if (str.length <= num) {
+    return str
+  }
+  return str.slice(0, num) + '...'
+}
+
+export const getCabin = page => page.route.id.split('/')[1];

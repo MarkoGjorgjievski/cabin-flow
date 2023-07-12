@@ -17,8 +17,8 @@
   </ul>
 </header>
 
-<SeatingMap />
 
-<slot />
-
-<h3>Total meals</h3>
+<div class='flex w-full'>
+  <SeatingMap />
+  <slot />
+</div>

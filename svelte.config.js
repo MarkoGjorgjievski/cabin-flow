@@ -19,6 +19,7 @@ const config = {
       '$organisms': 'src/lib/components/organisms',
       '$templates': 'src/lib/components/templates',
       '$system': 'src/lib/system',
+      '$hooks': 'src/hooks',
     }
   },
 };

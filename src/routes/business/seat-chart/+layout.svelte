@@ -1,4 +1,6 @@
 <script>
+  import SeatingMap from "../../../lib/components/organisms/SeatingMap.svelte";
+
   export let data
 </script>
 
@@ -14,6 +16,8 @@
     </li>
   </ul>
 </header>
+
+<SeatingMap />
 
 <slot />
 

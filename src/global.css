@@ -8,13 +8,22 @@
 }
 
 html,
-body,
-#app {
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e3e3e3;
+}
+
+html,body {
   font-family: "Inter", sans-serif;
   user-select: none;
   height: 100%;
-  margin: 0;
-  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body:has(.backdrop) {
@@ -23,8 +32,8 @@ body:has(.backdrop) {
 
 #app {
   width: 1024px;
-  min-height: 768px;
-  height: 100%;
+  height: 768px;
+  overflow-y: auto;
 }
 
 @layer base {
@@ -221,6 +230,18 @@ body:has(.backdrop) {
 
   .table :where(thead, tfoot) {
     @apply text-sm;
+  }
+
+  .aircraft-seat {
+    @apply select-none cursor-pointer flex items-center duration-1000 justify-center bg-gradient-to-b from-base-100 to-base-200/40 opacity-80 rounded shadow-seat;
+  }
+
+  .seating-row  {
+    @apply flex w-fit gap-2;
+  }
+
+  .seating-row:where(.economy-row) {
+
   }
 }
 

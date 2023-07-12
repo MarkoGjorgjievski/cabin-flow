@@ -1,3 +1,7 @@
+<script>
+  import { SeatingMap } from "../../../lib/components/organisms";
+</script>
+
 <h1>Zones</h1>
 
 <ul>
@@ -13,4 +17,7 @@
   <h1>Left</h1>
 </div>
 
+<div>
+<SeatingMap />
+</div>
 <slot />

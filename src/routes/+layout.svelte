@@ -11,12 +11,14 @@
     ClipboardIcon,
     ArrowsSquare
   } from "$atoms/icons";
+  import IPad from "../lib/components/templates/ipad/IPad.svelte";
 </script>
 
-<div id='app' data-theme="cupcake">
-  <nav class='h-screen w-fit fixed top-0 flex h-full flex-col gap-2 justify-between bg-base-200 p-2'>
+<IPad>
+<div id='app' data-theme="cupcake" class='scrollbar flex'>
+  <nav class='w-fit sticky top-0 flex h-full flex-col gap-2 justify-between bg-base-200 p-2'>
     <div class='pt-2'>
-        <a class='flex flex-col leading-0 text-xs text-center items-center font-medium' href='/'>
+        <a class='flex flex-col leading-0 text-xs text-center items-center font-medium text-primary' href='/'>
           <p>Cabin</p>
           <p>Flow&trade;</p>
         </a>
@@ -46,7 +48,8 @@
     </ul>
   </nav>
 
-  <div class='ml-16 p-4 h-full min-h-full bg-base-200/10'>
+  <div class='p-4 h-full min-h-full bg-base-200/10'>
     <slot />
   </div>
 </div>
+</IPad>

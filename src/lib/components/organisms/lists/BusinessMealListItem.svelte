@@ -7,7 +7,6 @@
   export let showDescription;
   export let editMode = false;
   export let counter = false;
-  export let slug;
 </script>
 
 <div>

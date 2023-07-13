@@ -1,4 +1,5 @@
 <script>
+  import { page } from "$app/stores";
   import { SPECIAL_MEALS } from "$lib/constants";
   import { OptionLabel } from "$molecules";
   import { slide } from 'svelte/transition'
@@ -7,6 +8,7 @@
   export let title
 
   let show = false
+  $: $page.url.pathname, show = false
 </script>
 
 {#if show}

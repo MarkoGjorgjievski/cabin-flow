@@ -1,10 +1,8 @@
 <script>
   import { page } from "$app/stores";
-  import { getCabin } from "$hooks";
-  import { CONFIGURATION } from "$lib/constants";
-  import { createAcronymObject } from "../../../../hooks";
-  import ZoneContainersTemplate from "../../../../lib/components/templates/ZoneContainersTemplate.svelte";
-  import { MENU } from "../../../../lib/constants";
+  import { getCabin, createAcronymObject } from "$hooks";
+  import { CONFIGURATION, MENU } from "$lib/constants";
+  import { ZoneContainersTemplate } from "$templates";
 
   export let data;
 

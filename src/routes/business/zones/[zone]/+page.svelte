@@ -2,7 +2,7 @@
   import { page } from "$app/stores";
   import { getCabin } from "$hooks";
   import { CONFIGURATION } from "$lib/constants";
-  import ZoneContainersTemplate from "../../../../lib/components/templates/ZoneContainersTemplate.svelte";
+  import { ZoneContainersTemplate } from "$templates";
 
   export let data;
 

@@ -11,7 +11,7 @@
     ClipboardIcon,
     ArrowsSquare
   } from "$atoms/icons";
-  import IPad from "../lib/components/templates/ipad/IPad.svelte";
+  import { IPad } from "$templates";
 </script>
 
 <IPad>

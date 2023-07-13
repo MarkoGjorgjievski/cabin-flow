@@ -1,2 +1,5 @@
 export { default as FlightInfoTemplate } from './flight-info/FlightInfoTemplate.svelte'
 export { default as CrewPositionsTemplate } from './crew-positions/CrewPositionsTemplate.svelte'
+export { default as MealsTemplate } from './MealsTemplate.svelte'
+export { default as ZoneContainersTemplate } from './ZoneContainersTemplate.svelte'
+export { default as IPad } from './ipad/IPad.svelte'

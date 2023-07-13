@@ -1,5 +1,5 @@
 <script>
-  import EconomyMealList from "../../../../lib/components/organisms/lists/EconomyMealList.svelte";
+  import { EconomyMealList } from "$organisms";
 
   export let data
 </script>

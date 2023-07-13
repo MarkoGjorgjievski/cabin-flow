@@ -4,7 +4,4 @@
 </script>
 
 <PageTitle title='Zones' tabs='{CONFIGURATION.business.galleys}' direction='col-reverse' />
-
 <slot />
-
-

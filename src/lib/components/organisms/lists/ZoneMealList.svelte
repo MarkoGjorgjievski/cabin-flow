@@ -4,20 +4,13 @@
   import { OptionLabel } from "$molecules";
   import { SpecialMealList } from "$organisms";
 
-  export let editable = false;
-  export let showSpecialMeals = false;
-  export let hideQuantity = false;
   export let total = 0;
   export let options = [];
   export let title;
   export let rows;
   export let passengerNumber = 40;
-  export let buttonLabel = 'Edit';
   export let cabin = 'economy';
   export let services;
-  export let counter;
-
-  let editMode = false
 </script>
 
 <div class={clsx("card w-full h-fit shadow-lifted relative")}>
@@ -25,13 +18,6 @@
     <div>
       <div class='flex justify-between'>
         {#if title}<h5 class='card-title'>{title}</h5>{/if}
-        {#if editable}
-          {#if editMode}
-            <button class='btn btn-xs btn-primary' on:click={() => editMode = !editMode}>Save</button>
-          {:else}
-            <button class='btn btn-xs btn-ghost' on:click={() => editMode = !editMode}>{buttonLabel}</button>
-          {/if}
-        {/if}
       </div>
       {#if rows && passengerNumber}
         <div class='flex justify-between text-sm opacity-60 w-full my-2 py-1 border-y border-base-300'>
@@ -65,9 +51,7 @@
       </div>
     {/if}
 
-    {#if showSpecialMeals}
-      <SpecialMealList {cabin} {title} />
-    {/if}
+    <SpecialMealList {cabin} {title} />
     <div>
       <Divider />
       <div class='flex justify-between pt-2'>

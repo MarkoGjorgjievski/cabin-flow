@@ -1,7 +1,7 @@
 <script>
-  export let data
+  import { ServiceZone } from "$organisms";
 
+  export let data
 </script>
 
-<h1>{data.params.galley} {data.params.zone}</h1>
-
+<ServiceZone />

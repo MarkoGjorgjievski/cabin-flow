@@ -1,0 +1,50 @@
+<script>
+  import { MENU } from "../../../constants";
+  import { Divider } from "../../atoms";
+  import MealsTemplate from "../../templates/MealsTemplate.svelte";
+  import { MealListItem } from "../index";
+
+  export let galley;
+
+  let showDescription = false;
+  let editMode = false;
+
+  $: galley, editMode = false
+</script>
+
+<MealsTemplate
+  {showDescription} {editMode} {galley}
+  on:edit='{e => editMode = e.detail.editMode}'
+  on:save='{e => editMode = e.detail.editMode}'
+  on:toggle='{e => showDescription = e.detail.showDescription}'
+/>
+
+<div class='flex justify-between gap-4 py-4 h-fit'>
+  {#each MENU.economy.food as service}
+    <div class='flex flex-col gap-4 w-full'>
+      <h6 class='text-xs uppercase pl-1'>{service.name}</h6>
+      <div class='w-full flex flex-col gap-4'>
+        {#each service.options as option, i}
+          <MealListItem {option} id='{i+1}' slug='{service.acronym}' {showDescription} range='{!!editMode}' {editMode} />
+        {/each}
+      </div>
+    </div>
+  {/each}
+</div>
+
+<Divider />
+
+<h2 class='py-4'>Total</h2>
+
+<div class='flex justify-between gap-4 h-fit pb-16'>
+  {#each MENU.economy.food as service}
+    <div class='flex flex-col gap-4 w-full'>
+      <h6 class='text-xs uppercase pl-1'>{service.name}</h6>
+      <div class='w-full flex flex-col gap-4'>
+        {#each service.options as option, i}
+          <MealListItem {option} id='{i+1}' slug='{service.acronym}' {showDescription} />
+        {/each}
+      </div>
+    </div>
+  {/each}
+</div>

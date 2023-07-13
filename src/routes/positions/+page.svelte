@@ -1,1 +1,6 @@
-<h1>Positions</h1>
+<script>
+  import { CrewPositionsTemplate } from "$templates";
+</script>
+
+<CrewPositionsTemplate />
+

@@ -1,9 +1,8 @@
-<h1>Page</h1>
-<a href='/economy/meals/options'>options</a>
-<a href='/economy/meals/counts/FWD'>counts</a>
+<script>
+  import { PageTitle } from "$organisms";
+  import { CONFIGURATION } from "$lib/constants";
+</script>
 
+<PageTitle title='Meals' tabs='{CONFIGURATION.economy.galleys}' direction='col' />
 
 <slot />
-
-
-<h2>total</h2>

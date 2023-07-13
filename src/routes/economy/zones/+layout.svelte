@@ -1,8 +1,10 @@
 <script>
-  import { PageTitle, SeatingMap } from "$organisms";
+  import { PageTitle } from "$organisms";
+  import { MENU } from "../../../lib/constants";
+
+  const tabs = MENU.economy.food.map(service => ({ slug: service.acronym, label: service.acronym }));
 </script>
 
-<PageTitle title='Zones' />
+<PageTitle title='Zones' {tabs} />
 
-<SeatingMap />
 <slot />

@@ -1,13 +1,11 @@
 <script>
   import clsx from "clsx";
-  import { page } from "$app/stores";
   import { getDividers, seatingConfig } from "$hooks";
   import { CONFIGURATION } from "$lib/constants";
   import { Seat, GalleyIndicator } from "$molecules";
   import { RowDividerDnd } from "$organisms";
 
-  const cabin = $page.route.id.split('/')[1];
-
+  export let cabin
   const config = seatingConfig(cabin);
 
   let zones = [{ row: 0, id: 0, crew: ['L1', 'R5A'] }, { row: 4, id: 4, crew: ['L2', 'R2A'] }];
@@ -36,7 +34,7 @@
     <div class={clsx(containerDirection, 'w-fit flex')}>
       <GalleyIndicator rowNumber='{i}' {cabin} position='beforeRow' />
 
-      {#if CONFIGURATION[cabin]?.ghostRow - CONFIGURATION[cabin].rowStart !== i}
+      {#if CONFIGURATION[cabin]?.ghostRow - CONFIGURATION[cabin]?.rowStart !== i}
 
         <RowDividerDnd items='{dividers[i]}' handleDnd='{e => handleDnd(e, i)}' />
 
@@ -46,9 +44,9 @@
           {/each}
         </div>
 
-        <!--{#if CONFIGURATION[cabin].rowEnd - CONFIGURATION[cabin].rowStart === i}-->
-        <!--  <RowDividerDnd  />-->
-        <!--{/if}-->
+        {#if CONFIGURATION[cabin].rowEnd - CONFIGURATION[cabin].rowStart === i}
+          <RowDividerDnd  />
+        {/if}
       {/if}
 
       <GalleyIndicator rowNumber='{i}' {cabin} position='afterRow' />

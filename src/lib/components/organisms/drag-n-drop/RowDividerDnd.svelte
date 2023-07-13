@@ -3,7 +3,7 @@
   import { flip } from 'svelte/animate';
 
   export let items = [];
-  export let handleDnd = () => null
+  export let handleDnd = () => null;
 </script>
 
 

@@ -59,14 +59,14 @@
       <div class='flex flex-col justify-between'>
         <div class='flex flex-col gap-2'>
           {#each options as option}
-            <OptionLabel {option} {hideQuantity} size='small' counter={editMode && counter} />
+            <OptionLabel {option} showQuantity />
           {/each}
         </div>
       </div>
     {/if}
 
     {#if showSpecialMeals}
-      <SpecialMealList />
+      <SpecialMealList {cabin} {title} />
     {/if}
     <div>
       <Divider />

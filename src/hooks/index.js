@@ -26,3 +26,10 @@ export const truncateString = (str, num = 15) => {
 }
 
 export const getCabin = page => page.route.id.split('/')[1];
+
+export const createAcronymObject = (arr) => {
+  return arr.reduce((acronymObject, item) => {
+    acronymObject[item.acronym] = item;
+    return acronymObject;
+  }, {});
+}

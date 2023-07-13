@@ -1,31 +1,50 @@
 <script>
-  import { MENU } from "$lib/constants";
-  import { CONFIGURATION } from "../../../constants";
-  import { Button } from "../../atoms";
-  import { MealListItem, PageTitle } from "../index";
+  import { MENU } from "../../../constants";
+  import { Divider } from "../../atoms";
+  import MealsTemplate from "../../templates/MealsTemplate.svelte";
+  import { MealListItem } from "../index";
 
-  export let galley
+  export let galley;
 
-  let editMode = false
+  let showDescription = false;
+  let editMode = false;
+
   $: galley, editMode = false
 </script>
 
-<PageTitle title='Galleys' tabs='{CONFIGURATION.economy.galleys}' direction='col' />
+<MealsTemplate
+  {showDescription} {editMode} {galley}
+  on:edit='{e => editMode = e.detail.editMode}'
+  on:save='{e => editMode = e.detail.editMode}'
+  on:toggle='{e => showDescription = e.detail.showDescription}'
+/>
 
-<div class='flex justify-end w-full'>
-  {#if editMode}
-    <Button state='primary' on:click={() => editMode = false}>Save quantity</Button>
-  {:else}
-    <Button state='ghost' on:click={() => editMode = true}>Edit quantity</Button>
-  {/if}
+<div class='flex justify-between gap-4 py-4 h-fit'>
+  {#each MENU.economy.food as service}
+    <div class='flex flex-col gap-4 w-full'>
+      <h6 class='text-xs uppercase pl-1'>{service.name}</h6>
+      <div class='w-full flex flex-col gap-4'>
+        {#each service.options as option, i}
+          <MealListItem {option} id='{i+1}' slug='{service.acronym}' {showDescription} range='{!!editMode}' {editMode} />
+        {/each}
+      </div>
+    </div>
+  {/each}
 </div>
 
-<div class='flex justify-between gap-4'>
+<Divider />
+
+<h2 class='py-4'>Total</h2>
+
+<div class='flex justify-between gap-4 h-fit pb-16'>
   {#each MENU.economy.food as service}
-    <div class='w-full flex flex-col gap-4'>
-      {#each service.options as option, i}
-        <MealListItem {option} id='{i+1}' slug='{service.acronym}' range='{!!editMode}' {editMode} />
-      {/each}
+    <div class='flex flex-col gap-4 w-full'>
+      <h6 class='text-xs uppercase pl-1'>{service.name}</h6>
+      <div class='w-full flex flex-col gap-4'>
+        {#each service.options as option, i}
+          <MealListItem {option} id='{i+1}' slug='{service.acronym}' {showDescription} />
+        {/each}
+      </div>
     </div>
   {/each}
 </div>

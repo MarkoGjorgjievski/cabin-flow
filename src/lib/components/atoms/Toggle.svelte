@@ -7,6 +7,8 @@
   export let labelOn
   export let size = 'medium'
   export let state = 'primary'
+
+  // $: checked, console.log(checked)
 </script>
 
 <div class="form-control">

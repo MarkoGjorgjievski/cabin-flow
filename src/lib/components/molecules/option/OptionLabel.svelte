@@ -8,15 +8,15 @@
   export let quantity = 40;
   export let showQuantity;
   export let size;
-  export let counter;
+  export let range;
 </script>
 
-<div class={clsx('flex items-center justify-between p-2 border rounded-lg relative backdrop-blur bg-opacity-50', showQuantity ? 'w-full' : 'w-fit', [badgeColor.get(option.color)], [badgeBorderColor.get(option.color)])}>
+<div class={clsx('flex items-center justify-between p-2 border rounded-lg relative ', showQuantity || range ? 'w-full' : 'w-fit', [badgeColor.get(option.color)], [badgeBorderColor.get(option.color)])}>
   <div class='flex items-center gap-2 justify-between w-full flex-1'>
-    <Badge color={option.color} label={option.label} className='label-badge bg-transparent' />
+    <Badge color={option.color} label={option.label} className='label-badge' />
     {#if Number.isInteger(quantity) && showQuantity}<span class='w-fit text-right'>{quantity}</span>{/if}
   </div>
-  {#if counter}
+  {#if range}
     <OptionRange value='{quantity}' />
   {/if}
 </div>

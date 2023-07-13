@@ -1,7 +1,7 @@
 export { default as CrewInfoList } from './lists/CrewInfoList.svelte'
 export { default as CrewInfoListItem } from './lists/CrewInfoListItem.svelte'
 export { default as BusinessMealList } from './lists/BusinessMealList.svelte'
-export { default as BusinessMealListItem } from './lists/BusinessMealListItem.svelte'
+export { default as MealListItem } from './lists/MealListItem.svelte'
 export { default as ZoneMealList } from './lists/ZoneMealList.svelte'
 export { default as SpecialMealList } from './lists/SpecialMealList.svelte'
 

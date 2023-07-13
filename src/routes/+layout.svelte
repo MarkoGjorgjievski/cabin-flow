@@ -37,7 +37,7 @@
       <li class={clsx($page.url.pathname.includes('/business/seat-chart') && "bg-primary text-primary-content")}><a href='/business/seat-chart/FWD/L1'><ClipboardIcon /></a></li>
       <Divider />
 
-      <li class={clsx($page.url.pathname.includes('/economy/meals') && "bg-primary text-primary-content")}><a href='/economy/meals/options'><CakeIcon /></a></li>
+      <li class={clsx($page.url.pathname.includes('/economy/meals') && "bg-primary text-primary-content")}><a href='/economy/meals/MID'><CakeIcon /></a></li>
       <li class={clsx($page.url.pathname.includes('/economy/zones') && "bg-primary text-primary-content")}><a href='/economy/zones/service'><RectangleGroupIcon /></a></li>
       <li class={clsx($page.url.pathname.includes('/economy/360') && "bg-primary text-primary-content")}><a href='/economy/360'><ArrowsSquare /></a></li>
     </ul>
@@ -48,7 +48,7 @@
     </ul>
   </nav>
 
-  <div class='p-4 h-full min-h-full bg-base-200/10 w-full'>
+  <div class='p-4 h-full min-h-full bg-base-200/10 w-full relative'>
     <slot />
   </div>
 </div>

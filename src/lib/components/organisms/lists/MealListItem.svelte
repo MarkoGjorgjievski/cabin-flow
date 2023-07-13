@@ -1,12 +1,11 @@
 <script>
-  import { Divider } from "$atoms";
   import { OptionCounter } from "$molecules";
   import { OptionLabel } from "../../molecules";
 
   export let option;
   export let showDescription;
   export let editMode = false;
-  export let counter = false;
+  export let range = false
 </script>
 
 <div>
@@ -16,17 +15,12 @@
         <h4 class='font-normal'>{option.title}</h4>
       </div>
 
-      <Divider my='{0.5}' />
+      <div class='divider my-1'></div>
 
-      <div class='flex justify-between w-full items-end text-sm'>
-        <p class='opacity-60'>Label</p>
-        <OptionLabel {option} />
-      </div>
+      <OptionLabel {option} {range}  />
     </div>
 
-    {#if counter}
-      <OptionCounter {editMode} />
-    {/if}
+    <OptionCounter {editMode} />
   </div>
 
   {#if option?.description && showDescription}

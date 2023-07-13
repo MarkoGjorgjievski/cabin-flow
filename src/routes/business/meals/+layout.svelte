@@ -4,5 +4,4 @@
 </script>
 
 <PageTitle title='Meals' tabs='{CONFIGURATION.business.galleys}' direction='col-reverse' />
-
 <slot />

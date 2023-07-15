@@ -10,8 +10,8 @@
         padding: 48px 60px;
         background: black;
         border-radius: 21px;
-        border: 4px solid #E5E5E5;
-        box-shadow: 5px 19px 39px #ADADAD !important;
+        border: 4px solid #c7cbce;
+        box-shadow: 5px 19px 39px #757575;
         overflow: hidden;
         transform: scale(0.75) translateZ(0);
         backface-visibility: hidden;

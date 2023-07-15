@@ -15,14 +15,9 @@
 </script>
 
 <IPad>
-<div id='app' data-theme="cupcake" class='scrollbar flex w-full'>
-  <nav class='w-fit sticky top-0 flex h-full flex-col gap-2 justify-between bg-base-200 p-2'>
-    <div class='pt-2'>
-        <a class='flex flex-col leading-0 text-xs text-center items-center font-medium text-primary' href='/'>
-          <p>Cabin</p>
-          <p>Flow&trade;</p>
-        </a>
-    </div>
+<div id='app' data-theme="dark" class='scrollbar flex w-full'>
+  <div class='p-1 flex flex-col items-center justify-center sticky top-0'>
+  <nav class='w-fit flex h-fit flex-col gap-2 justify-between bg-base-200 p-1 rounded-xl shadow-lg'>
     <ul>
       <li class={clsx($page.url.pathname === '/' && "bg-primary text-primary-content")}><a href='/'><PlaneIcon /></a></li>
       <li class={clsx($page.url.pathname.includes('positions') && "bg-primary text-primary-content")}><a  href='/positions'><ListIcon /></a></li>
@@ -39,14 +34,16 @@
 
       <li class={clsx($page.url.pathname.includes('/economy/meals') && "bg-primary text-primary-content")}><a href='/economy/meals/MID'><CakeIcon /></a></li>
       <li class={clsx($page.url.pathname.includes('/economy/zones') && "bg-primary text-primary-content")}><a href='/economy/zones/HB'><RectangleGroupIcon /></a></li>
-      <li class={clsx($page.url.pathname.includes('/economy/360') && "bg-primary text-primary-content")}><a href='/economy/360'><ArrowsSquare /></a></li>
+      <li class={clsx($page.url.pathname.includes('/economy/360') && "bg-primary text-primary-content")}><a href='/economy/360/MID'><ArrowsSquare /></a></li>
     </ul>
-    <ul>
-      <li><a>
+<!--    <ul>-->
+<!--      <li><a>-->
 <!--        <ThemeSwitcher />-->
-      </a></li>
-    </ul>
+<!--      </a></li>-->
+<!--    </ul>-->
   </nav>
+
+  </div>
 
   <div class='p-4 h-full min-h-full bg-base-200/10 w-full relative'>
     <slot />

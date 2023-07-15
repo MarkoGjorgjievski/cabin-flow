@@ -11,9 +11,9 @@
   export let range;
 </script>
 
-<div class={clsx('flex items-center justify-between p-2 border rounded-lg relative ', showQuantity || range ? 'w-full' : 'w-fit', [badgeColor.get(option.color)], [badgeBorderColor.get(option.color)])}>
+<div class={clsx('flex items-center justify-between p-2 border rounded-lg relative mix-blend-hard-light', showQuantity || range ? 'w-full' : 'w-fit', [badgeColor.get(option.color)], [badgeBorderColor.get(option.color)])}>
   <div class='flex items-center gap-2 justify-between w-full flex-1'>
-    <Badge color={option.color} label={option.label} className='label-badge' />
+    <Badge color={option.color} label={option.label} className='label-badge bg-opacity-0' />
     {#if Number.isInteger(quantity) && showQuantity}<span class='w-fit text-right'>{quantity}</span>{/if}
   </div>
   {#if range}

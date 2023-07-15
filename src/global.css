@@ -11,7 +11,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #e3e3e3;
+  background-color: #a6a6a6;
 }
 
 html,body {
@@ -89,7 +89,7 @@ body:has(.backdrop) {
   }
 
   .card {
-    @apply bg-base-100 border-base-200;
+    @apply bg-base-100 border-base-200
   }
 
   .card-body {
@@ -246,6 +246,21 @@ body:has(.backdrop) {
 
   #order-3 {
     order: 3
+  }
+
+  swiper-container {
+    width: 100%;
+    display: flex;
+  }
+
+  .swiper-slide {
+    width: 600px !important;
+  }
+
+  .backdrop-glass {
+    backdrop-filter: blur(3px);
+    background-blend-mode: luminosity;
+    background-color: rgba(143, 139, 139, 0.2);
   }
 }
 

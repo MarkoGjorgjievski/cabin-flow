@@ -25,7 +25,7 @@
          use:dndzone={{ items, flipDurationMs, dropFromOthersDisabled, type }}>
   {#each items as item(item[idPropertyName])}
     <div animate:flip={{ duration: flipDurationMs }}>
-      <svelte:component this={itemComponent} option={{...item, label: false }} {...item} hideQuantity />
+      <svelte:component this={itemComponent} option={item} {...item} hideQuantity />
     </div>
   {/each}
 </section>

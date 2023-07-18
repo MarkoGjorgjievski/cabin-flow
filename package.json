@@ -27,6 +27,8 @@
   "dependencies": {
     "clsx": "^1.2.1",
     "svelte-dnd-action": "^0.9.24",
-    "swiper": "^10.0.4"
+    "svelte-gestures": "^1.5.2",
+    "swiper": "^10.0.4",
+    "uuid": "^9.0.0"
   }
 }

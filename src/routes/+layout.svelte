@@ -17,7 +17,7 @@
 <IPad>
 <div id='app' data-theme="dark" class='scrollbar flex w-full'>
   <div class='p-1 flex flex-col items-center justify-center sticky top-0'>
-  <nav class='w-fit flex h-fit flex-col gap-2 justify-between bg-base-200 p-1 rounded-xl shadow-lg'>
+  <nav class='w-fit flex h-fit flex-col gap-2 justify-between bg-base-300 p-1 rounded-xl'>
     <ul>
       <li class={clsx($page.url.pathname === '/' && "bg-primary text-primary-content")}><a href='/'><PlaneIcon /></a></li>
       <li class={clsx($page.url.pathname.includes('positions') && "bg-primary text-primary-content")}><a  href='/positions'><ListIcon /></a></li>

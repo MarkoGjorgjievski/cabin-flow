@@ -8,3 +8,8 @@ export { default as Seat } from './Seat.svelte'
 export { default as GalleyIndicator } from './GalleyIndicator.svelte'
 export { default as OptionLabel } from './option/OptionLabel.svelte'
 export { default as OptionRange } from './option/OptionRange.svelte'
+
+export { default as SeatChartDisplay } from './seat-chart/SeatChartDisplay.svelte'
+export { default as SeatChartItem } from './seat-chart/SeatChartItem.svelte'
+export { default as SeatChartMenu } from './seat-chart/SeatChartMenu.svelte'
+export { default as SeatChartOptionPicker } from './seat-chart/SeatChartOptionPicker.svelte'

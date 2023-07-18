@@ -23,7 +23,7 @@
         {/each}
       </div>
       <div class='sticky bottom-0 w-full bg-base-100 z-20'>
-        <button class='btn btn-outline btn-block flex justify-between mt-2 btn-primary {show ? "btn-outline btn-error" : "btn-ghost" }' on:click={() => show = !show}>
+        <button class='btn btn-block flex justify-between mt-2 btn-primary {show ? "btn-error" : "btn-ghost" }' on:click={() => show = !show}>
           <span>Special meals</span>
           <span>34</span>
         </button>
@@ -32,7 +32,7 @@
   </div>
 {/if}
 
-<button class='btn btn-outline flex justify-between mt-2 btn-primary {show ? "btn-outline btn-error" : "btn-ghost" }' on:click={() => show = !show}>
+<button class='btn flex justify-between mt-2 btn-primary {show ? "btn-error" : "btn-primary" }' on:click={() => show = !show}>
   <span>Special meals</span>
   <span>34</span>
 </button>

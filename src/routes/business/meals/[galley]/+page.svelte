@@ -1,6 +1,9 @@
-<script>
-  import { onMount, tick } from "svelte";
+<script context="module">
   import { register } from 'swiper/element/bundle';
+  register();
+</script>
+
+<script>
   import 'swiper/css';
   import { Divider } from "$atoms";
   import { MealListItem } from "$organisms";
@@ -12,17 +15,15 @@
 
   export let data
 
-  onMount(() => mounted = true);
-
-  const registerSwiper = async () => {
-    await tick();
-    register();
-    registered = true;
-  };
-
-  registerSwiper();
-
-  $: mounted, registered, registerSwiper();
+  // const registerSwiper = async () => {
+  //   await tick();
+  //   register();
+  //   registered = true;
+  // };
+  //
+  // registerSwiper();
+  //
+  // $: mounted, registered, registerSwiper();
 
   let showDescription = false;
   let editMode = false;

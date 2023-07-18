@@ -217,7 +217,7 @@ export const MENU = {
               vintage: '2011',
               region: 'Bordeaux, France',
               grape: 'Merlot & Cabernet',
-              label: 'Merlo Caber',
+              label: 'Merlo',
               color: 'red',
               quantity: 4
             },
@@ -725,7 +725,7 @@ export const MENU = {
               id: 67,
               title: 'Traditional Arabic breakfast',
               description: 'feta cheese, tomato, cucumber and olives served with fout medames and Arabic bread',
-              label: 'ARAB',
+              label: 'ARABIC',
               color: 'teal',
             },
             {

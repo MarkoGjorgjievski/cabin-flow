@@ -1,6 +1,6 @@
 <script>
-  import { Button } from "../../atoms";
-  import { PlusSmallIcon } from "../../atoms/icons";
+  import { Button } from "$atoms";
+  import { PlusSmallIcon } from "$icons";
 
   export let id
   export let onFoodClick = () => null

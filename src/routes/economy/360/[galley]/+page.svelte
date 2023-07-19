@@ -1,10 +1,7 @@
 <script>
-
-import SeatChartItemCopy from "../../../../lib/components/molecules/seat-chart/SeatChartItem.svelte";
+  import { SeatChartItem } from "$molecules";
 </script>
 
 <div class='w-full flex gap-2'>
-  <SeatChartItemCopy row='2' />
-  <SeatChartItemCopy row='2' />
-  <SeatChartItemCopy row='2' />
+  <SeatChartItem row='2' />
 </div>

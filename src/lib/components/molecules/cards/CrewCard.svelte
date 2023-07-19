@@ -16,7 +16,7 @@
 
 {#if firstName}
   <div
-    class={clsx(cardSize.get(size), 'crew-card bg-base-100 rounded-lg flex flex-col justify-center items-center shadow-border')}>
+    class={clsx(cardSize.get(size), 'crew-card bg-base-300 border border-base-100 rounded-lg flex flex-col justify-center items-center shadow-border')}>
     <img alt='cabin crew' class={clsx('rounded-full')} src='{Person}' />
     <div class='leading-5 text-center py-0.5'>
     <h5 class='mt-1'>{firstName}</h5>

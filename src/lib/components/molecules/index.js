@@ -13,3 +13,5 @@ export { default as SeatChartDisplay } from './seat-chart/SeatChartDisplay.svelt
 export { default as SeatChartItem } from './seat-chart/SeatChartItem.svelte'
 export { default as SeatChartMenu } from './seat-chart/SeatChartMenu.svelte'
 export { default as SeatChartOptionPicker } from './seat-chart/SeatChartOptionPicker.svelte'
+export { default as Swipeable } from './Swipeable.svelte'
+

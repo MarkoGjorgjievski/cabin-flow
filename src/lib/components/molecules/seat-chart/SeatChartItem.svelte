@@ -1,10 +1,8 @@
 <script>
   import { slide } from "svelte/transition";
   import { v4 as uuidv4 } from 'uuid';
-  import { Button } from "../../atoms";
-  import SeatChartDisplay from "./SeatChartDisplay.svelte";
-  import SeatChartMenu from "./SeatChartMenu.svelte";
-
+  import { Button } from "$atoms";
+  import { SeatChartMenu, SeatChartDisplay, Swipeable } from "$molecules";
   export let seats;
   export let row;
 
@@ -12,12 +10,13 @@
   let activeType = null;
   let activeId = null;
 
+  let activeTimeId = null;
+
   let dontDisturb = false;
-  let mealDelay = false;
 
   const handleDnd = () => dontDisturb = !dontDisturb
-
-  const onSwipe = () => activeType = null
+  const handleMenu = () => activeType = null
+  const handleTime = () => activeTimeId = null
 
   const handleOptionPickerClick = (type, id) => {
     activeType = type;
@@ -31,7 +30,7 @@
     meal = mealOptions.find(item => item.id === activeId);
 
     if (!activeId) {
-      mealOptions = [...mealOptions, { food: null, drinks: null, id }];
+      mealOptions = [...mealOptions, { time: null, food: null, drinks: null, id }];
       meal = mealOptions.at(-1);
     }
 
@@ -43,6 +42,23 @@
     meal[activeType] = option;
     mealOptions = mealOptions;
   };
+
+  const addTime = id => {
+    activeTimeId = id
+  }
+
+  const removeTime = id => {
+    const meal = mealOptions.find(item => item.id === id);
+    meal.time = null
+    mealOptions = mealOptions;
+  }
+
+  const addTiming = time => {
+    const meal = mealOptions.find(item => item.id === activeTimeId);
+    meal.time = time
+    mealOptions = mealOptions;
+    activeTimeId = null;
+  }
 
   const filterOptionType = (option, type) => {
     const meal = mealOptions.find(item => item.id === option.id);
@@ -68,19 +84,33 @@
         <span class='badge badge-xs py-1 h-4 bg-orange-100 text-orange-800'>Gold</span>
       </div>
 
-      <SeatChartMenu
-        options={mealOptions}
-        {activeType}
-        {addOption}
-        {filterOption}
-        {onSwipe}
-      />
+      <Swipeable trigger='{activeType}' onSwipe='{handleMenu}'>
+        <SeatChartMenu
+          options={mealOptions}
+          {activeType}
+          {addOption}
+          {filterOption}
+        />
+      </Swipeable>
+
+      <Swipeable trigger='{activeTimeId}' onSwipe='{handleTime}'>
+        <button on:click={() => addTiming('30 min')}>30 min</button>
+        <button on:click={() => addTiming('45 min')}>45 min</button>
+        <button on:click={() => addTiming('1h')}>1h</button>
+        <button on:click={() => addTiming('2h')}>2h</button>
+        <button on:click={() => addTiming('3h')}>3h</button>
+        <button on:click={() => addTiming('4h')}>4h</button>
+        <button on:click={() => addTiming('Next service')}>Next service</button>
+        <button on:click={() => addTiming('End of flight')}>End of flight</button>
+      </Swipeable>
 
       <SeatChartDisplay
         options='{mealOptions}'
         {handleOptionPickerClick}
         {filterOptionType}
         {handleDnd}
+        {addTime}
+        {removeTime}
       />
 
       {#if dontDisturb}

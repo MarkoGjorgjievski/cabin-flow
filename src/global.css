@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --range-shdw: transparent !important
-;
+  --range-shdw: transparent !important;
+  --swiper-pagination-color: hsl(var(--p));
 }
 
 html,
@@ -89,7 +89,7 @@ body:has(.backdrop) {
   }
 
   .card {
-    @apply bg-base-100 border-base-200
+    @apply bg-base-300 border-base-200;
   }
 
   .card-body {
@@ -161,7 +161,7 @@ body:has(.backdrop) {
   }
 
   .position-zone {
-    @apply relative border-2 border-base-200 border-dashed rounded-lg text-center flex justify-center items-center w-full h-full;
+    @apply relative border border-primary bg-base-300 border-dashed rounded-lg text-center flex justify-center items-center w-full h-full;
   }
 
   .position-zone .crew-card {
@@ -169,7 +169,7 @@ body:has(.backdrop) {
   }
 
   .position-zone-empty {
-    @apply border-none bg-base-200/50 shadow-none;
+    @apply border-none bg-base-200 shadow-none;
   }
 
   .position-zone-empty h2 {
@@ -177,7 +177,7 @@ body:has(.backdrop) {
   }
 
   .position-zone h2 {
-    @apply text-xl uppercase font-semibold text-primary/20 absolute top-1/2 -translate-y-1/2;
+    @apply text-xl uppercase font-semibold text-primary absolute top-1/2 -translate-y-1/2;
   }
 
   .spml-collapse .collapse-title {
@@ -218,7 +218,7 @@ body:has(.backdrop) {
     display: none;
   }
 
-  /* Hide scrollbar for IE, Edge and Firefox */
+/* Hide scrollbar for IE, Edge and Firefox */
   .scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
@@ -233,7 +233,7 @@ body:has(.backdrop) {
   }
 
   .aircraft-seat {
-    @apply select-none cursor-pointer flex items-center duration-1000 justify-center bg-gradient-to-b from-base-100 to-base-200/40 opacity-80 rounded shadow-seat;
+    @apply select-none cursor-pointer flex items-center duration-1000 justify-center bg-base-300 rounded shadow-seat;
   }
 
   #order-1 {

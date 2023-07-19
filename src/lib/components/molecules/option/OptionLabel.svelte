@@ -7,9 +7,8 @@
 
   export let option;
   export let quantity = 40;
-  export let showQuantity;
-  export let size;
-  export let range;
+  export let showQuantity = false;
+  export let range = false;
   export let filter = false
   export let onFilter = () => null;
 </script>

@@ -1,38 +1,29 @@
-<script context="module">
-  import { register } from 'swiper/element/bundle';
-  register();
-</script>
-
 <script>
+  import { register } from 'swiper/element/bundle';
   import 'swiper/css';
+
   import { Divider } from "$atoms";
   import { MealListItem } from "$organisms";
   import { MealsTemplate } from "$templates";
   import { MENU } from "$lib/constants";
-
-  let mounted = false;
-  let registered = false;
+  import { onMount } from "svelte";
 
   export let data
 
-  // const registerSwiper = async () => {
-  //   await tick();
-  //   register();
-  //   registered = true;
-  // };
-  //
-  // registerSwiper();
-  //
-  // $: mounted, registered, registerSwiper();
+  onMount(() => register())
 
   let showDescription = false;
   let editMode = false;
+
+  let container
+
+  $: container?.initialize();
 </script>
 
-<div class='w-[926px] pb-4'>
-  <swiper-container class='horizontal-swiper h-auto' pagination='true' space-between='16' auto-height='true'>
+<div class='w-[926px] pb-4 parent'>
+  <swiper-container class='horizontal-swiper h-auto' pagination='true' space-between='16' auto-height='true' bind:this={container} init='false'>
     {#each Object.entries(MENU.business.food) as [key, service]}
-      <swiper-slide class='h-fit'>
+      <swiper-slide class='h-fit pb-10'>
         <MealsTemplate
           {showDescription} {editMode} galley={data.galley}
           on:edit='{e => editMode = e.detail.editMode}'

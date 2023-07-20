@@ -198,10 +198,6 @@ body:has(.backdrop) {
     @apply w-12 h-12 flex justify-center items-center rounded-lg hover:bg-base-300;
   }
 
-  .divide-y {
-    @apply border-base-200;
-  }
-
   .label-badge {
     @apply whitespace-nowrap justify-start uppercase opacity-90 border-none font-semibold overflow-hidden;
   }

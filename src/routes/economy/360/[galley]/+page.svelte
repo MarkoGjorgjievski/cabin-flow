@@ -1,7 +1,5 @@
 <script>
-  import { SeatChartItem } from "$molecules";
+  import Template360 from "../../../../lib/components/templates/Template360.svelte";
 </script>
 
-<div class='w-full flex gap-2'>
-  <SeatChartItem row='2' />
-</div>
+<Template360 />

@@ -4,7 +4,7 @@
   import { Button } from "$atoms";
   import { SeatChartMenu, SeatChartDisplay, Swipeable } from "$molecules";
   export let seats;
-  export let row;
+  export let row = 2;
 
   let mealOptions = [];
   let activeType = null;

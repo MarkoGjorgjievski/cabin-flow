@@ -33,3 +33,10 @@ export const createAcronymObject = (arr) => {
     return acronymObject;
   }, {});
 }
+
+export const getServiceZones = (cabin) => {
+  let serviceZones = [];
+  Object.values(CONFIGURATION[cabin].positions).map(position => position.cabin.map(cabin => serviceZones.push(cabin)));
+
+  return serviceZones
+}

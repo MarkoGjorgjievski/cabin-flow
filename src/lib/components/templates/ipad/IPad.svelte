@@ -14,8 +14,7 @@
         box-shadow: 5px 19px 39px #757575;
         overflow: hidden;
         transform: scale(0.75) translateZ(0);
-        backface-visibility: hidden;
-    }
+        backface-visibility: hidden;}
 
     .camera {
         border-radius: 10px;

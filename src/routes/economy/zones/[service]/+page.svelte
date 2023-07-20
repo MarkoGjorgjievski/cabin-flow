@@ -1,15 +1,13 @@
 <script>
   import { page } from "$app/stores";
-  import { getCabin, createAcronymObject } from "$hooks";
-  import { CONFIGURATION, MENU } from "$lib/constants";
+  import { getCabin, createAcronymObject, getServiceZones } from "$hooks";
+  import { MENU } from "$lib/constants";
   import { ZoneContainersTemplate } from "$templates";
 
   export let data;
 
   const cabin = getCabin($page);
-
-  let serviceZones = [];
-  Object.values(CONFIGURATION[cabin].positions).map(position => position.cabin.map(cabin => serviceZones.push(cabin)));
+  const serviceZones = getServiceZones(cabin)
   const services = createAcronymObject(MENU.economy.food);
 </script>
 

@@ -46,6 +46,7 @@ export const badgeSize = new Map([
   ['small', 'badge-sm'],
   ['medium', 'badge-md'],
   ['large', 'badge-lg'],
+  ['extra-large', 'px-2.5 py-3.5 text-xl'],
 ]);
 
 export const badgeMaxWidth = new Map([
@@ -53,5 +54,17 @@ export const badgeMaxWidth = new Map([
   ['medium', 'max-w-[80px]'],
   ['large', 'max-w-[110px]'],
 ])
+
+export const badgeState = new Map([
+  ['primary', 'badge-primary'],
+  ['secondary', 'badge-secondary'],
+  ['accent', 'badge-accent'],
+  ['neutral', 'badge-neutral'],
+  ['info', 'badge-info'],
+  ['success', 'badge-success'],
+  ['warning', 'badge-warning'],
+  ['error', 'badge-error'],
+  ['ghost', 'badge-ghost'],
+]);
 
 

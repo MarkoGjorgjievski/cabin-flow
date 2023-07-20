@@ -1,11 +1,10 @@
 <script>
-  import clsx from "clsx";
   import { getDividers, seatingConfig } from "$hooks";
   import { CONFIGURATION } from "$lib/constants";
   import { Seat, GalleyIndicator } from "$molecules";
   import { RowDividerDnd } from "$organisms";
 
-  export let cabin
+  export let cabin;
   const config = seatingConfig(cabin);
 
   let zones = [{ row: 0, id: 0, crew: ['L1', 'R5A'] }, { row: 4, id: 4, crew: ['L2', 'R2A'] }];
@@ -22,34 +21,33 @@
 
   const handleDnd = (e, i) => {
     dividers[i] = e.detail.items;
-    return true
+    return true;
   };
-
-  const containerDirection = cabin === 'economy' ? 'flex-col' : 'flex-col-reverse'
-  const rowDirection = cabin === 'economy' ? 'flex-row' : 'flex-row-reverse'
 </script>
 
-<div class={clsx(containerDirection, 'w-full flex')}>
-  {#each config as row, i}
-    <div class={clsx(containerDirection, 'w-fit flex')}>
-      <GalleyIndicator rowNumber='{i}' {cabin} position='beforeRow' />
+<div class='relative'>
+  <div class='w-full flex flex-col sticky top-4'>
+    {#each config as row, i}
+      <div class='w-fit flex flex-col'>
+        <GalleyIndicator rowNumber='{i}' {cabin} position='beforeRow' />
 
-      {#if CONFIGURATION[cabin]?.ghostRow - CONFIGURATION[cabin]?.rowStart !== i}
+        {#if CONFIGURATION[cabin]?.ghostRow - CONFIGURATION[cabin]?.rowStart !== i}
 
-        <RowDividerDnd items='{dividers[i]}' handleDnd='{e => handleDnd(e, i)}' />
+          <RowDividerDnd items='{dividers[i]}' handleDnd='{e => handleDnd(e, i)}' />
 
-        <div class={clsx(rowDirection, 'flex w-fit gap-2')}>
-          {#each row as seat}
-            <Seat seat={seat} cabin='{cabin}' />
-          {/each}
-        </div>
+          <div class='flex w-fit gap-2'>
+            {#each row as seat}
+              <Seat seat={seat} cabin='{cabin}' />
+            {/each}
+          </div>
 
-        {#if CONFIGURATION[cabin].rowEnd - CONFIGURATION[cabin].rowStart === i}
-          <RowDividerDnd  />
+          {#if CONFIGURATION[cabin].rowEnd - CONFIGURATION[cabin].rowStart === i}
+            <RowDividerDnd />
+          {/if}
         {/if}
-      {/if}
 
-      <GalleyIndicator rowNumber='{i}' {cabin} position='afterRow' />
-    </div>
-  {/each}
+        <GalleyIndicator rowNumber='{i}' {cabin} position='afterRow' />
+      </div>
+    {/each}
+  </div>
 </div>

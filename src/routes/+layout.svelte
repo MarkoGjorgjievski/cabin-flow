@@ -15,7 +15,7 @@
 </script>
 
 <IPad>
-<div id='app' data-theme="dark" class='scrollbar flex w-full'>
+<div id='app' data-theme="dark" class='scrollbar flex w-full bg-gradient-to-tr from-base-200/30 via-200/50 to-base-200/20'>
   <div class='p-1 flex flex-col items-center justify-center sticky top-0'>
   <nav class='w-fit flex h-fit flex-col gap-2 justify-between bg-base-300 p-1 rounded-xl'>
     <ul>
@@ -25,7 +25,7 @@
       <Divider />
 
       <li class={clsx($page.url.pathname.includes('/business/meals') && "bg-primary text-primary-content")}><a href='/business/meals/FWD'><CakeIcon /></a></li>
-      <li class={clsx($page.url.pathname.includes('/business/zones') && "bg-primary text-primary-content")}><a href='/business/zones/FWD'><RectangleGroupIcon /></a>
+      <li class={clsx($page.url.pathname.includes('/business/zones') && "bg-primary text-primary-content")}><a href='/business/zones'><RectangleGroupIcon /></a>
       </li>
 
       <!-- This is supposed to be: first zone, first position-> zones, position [0]   -->
@@ -45,7 +45,7 @@
 
   </div>
 
-  <div class='p-4 h-full min-h-full bg-base-200/10 w-full relative'>
+  <div class='p-4 h-full min-h-full w-full relative'>
     <slot />
   </div>
 </div>

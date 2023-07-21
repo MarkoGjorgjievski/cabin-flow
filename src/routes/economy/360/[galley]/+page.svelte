@@ -1,5 +1,5 @@
 <script>
-  import Template360 from "../../../../lib/components/templates/Template360.svelte";
+  import { Template360 } from "$templates";
 </script>
 
 <Template360 />

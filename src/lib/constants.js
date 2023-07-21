@@ -24,7 +24,6 @@ export const SERVICE_TYPES = {
   DRINKS: 'drinks',
 };
 
-
 export const CONFIGURATION = {
   minimumCrew: ['L1', 'R1', 'L2', 'R2', 'L3', 'R3', 'L4', 'R4', 'L5', 'R5'],
   business: {

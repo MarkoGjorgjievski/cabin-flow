@@ -4,7 +4,7 @@
   import { Seat, GalleyIndicator } from "$molecules";
   import { RowDividerDnd } from "$organisms";
 
-  export let cabin;
+  export let cabin = 'economy';
   const config = seatingConfig(cabin);
 
   let zones = [{ row: 0, id: 0, crew: ['L1', 'R5A'] }, { row: 4, id: 4, crew: ['L2', 'R2A'] }];

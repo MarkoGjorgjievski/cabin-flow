@@ -3,3 +3,4 @@ export { default as CrewPositionsTemplate } from './crew-positions/CrewPositions
 export { default as MealsTemplate } from './MealsTemplate.svelte'
 export { default as ZoneContainersTemplate } from './ZoneContainersTemplate.svelte'
 export { default as IPad } from './ipad/IPad.svelte'
+export { default as Template360 } from './Template360.svelte'

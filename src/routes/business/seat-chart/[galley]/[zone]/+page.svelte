@@ -1,7 +1,7 @@
 <script>
-  import { ServiceZone } from "$organisms";
+  import { SeatChartItem } from "$molecules";
 
   export let data
 </script>
 
-<ServiceZone />
+<SeatChartItem />

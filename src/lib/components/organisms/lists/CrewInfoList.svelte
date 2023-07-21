@@ -9,7 +9,7 @@
   <div class='card-body'>
 <!--    <h5 class='card-title'>Crew compliment</h5>-->
 
-    <ul class='w-full divide-y border-b'>
+    <ul class='w-full divide-y divide-base-100 border-b border-base-100'>
       {#each Object.entries(restCrew) as [position, value]}
         {#each value as details}
           <li>

@@ -5,7 +5,7 @@
   export let className = ''
 </script>
 
-<div class="card w-full {className}">
+<div class="card w-full max-w-[33vw] {className}">
   <div class="card-body">
     <h5 class="card-title">{title}</h5>
     <h2 class="card-headline">{headline}</h2>

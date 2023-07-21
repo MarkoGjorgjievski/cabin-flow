@@ -4,12 +4,12 @@
   import { Divider } from "$atoms";
   import { CrewCard } from "$molecules";
   import { PageTitle } from "$organisms";
-  
+
   export let crew = null
   export let handleDnd = () => null
 </script>
 
-<div class='w-full h-full overflow-y-auto p-4 border border-base-200 rounded-xl shadow-lifted-lg bg-base-100 scrollbar'>
+<div class='w-full h-full overflow-y-auto p-4 border border-base-200 rounded-xl shadow-lifted-lg bg-base-300 scrollbar'>
   <PageTitle title='Cabin crew positions' />
   {#each Object.entries(crew) as [position, crewMembers]}
     <div class='w-full'>

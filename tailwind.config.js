@@ -3,7 +3,7 @@ export default {
   content: ["./src/**/*.{svelte,js,ts}"],
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light", "dark", {
+    themes: ["light", {
       cupcake: {
         ...require("daisyui/src/theming/themes")["[data-theme=cupcake]"],
         "base-100": 'rgb(250,248,250)',
@@ -15,6 +15,10 @@ export default {
         "--rounded-btn": "0.5rem",
 
       },
+      dark: {
+        ...require("daisyui/src/theming/themes")["[data-theme=dark]"],
+        "primary": '#5C0632',
+      }
     }
     ],
   },

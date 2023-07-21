@@ -1,5 +1,7 @@
+// export const ssr = false
+
 export const load = ({ params }) => {
   return {
-    zone: params.zone
+    galley: params.galley
   }
 }

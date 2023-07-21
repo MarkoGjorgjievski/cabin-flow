@@ -24,7 +24,6 @@ export const SERVICE_TYPES = {
   DRINKS: 'drinks',
 };
 
-
 export const CONFIGURATION = {
   minimumCrew: ['L1', 'R1', 'L2', 'R2', 'L3', 'R3', 'L4', 'R4', 'L5', 'R5'],
   business: {
@@ -217,7 +216,7 @@ export const MENU = {
               vintage: '2011',
               region: 'Bordeaux, France',
               grape: 'Merlot & Cabernet',
-              label: 'Merlo Caber',
+              label: 'Merlo',
               color: 'red',
               quantity: 4
             },
@@ -725,7 +724,7 @@ export const MENU = {
               id: 67,
               title: 'Traditional Arabic breakfast',
               description: 'feta cheese, tomato, cucumber and olives served with fout medames and Arabic bread',
-              label: 'ARAB',
+              label: 'ARABIC',
               color: 'teal',
             },
             {

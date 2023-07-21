@@ -4,7 +4,7 @@
   export let tabs;
   export let stackedTabs;
   export let stackedTabsContainerClass = 'flex flex-col-reverse rounded-lg bg-base-200';
-  export let direction;
+  export let direction = 'row';
   export let size;
   export let title = 'Page Title';
 </script>

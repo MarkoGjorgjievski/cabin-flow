@@ -24,7 +24,7 @@
   {/if}
 </div>
 
-<div class='fixed bottom-12 right-16 z-10 backdrop-blur px-2 m-2 rounded-full bg-base-200/50'>
+<div class='flex justify-end mt-1'>
   <Toggle bind:checked='{showDescription}' labelOff='Meal description' />
 </div>
 

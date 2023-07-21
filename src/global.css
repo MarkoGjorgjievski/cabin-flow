@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --range-shdw: transparent !important
-;
+  --range-shdw: transparent !important;
+  --swiper-pagination-color: hsl(var(--p));
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #e3e3e3;
+  background-color: #a6a6a6;
 }
 
 html,body {
@@ -83,13 +83,12 @@ body:has(.backdrop) {
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(1px);
-    z-index: 20;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
   }
 
   .card {
-    @apply bg-base-100 border-base-200;
+    @apply bg-base-300 border-base-200;
   }
 
   .card-body {
@@ -161,7 +160,7 @@ body:has(.backdrop) {
   }
 
   .position-zone {
-    @apply relative border-2 border-base-200 border-dashed rounded-lg text-center flex justify-center items-center w-full h-full;
+    @apply relative border border-primary bg-base-300 border-dashed rounded-lg text-center flex justify-center items-center w-full h-full;
   }
 
   .position-zone .crew-card {
@@ -169,7 +168,7 @@ body:has(.backdrop) {
   }
 
   .position-zone-empty {
-    @apply border-none bg-base-200/50 shadow-none;
+    @apply border-none bg-base-200 shadow-none;
   }
 
   .position-zone-empty h2 {
@@ -177,7 +176,7 @@ body:has(.backdrop) {
   }
 
   .position-zone h2 {
-    @apply text-xl uppercase font-semibold text-primary/20 absolute top-1/2 -translate-y-1/2;
+    @apply text-xl uppercase font-semibold text-primary absolute top-1/2 -translate-y-1/2;
   }
 
   .spml-collapse .collapse-title {
@@ -198,10 +197,6 @@ body:has(.backdrop) {
     @apply w-12 h-12 flex justify-center items-center rounded-lg hover:bg-base-300;
   }
 
-  .divide-y {
-    @apply border-base-200;
-  }
-
   .label-badge {
     @apply whitespace-nowrap justify-start uppercase opacity-90 border-none font-semibold overflow-hidden;
   }
@@ -218,7 +213,7 @@ body:has(.backdrop) {
     display: none;
   }
 
-  /* Hide scrollbar for IE, Edge and Firefox */
+/* Hide scrollbar for IE, Edge and Firefox */
   .scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
@@ -233,7 +228,7 @@ body:has(.backdrop) {
   }
 
   .aircraft-seat {
-    @apply select-none cursor-pointer flex items-center duration-1000 justify-center bg-gradient-to-b from-base-100 to-base-200/40 opacity-80 rounded shadow-seat;
+    @apply select-none cursor-pointer flex items-center duration-1000 justify-center bg-base-300 rounded shadow-seat;
   }
 
   #order-1 {
@@ -246,6 +241,21 @@ body:has(.backdrop) {
 
   #order-3 {
     order: 3
+  }
+
+  swiper-container {
+    width: 100%;
+    display: flex;
+  }
+
+  .swiper-slide {
+    width: 600px !important;
+  }
+
+  .backdrop-glass {
+    backdrop-filter: blur(3px);
+    background-blend-mode: luminosity;
+    background-color: rgba(143, 139, 139, 0.2);
   }
 }
 

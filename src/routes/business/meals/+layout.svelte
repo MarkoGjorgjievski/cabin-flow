@@ -3,5 +3,5 @@
   import { CONFIGURATION } from "$lib/constants";
 </script>
 
-<PageTitle title='Meals' tabs='{CONFIGURATION.business.galleys}' direction='col-reverse' />
+<PageTitle title='Meals' tabs='{CONFIGURATION.business.galleys}' direction='col' />
 <slot />

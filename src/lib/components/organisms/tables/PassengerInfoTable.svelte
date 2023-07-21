@@ -1,7 +1,7 @@
 <div class="card w-full border border-base-300 overflow-hidden">
   <div class="card-body">
 <!--    <h5 class="card-title">Passenger Information</h5>-->
-    <table class="table table-pin-rows">
+    <table class="table table-pin-rows rounded-lg overflow-hidden">
       <!-- head -->
       <thead>
       <tr>

@@ -1,23 +1,23 @@
 export const badgeColor = new Map([
-  ['blue', 'text-blue-800 bg-blue-100'],
-  ['orange', 'text-orange-800 bg-orange-100'],
-  ['red', 'text-red-800 bg-red-100'],
-  ['green', 'text-green-800 bg-green-100'],
-  ['yellow', 'text-yellow-800 bg-yellow-100'],
-  ['amber', 'text-amber-800 bg-amber-100'],
-  ['purple', 'text-purple-800 bg-purple-100'],
-  ['violet', 'text-violet-800 bg-violet-100'],
-  ['pink', 'text-pink-800 bg-pink-100'],
-  ['rose', 'text-rose-800 bg-rose-100'],
-  ['slate', 'text-slate-700 bg-slate-100'],
-  ['sky', 'text-sky-700 bg-sky-100'],
-  ['cyan', 'text-cyan-700 bg-cyan-100'],
-  ['indigo', 'text-indigo-700 bg-indigo-100'],
-  ['teal', 'text-teal-700 bg-teal-100'],
-  ['lime', 'text-lime-700 bg-lime-100'],
-  ['emerald', 'text-emerald-700 bg-emerald-100'],
-  ['stone', 'text-stone-700 bg-stone-100'],
-  ['white', 'text-gray-700 bg-gray-100'],
+  ['blue', 'bg-blue-700 text-blue-200'],
+  ['orange', 'bg-orange-700 text-orange-200'],
+  ['red', 'bg-red-700 text-red-200'],
+  ['green', 'bg-green-700 text-green-200'],
+  ['yellow', 'bg-yellow-700 text-yellow-200'],
+  ['amber', 'bg-amber-700 text-amber-200'],
+  ['purple', 'bg-purple-700 text-purple-200'],
+  ['violet', 'bg-violet-700 text-violet-200'],
+  ['pink', 'bg-pink-700 text-pink-200'],
+  ['rose', 'bg-rose-700 text-rose-200'],
+  ['slate', 'bg-slate-700 text-slate-200'],
+  ['sky', 'bg-sky-700 text-sky-200'],
+  ['cyan', 'bg-cyan-700 text-cyan-200'],
+  ['indigo', 'bg-indigo-700 text-indigo-200'],
+  ['teal', 'bg-teal-700 text-teal-200'],
+  ['lime', 'bg-lime-700 text-lime-200'],
+  ['emerald', 'bg-emerald-700 text-emerald-200'],
+  ['stone', 'bg-stone-700 text-stone-200'],
+  ['white', 'bg-gray-700 text-gray-200'],
 ]);
 
 export const badgeBorderColor = new Map([
@@ -46,6 +46,7 @@ export const badgeSize = new Map([
   ['small', 'badge-sm'],
   ['medium', 'badge-md'],
   ['large', 'badge-lg'],
+  ['extra-large', 'px-2.5 py-3.5 text-xl'],
 ]);
 
 export const badgeMaxWidth = new Map([
@@ -53,5 +54,17 @@ export const badgeMaxWidth = new Map([
   ['medium', 'max-w-[80px]'],
   ['large', 'max-w-[110px]'],
 ])
+
+export const badgeState = new Map([
+  ['primary', 'badge-primary'],
+  ['secondary', 'badge-secondary'],
+  ['accent', 'badge-accent'],
+  ['neutral', 'badge-neutral'],
+  ['info', 'badge-info'],
+  ['success', 'badge-success'],
+  ['warning', 'badge-warning'],
+  ['error', 'badge-error'],
+  ['ghost', 'badge-ghost'],
+]);
 
 

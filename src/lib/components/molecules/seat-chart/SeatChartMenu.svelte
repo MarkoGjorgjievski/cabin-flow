@@ -1,6 +1,5 @@
 <script>
-
-  import { MENU } from "$lib/constants";
+  import { getContext } from "svelte";
   import { Button, Divider } from "$atoms";
   import { OptionLabel } from "$molecules";
 
@@ -8,9 +7,11 @@
   export let options;
   export let addOption;
   export let filterOption;
+
+  const menu = getContext('menu')
 </script>
 
-{#each Object.entries(MENU.business[activeType]) as [key, service]}
+{#each Object.entries(menu[activeType]) as [key, service]}
   {#each Object.values(service) as item}
     <h2 class='pl-1 text-sm font-normal'>{item.label}</h2>
     <div class='flex flex-wrap w-full gap-1'>

@@ -1,36 +1,39 @@
 <script>
+  import { getContext, onMount } from "svelte";
+  import { page } from "$app/stores";
   import { register } from 'swiper/element/bundle';
   import 'swiper/css';
 
   import { Divider } from "$atoms";
   import { MealListItem } from "$organisms";
   import { MealsTemplate } from "$templates";
-  import { MENU } from "$lib/constants";
-  import { onMount } from "svelte";
 
   export let data
+
+  const { food } = getContext('menu')
 
   onMount(() => register())
 
   let showDescription = false;
   let editMode = false;
-
   let container
 
+
   $: container?.initialize();
+  $: $page.url.pathname, editMode = false
 </script>
+
+<MealsTemplate
+  {showDescription} {editMode} galley={data.galley}
+  on:edit='{e => editMode = e.detail.editMode}'
+  on:save='{e => editMode = e.detail.editMode}'
+  on:toggle='{e => showDescription = e.detail.showDescription}'
+/>
 
 <div class='w-[926px] pb-4 parent'>
   <swiper-container class='horizontal-swiper h-auto' pagination='true' space-between='16' auto-height='true' bind:this={container} init='false'>
-    {#each Object.entries(MENU.business.food) as [key, service]}
+    {#each Object.entries(food) as [key, service]}
       <swiper-slide class='h-fit pb-10'>
-        <MealsTemplate
-          {showDescription} {editMode} galley={data.galley}
-          on:edit='{e => editMode = e.detail.editMode}'
-          on:save='{e => editMode = e.detail.editMode}'
-          on:toggle='{e => showDescription = e.detail.showDescription}'
-        />
-
         <div class='h-fit min-h-[540px]'>
           <h6 class='text-xs font-medium uppercase pl-1 py-4'>{key}</h6>
           {#each Object.values(service) as item}

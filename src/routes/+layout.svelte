@@ -36,11 +36,6 @@
       <li class={clsx($page.url.pathname.includes('/economy/zones') && "bg-primary text-primary-content")}><a href='/economy/zones/HB'><RectangleGroupIcon /></a></li>
       <li class={clsx($page.url.pathname.includes('/economy/360') && "bg-primary text-primary-content")}><a href='/economy/360/MID'><ArrowsSquare /></a></li>
     </ul>
-<!--    <ul>-->
-<!--      <li><a>-->
-<!--        <ThemeSwitcher />-->
-<!--      </a></li>-->
-<!--    </ul>-->
   </nav>
 
   </div>

@@ -1,10 +1,11 @@
 <script>
-  import { page } from "$app/stores";
-  import { getCabin, getServiceZones } from "$hooks";
+  import { getServiceZones } from "$hooks";
   import { ZoneContainersTemplate } from "$templates";
+  import { getContext } from "svelte";
 
-  const cabin = getCabin($page);
-  const serviceZones = getServiceZones(cabin)
+  const cabin = 'business'
+  const { positions } = getContext('config')
+  const serviceZones = getServiceZones(positions)
 </script>
 
 <ZoneContainersTemplate {serviceZones} {cabin} />

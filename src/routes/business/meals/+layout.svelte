@@ -1,7 +1,9 @@
 <script>
+  import { getContext } from "svelte";
   import { PageTitle } from "$organisms";
-  import { CONFIGURATION } from "$lib/constants";
+
+  const { galleys } = getContext('config');
 </script>
 
-<PageTitle title='Meals' tabs='{CONFIGURATION.business.galleys}' direction='col' />
+<PageTitle title='Meals' tabs='{galleys}' direction='col' />
 <slot />

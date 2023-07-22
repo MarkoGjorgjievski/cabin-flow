@@ -25,6 +25,4 @@
 
     <OptionCounter {editMode} />
   </div>
-
-
 </div>

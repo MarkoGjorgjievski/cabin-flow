@@ -1,6 +1,6 @@
 <script>
   import { openModal } from 'svelte-modals';
-  import Modal from "$molecules";
+  import { Modal } from "$molecules";
   import { Button } from "$atoms";
   import { SeatingMap } from "$organisms";
 

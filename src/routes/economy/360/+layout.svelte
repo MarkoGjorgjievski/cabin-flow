@@ -1,9 +1,12 @@
 <script>
+  import { getContext } from "svelte";
   import { Modals, closeModal } from 'svelte-modals'
-  import { CONFIGURATION, MENU } from "$lib/constants";
   import { PageTitle } from "$organisms";
   import { Badge } from "$atoms";
   import { OptionLabel } from "$molecules";
+
+  const { food } = getContext('menu');
+  const { galleys } = getContext('config');
 </script>
 
 <PageTitle title='360&deg;' />
@@ -17,7 +20,7 @@
   </div>
 
   <div class='flex gap-4 mb-4'>
-    {#each MENU.economy.food as service}
+    {#each food as service}
       <div class='card w-full max-w-[33vw]'>
         <div class='card-body flex flex-row justify-between w-full'>
           <div class='w-full flex flex-col gap-4 justify-between w-full'>
@@ -44,7 +47,7 @@
     {/each}
   </div>
 
-  <PageTitle direction='col' tabs='{CONFIGURATION.business.galleys}' title='Galleys' />
+  <PageTitle direction='col' tabs='{galleys}' title='Galleys' />
 
   <slot />
 </div>

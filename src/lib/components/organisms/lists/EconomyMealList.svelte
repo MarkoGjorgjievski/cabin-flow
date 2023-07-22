@@ -1,13 +1,15 @@
 <script>
-  import { MENU } from "../../../constants";
-  import { Divider } from "../../atoms";
-  import MealsTemplate from "../../templates/MealsTemplate.svelte";
-  import { MealListItem } from "../index";
+  import { Divider } from "$atoms";
+  import { MealsTemplate } from "$templates";
+  import { MealListItem } from "$organisms";
+  import { getContext } from "svelte";
 
   export let galley;
 
   let showDescription = false;
   let editMode = false;
+
+  const { food } = getContext('menu')
 
   $: galley, editMode = false
 </script>
@@ -20,7 +22,7 @@
 />
 
 <div class='flex justify-between gap-4 py-4 h-fit'>
-  {#each MENU.economy.food as service}
+  {#each food as service}
     <div class='flex flex-col gap-4 w-full'>
       <h6 class='text-xs uppercase pl-1'>{service.name}</h6>
       <div class='w-full flex flex-col gap-4'>
@@ -37,7 +39,7 @@
 <h2 class='py-4'>Total</h2>
 
 <div class='flex justify-between gap-4 h-fit pb-16'>
-  {#each MENU.economy.food as service}
+  {#each food as service}
     <div class='flex flex-col gap-4 w-full'>
       <h6 class='text-xs uppercase pl-1'>{service.name}</h6>
       <div class='w-full flex flex-col gap-4'>

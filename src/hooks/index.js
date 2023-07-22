@@ -1,9 +1,7 @@
-import { CONFIGURATION } from "$lib/constants";
-
-export const seatingConfig = (cabin) => {
+export const seatingConfig = (configuration) => {
   const config = []
-  for (let i = CONFIGURATION[cabin].rowStart; i <= CONFIGURATION[cabin].rowEnd; i++) {
-    let row = CONFIGURATION[cabin].seats.map(seat => i + seat)
+  for (let i = configuration.rowStart; i <= configuration.rowEnd; i++) {
+    let row = configuration.seats.map(seat => i + seat)
     config.push(row)
   }
 
@@ -34,9 +32,9 @@ export const createAcronymObject = (arr) => {
   }, {});
 }
 
-export const getServiceZones = (cabin) => {
+export const getServiceZones = (positions) => {
   let serviceZones = [];
-  Object.values(CONFIGURATION[cabin].positions).map(position => position.cabin.map(cabin => serviceZones.push(cabin)));
+  Object.values(positions).map(position => position.cabin.map(cabin => serviceZones.push(cabin)));
 
   return serviceZones
 }

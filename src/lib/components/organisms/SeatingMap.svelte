@@ -1,23 +1,23 @@
 <script>
   import { getDividers, seatingConfig } from "$hooks";
-  import { CONFIGURATION } from "$lib/constants";
   import { Seat, GalleyIndicator } from "$molecules";
   import { RowDividerDnd } from "$organisms";
+  import { getContext } from "svelte";
 
   export let cabin = 'economy';
-  const config = seatingConfig(cabin);
 
-  let zones = [{ row: 0, id: 0, crew: ['L1', 'R5A'] }, { row: 4, id: 4, crew: ['L2', 'R2A'] }];
-
-  let startingRows = [0, 4];
-
-  let dividers = getDividers(config, zones);
+  const config = getContext('config');
+  const seating = seatingConfig(config);
 
   /** onConsider
    * consider the output so that the crew order is consistent (sorted)
    * - e.g. first is ['L1', 'R5A'] then ['L2', 'R2A'],
    * if they get swapped, swap them back
    */
+
+  let zones = [{ row: 0, id: 0, crew: ['L1', 'R5A'] }, { row: 4, id: 4, crew: ['L2', 'R2A'] }];
+  let startingRows = [0, 4];
+  let dividers = getDividers(seating, zones);
 
   const handleDnd = (e, i) => {
     dividers[i] = e.detail.items;
@@ -27,11 +27,11 @@
 
 <div class='relative'>
   <div class='w-full flex flex-col sticky top-4'>
-    {#each config as row, i}
+    {#each seating as row, i}
       <div class='w-fit flex flex-col'>
         <GalleyIndicator rowNumber='{i}' {cabin} position='beforeRow' />
 
-        {#if CONFIGURATION[cabin]?.ghostRow - CONFIGURATION[cabin]?.rowStart !== i}
+        {#if config?.ghostRow - config?.rowStart !== i}
 
           <RowDividerDnd items='{dividers[i]}' handleDnd='{e => handleDnd(e, i)}' />
 
@@ -41,7 +41,7 @@
             {/each}
           </div>
 
-          {#if CONFIGURATION[cabin].rowEnd - CONFIGURATION[cabin].rowStart === i}
+          {#if config.rowEnd - config.rowStart === i}
             <RowDividerDnd />
           {/if}
         {/if}

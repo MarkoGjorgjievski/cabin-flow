@@ -1,14 +1,16 @@
 <script>
-  import { page } from "$app/stores";
-  import { getCabin, createAcronymObject, getServiceZones } from "$hooks";
-  import { MENU } from "$lib/constants";
+  import { createAcronymObject, getServiceZones } from "$hooks";
   import { ZoneContainersTemplate } from "$templates";
+  import { getContext } from "svelte";
 
   export let data;
 
-  const cabin = getCabin($page);
-  const serviceZones = getServiceZones(cabin)
-  const services = createAcronymObject(MENU.economy.food);
+  const { food } = getContext('menu')
+  const services = createAcronymObject(food);
+
+  const cabin = 'economy';
+  const { positions } = getContext('config')
+  const serviceZones = getServiceZones(positions)
 </script>
 
 <ZoneContainersTemplate {data} {serviceZones} {cabin} options='{services[data.service].options}' />

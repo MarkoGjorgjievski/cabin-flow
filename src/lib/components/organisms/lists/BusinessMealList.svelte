@@ -1,14 +1,16 @@
 <script>
-  import { MENU } from "../../../constants";
-  import { Divider } from "../../atoms";
-  import MealsTemplate from "../../templates/MealsTemplate.svelte";
-  import { MealListItem } from "../index";
+  import { getContext } from "svelte";
+  import { Divider } from "$atoms";
+  import { MealsTemplate } from "$templates";
+  import { MealListItem } from "$organisms";
 
   export let galley;
   export let service;
 
   let showDescription = false;
   let editMode = false;
+
+  const { food } = getContext('menu')
 
   $: galley, editMode = false
 </script>
@@ -22,7 +24,7 @@
 
 <div class='h-full w-[926px]'>
   <swiper-container class='horizontal-swiper swiper-container-h' pagination='true'>
-    {#each Object.entries(MENU.business.food) as [key, service]}
+    {#each Object.entries(food) as [key, service]}
       <swiper-slide class='overflow-y-auto'>
         {#each Object.values(service) as item}
           <h2 class='pl-1 font-normal pb-4'>{item.label}</h2>

@@ -1,9 +1,11 @@
 <script>
   import { PageTitle } from "$organisms";
-  import { CONFIGURATION } from "$lib/constants";
+  import { getContext } from "svelte";
 
-  /*** Derive this from zones ***/
-  const zones = Object.values(CONFIGURATION.business.positions).reduce((acc, curr) => {
+  const { positions } = getContext('config');
+
+  /*** Derive each position from zones (each zone) ***/
+  const zones = Object.values(positions).reduce((acc, curr) => {
     const tabObj = curr.cabin.map(zone => zone.map(position => ({ label: position, slug: position })));
     return [...acc, ...tabObj];
   }, []);

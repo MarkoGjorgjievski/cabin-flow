@@ -1,11 +1,12 @@
 <script>
-  import { MENU } from "$lib/constants";
-  import { ZoneMealList } from "$organisms";
-  import { SeatingMap } from "../organisms";
+  import { getContext } from "svelte";
+  import { ZoneMealList, SeatingMap } from "$organisms";
 
   export let cabin;
   export let serviceZones = [];
   export let options;
+
+  const { food } = getContext('menu');
 </script>
 
 <div class='flex gap-4 relative pb-4'>
@@ -13,7 +14,7 @@
     <div class='w-full flex flex-col gap-4'>
       {#each serviceZones as position, i}
         <ZoneMealList
-          services='{MENU[cabin].food}'
+          services='{food}'
           {cabin}
           showSpecialMeals
           buttonLabel='Details'
@@ -32,7 +33,7 @@
     <div class='w-full flex flex-col gap-4'>
       {#each serviceZones as position, i}
         <ZoneMealList
-          services='{MENU[cabin].food}'
+          services='{food}'
           {cabin}
           showSpecialMeals
           buttonLabel='Details'

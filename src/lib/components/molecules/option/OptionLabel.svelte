@@ -18,7 +18,7 @@
     <Badge color={option.color} label={option.label} className='label-badge bg-opacity-0' />
     {#if filter}
       <Button naked on:click={onFilter}>
-      <MinusSmallIcon />
+        <MinusSmallIcon />
       </Button>
     {/if}
     {#if Number.isInteger(quantity) && showQuantity}<span class='w-fit text-right'>{quantity}</span>{/if}

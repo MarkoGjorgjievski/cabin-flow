@@ -5,7 +5,8 @@
   export let option;
   export let showDescription;
   export let editMode = false;
-  export let range = false
+  export let range = false;
+  export let galley = false;
 </script>
 
 <div class='w-full max-w-[298px]'>
@@ -23,6 +24,6 @@
       <OptionLabel {option} {range}  />
     </div>
 
-    <OptionCounter {editMode} />
+    <OptionCounter {editMode} id='{option.id}' count={option.quantity[galley]} />
   </div>
 </div>

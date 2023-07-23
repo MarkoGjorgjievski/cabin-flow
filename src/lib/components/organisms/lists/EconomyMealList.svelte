@@ -1,6 +1,6 @@
 <script>
   import { Divider } from "$atoms";
-  import { MealsTemplate } from "$templates";
+  import { MealsForm } from "$templates";
   import { MealListItem } from "$organisms";
   import { getContext } from "svelte";
 
@@ -14,7 +14,7 @@
   $: galley, editMode = false
 </script>
 
-<MealsTemplate
+<MealsForm
   {showDescription} {editMode} {galley}
   on:edit='{e => editMode = e.detail.editMode}'
   on:save='{e => editMode = e.detail.editMode}'

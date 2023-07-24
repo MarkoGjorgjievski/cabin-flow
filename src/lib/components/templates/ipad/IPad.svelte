@@ -6,7 +6,7 @@
 
 <style>
     #ipad {
-        width: fit-content;
+        min-width: 1152px;
         padding: 48px 60px;
         background: black;
         border-radius: 21px;

@@ -3,12 +3,10 @@
   import { toggleSize, toggleState } from "$system/toggle";
 
   export let checked = false
-  export let labelOff
-  export let labelOn
+  export let labelOff = ''
+  export let labelOn = ''
   export let size = 'medium'
   export let state = 'primary'
-
-  // $: checked, console.log(checked)
 </script>
 
 <div class="form-control">

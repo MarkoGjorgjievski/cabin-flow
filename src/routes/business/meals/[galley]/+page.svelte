@@ -24,11 +24,11 @@
 
 <form method='POST' use:enhance={() => async ({ result }) => await applyAction(result)}>
   <div class='flex justify-between w-full'>
-    <h2>{data.galley} galley</h2>
+    <h2 class='capitalize'>{data.galley}</h2>
     {#if editMode}
       <Button state='primary' type='submit'>Save quantity</Button>
     {:else}
-      <Button state='ghost' on:click={handleEdit}>Edit quantity</Button>
+      <Button state='ghost' disabled='{data.galley === "total"}' on:click={handleEdit}>Edit quantity</Button>
     {/if}
   </div>
 
@@ -46,7 +46,7 @@
               <h2 class='pl-1 font-normal pb-4'>{category.label}</h2>
               <div class='flex flex-wrap w-full gap-4'>
                 {#each category.options as option (option)}
-                  <MealListItem option='{option}' {showDescription} {editMode} galley='{data.galley}' />
+                  <MealListItem option='{option}' {showDescription} {editMode} count='{option.quantity[data.galley]}' />
                 {/each}
               </div>
               <Divider lastHidden />

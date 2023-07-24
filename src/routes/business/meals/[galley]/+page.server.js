@@ -1,11 +1,6 @@
-// export const ssr = false
-
-import { getMeals, updateCounter } from "$lib/server/database";
-
-let galley
+import { getMeals, updateCounter } from "$lib/server/business/database";
 
 export const load = async ({ params }) => {
-  galley = params.galley
   return {
     galley: params.galley,
     food: await getMeals(),
@@ -13,7 +8,9 @@ export const load = async ({ params }) => {
 };
 
 export const actions = {
-  default: async ({ request }) => {
+  default: async ({ request, url }) => {
+    const galley = url.pathname.split('/').at(-1)
+
     const formData = await request.formData();
     return await updateCounter(galley, formData)
   },

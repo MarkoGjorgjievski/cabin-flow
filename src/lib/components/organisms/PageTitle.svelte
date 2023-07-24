@@ -1,11 +1,11 @@
 <script>
   import { Tabs } from "$molecules";
 
-  export let tabs;
-  export let stackedTabs;
+  export let tabs = []
+  export let stackedTabs = []
   export let stackedTabsContainerClass = 'flex flex-col-reverse rounded-lg bg-base-200';
   export let direction = 'row';
-  export let size;
+  export let size = 'medium'
   export let title = 'Page Title';
 </script>
 

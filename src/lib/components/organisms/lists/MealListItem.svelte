@@ -1,12 +1,13 @@
 <script>
-  import { OptionCounter } from "$molecules";
-  import { OptionLabel } from "../../molecules";
+  import { OptionLabel, OptionCounter } from "$molecules";
 
   export let option;
   export let showDescription;
   export let editMode = false;
   export let range = false;
-  export let galley = false;
+  export let count = null;
+
+  let el
 </script>
 
 <div class='w-full max-w-[298px]'>
@@ -21,9 +22,13 @@
 
       <div class='divider my-1'></div>
 
-      <OptionLabel {option} {range}  />
+      <OptionLabel {option} {range} bind:count={count}>
+        {#if range}
+          <input type='range' min='0' max='100' bind:this={el} bind:value={count} class='range bg-inherit w-full h-full absolute bottom-0 left-0 mix-blend-soft-light rounded-lg' />
+        {/if}
+      </OptionLabel>
     </div>
 
-    <OptionCounter {editMode} id='{option.id}' count={option.quantity[galley]} />
+    <OptionCounter {editMode} id='{option.id}' count={count} onIncrement='{() => el?.stepUp(+1)}' onDecrement='{() => el?.stepUp(-1)}'  />
   </div>
 </div>

@@ -619,8 +619,7 @@ export const MENU = {
                 title: 'Soup of the day',
                 label: 'Soup',
                 color: 'lime',
-                quantity: { FWD: 0, MID: 0 },
-              }
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },              }
             ],
           },
           {
@@ -633,15 +632,14 @@ export const MENU = {
                 description: 'hummus, baba ghanoush and tabouleh served with Arabic bread',
                 label: 'Mezze',
                 color: 'emerald',
-                quantity: { FWD: 0, MID: 0 },
-              },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },              },
               {
                 id: 51,
                 title: 'Lobster cocktail with marinated pan-fried jumbo prawn',
                 description: 'pickled radish, compressed rock melon and tomato wedge',
                 label: 'Prawn',
                 color: 'sky',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
             ],
           },
@@ -655,7 +653,7 @@ export const MENU = {
                 description: 'creamy herb fettuccine pasta and steamed seasonal vegetables',
                 label: 'Lobster',
                 color: 'rose',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
               {
                 id: 53,
@@ -663,7 +661,7 @@ export const MENU = {
                 description: 'halloumi Arabic rice and grilled vegetables',
                 label: 'Lamb',
                 color: 'red',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
               {
                 id: 54,
@@ -671,7 +669,7 @@ export const MENU = {
                 description: 'parsley mashed potato, seasonal garden vegetables and chicken jus',
                 label: 'Chicken',
                 color: 'yellow',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
               {
                 id: 55,
@@ -679,14 +677,14 @@ export const MENU = {
                 description: 'okra onion curry with dal makhani',
                 label: 'Paneer',
                 color: 'green',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
             ],
           },
           {
             slug: 'cheese',
             label: 'Cheese',
-            options: [{ id: 56, title: 'Cheese plate', label: 'Cheese', color: 'yellow', quantity: { FWD: 0, MID: 0 }, }],
+            options: [{ id: 56, title: 'Cheese plate', label: 'Cheese', color: 'yellow', quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 }, }],
           },
           {
             slug: 'desserts',
@@ -698,10 +696,10 @@ export const MENU = {
                 description: 'red berry sauce',
                 label: 'Cake',
                 color: 'orange',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
-              { id: 58, title: 'Fresh berries with rose water syrup', label: 'Berries', color: 'blue', quantity: { FWD: 0, MID: 0 }, },
-              { id: 59, title: 'Gourmet ice cream selection', label: 'Ice cream', color: 'stone', quantity: { FWD: 0, MID: 0 }, },
+              { id: 58, title: 'Fresh berries with rose water syrup', label: 'Berries', color: 'blue', quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 }, },
+              { id: 59, title: 'Gourmet ice cream selection', label: 'Ice cream', color: 'stone', quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 }, },
             ],
           },
         ]
@@ -722,7 +720,7 @@ export const MENU = {
                 description: 'mixed berries, pomegranate seeds and red radish',
                 label: 'Salad',
                 color: 'green',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
               {
                 id: 61,
@@ -730,7 +728,7 @@ export const MENU = {
                 description: 'tadka rice and papadum',
                 label: 'Curry',
                 color: 'yellow',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
               {
                 id: 62,
@@ -738,7 +736,7 @@ export const MENU = {
                 description: 'fresh finger sandwiches, warm scones, clotted cream and French pastries',
                 label: 'Afternu',
                 color: 'orange',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
               {
                 id: 63,
@@ -746,7 +744,7 @@ export const MENU = {
                 description: 'frisée salad and lemon dressing',
                 label: 'brioche',
                 color: 'yellow',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
             ],
           }
@@ -761,13 +759,13 @@ export const MENU = {
             slug: 'starters',
             label: 'Starters',
             options: [
-              { id: 64, title: 'Platter of seasonal cut fruits', label: 'Fruit', color: 'rose', quantity: { FWD: 0, MID: 0 }, },
+              { id: 64, title: 'Platter of seasonal cut fruits', label: 'Fruit', color: 'rose', quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 }, },
               {
                 id: 65,
                 title: 'Greek yoghurt, passion fruit and mango coulis, toasted granola with nuts',
                 label: 'Yoghurt',
                 color: 'white',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
               {
                 id: 66,
@@ -775,7 +773,7 @@ export const MENU = {
                 description: 'smoked balik salmon, smoked mackerel, caper berry, goat cheese and egg mimosa',
                 label: 'CUTS',
                 color: 'pink',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
             ],
           },
@@ -789,7 +787,7 @@ export const MENU = {
                 description: 'feta cheese, tomato, cucumber and olives served with fout medames and Arabic bread',
                 label: 'ARABIC',
                 color: 'teal',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
               {
                 id: 68,
@@ -797,7 +795,7 @@ export const MENU = {
                 description: 'roasted boby potato and creamy spinach',
                 label: 'Omelette',
                 color: 'orange',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
               {
                 id: 69,
@@ -805,9 +803,9 @@ export const MENU = {
                 description: 'fresh berries, apple compote and crème Anglaise',
                 label: 'DONUT',
                 color: 'pink',
-                quantity: { FWD: 0, MID: 0 },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
               },
-              { id: 70, title: 'Steel-cut oats served with berries and cream', label: 'OATS', color: 'white', quantity: { FWD: 0, MID: 0 }, },
+              { id: 70, title: 'Steel-cut oats served with berries and cream', label: 'OATS', color: 'white', quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 }, },
             ]
           },
         ]
@@ -823,20 +821,28 @@ export const MENU = {
         name: 'Hot Breakfast',
         options: [
           {
+            id: 71,
             title: 'Scrambled eggs with breakfast sausage',
             description: 'potato wadges and herb tomato',
             label: 'Eggs',
             color: 'yellow',
-            quantity: { FWD: 0, MID: 0 },
+            quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
           },
           {
+            id: 72,
             title: 'Beef congee',
             description: 'fried ginger, shirtake and spring onions',
             label: 'Congee',
             color: 'blue',
-            quantity: { FWD: 0, MID: 0 },
+            quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
           },
-          { title: 'Stir-fried egg noodles', label: 'Noodles', color: 'green', quantity: { FWD: 0, MID: 0 }, },
+          {
+            id: 73,
+            title: 'Stir-fried egg noodles',
+            label: 'Noodles',
+            color: 'green',
+            quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
+          },
         ]
       },
       {
@@ -844,8 +850,20 @@ export const MENU = {
         acronym: 'WS',
         name: 'Warm Sandwich',
         options: [
-          { title: 'Tuna sandwich', label: 'Tuna', color: 'pink', quantity: { FWD: 0, MID: 0 }, },
-          { title: 'Veggie sandwich', label: 'Veggie', color: 'green', quantity: { FWD: 0, MID: 0 }, },
+          {
+            id: 74,
+            title: 'Tuna sandwich',
+            label: 'Tuna',
+            color: 'pink',
+            quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
+          },
+          {
+            id: 75,
+            title: 'Veggie sandwich',
+            label: 'Veggie',
+            color: 'green',
+            quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
+          },
         ]
       },
       {
@@ -854,20 +872,29 @@ export const MENU = {
         name: 'Lunch/Dinner',
         options: [
           {
+            id: 76,
             title: 'Chicken kapsa',
             description: 'Tomato rice, fried onions and raisins',
             label: 'Chicken',
             color: 'yellow',
-            quantity: { FWD: 0, MID: 0 },
+            quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
           },
           {
+            id: 77,
             title: 'Braised beef with mushroom sauce',
             description: 'parsley mashed potato and vegetables',
             label: 'Beef',
             color: 'red',
-            quantity: { FWD: 0, MID: 0 },
+            quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
           },
-          { title: 'Risotto with garden peas', description: 'mixed herbs and cheese', label: 'Pasta', color: 'green', quantity: { FWD: 0, MID: 0 }, },
+          {
+            id: 78,
+            title: 'Risotto with garden peas',
+            description: 'mixed herbs and cheese',
+            label: 'Pasta',
+            color: 'green',
+            quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
+          },
         ]
       },
     ]

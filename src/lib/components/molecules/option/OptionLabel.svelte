@@ -1,13 +1,13 @@
 <script>
   import clsx from "clsx";
   import { badgeColor } from "$system/badge";
-  import { Badge, Button } from "../../atoms";
-  import { MinusSmallIcon } from "../../atoms/icons";
-  import OptionRange from "./OptionRange.svelte";
+  import { Badge, Button } from "$atoms";
+  import { MinusSmallIcon } from "$icons";
 
   export let option;
   export let quantity = 40;
   export let showQuantity = false;
+  export let count = false;
   export let range = false;
   export let filter = false
   export let onFilter = () => null;
@@ -23,7 +23,5 @@
     {/if}
     {#if Number.isInteger(quantity) && showQuantity}<span class='w-fit text-right'>{quantity}</span>{/if}
   </div>
-  {#if range}
-    <OptionRange value='{quantity}' />
-  {/if}
+  <slot />
 </div>

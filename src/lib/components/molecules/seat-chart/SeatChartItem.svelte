@@ -95,6 +95,8 @@
       </Swipeable>
 
       <Swipeable trigger='{activeTimeId}' onSwipe='{handleTime}'>
+        <button on:click={() => addTiming('ATO Drink')}>ATO Drink</button>
+        <button on:click={() => addTiming('First service')}>First service</button>
         <button on:click={() => addTiming('30 min')}>30 min</button>
         <button on:click={() => addTiming('45 min')}>45 min</button>
         <button on:click={() => addTiming('1h')}>1h</button>

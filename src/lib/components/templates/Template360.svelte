@@ -5,7 +5,6 @@
   import { SeatingMap } from "$organisms";
 
   function handleClick() {
-    console.log("modal")
     openModal(Modal, { title: "Select passenger",  component: SeatingMap })
   }
 </script>

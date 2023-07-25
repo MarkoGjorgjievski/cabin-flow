@@ -1,62 +1,44 @@
 <script>
-  import clsx from "clsx";
   import { Divider } from "$atoms";
-  import { OptionLabel } from "$molecules";
   import { SpecialMealList } from "$organisms";
 
-  export let total = 0;
-  export let options = [];
   export let title;
+  export let upperCorner;
   export let rows;
   export let passengerNumber = 40;
-  export let cabin = 'economy';
-  export let services;
 </script>
 
-<div class={clsx("card w-full h-fit shadow-lifted relative")}>
+<div class="card w-full h-fit relative">
   <div class='card-body'>
-    <div>
-      <div class='flex justify-between'>
-        {#if title}<h5 class='card-title'>{title}</h5>{/if}
-      </div>
-      {#if rows && passengerNumber}
-        <div class='flex justify-between text-sm opacity-60 w-full my-2 py-1 border-y border-base-300'>
-          <div class='w-full'>{rows}</div>
-          <div class='w-fit'>{passengerNumber}</div>
-        </div>
-      {/if}
+    <div class='flex justify-between'>
+      <h5 class='card-title'>{title}</h5>
+      <h6 class='text-sm opacity-60'>{upperCorner}</h6>
+      <!--{#if rows && passengerNumber}-->
+      <!--  <div class='flex justify-between text-sm opacity-60 w-full my-2 py-1 border-y border-base-300'>-->
+      <!--    <div class='w-full'>{rows}</div>-->
+      <!--    <div class='w-fit'>{passengerNumber}</div>-->
+      <!--  </div>-->
+      <!--{/if}-->
     </div>
 
-    {#if cabin === 'business'}
-      <div class='flex flex-col gap-2 justify-between w-full h-80 px-0.5 overflow-y-auto scrollbar'>
-        {#each services as service}
-          <Divider>{service.label}</Divider>
-          {#each service.categories as category}
-            <h6 class='text-xs uppercase pt-2 pl-1'>{category.label}</h6>
-            {#each category.options as option, i}
-              <OptionLabel {option} showQuantity />
-            {/each}
-          {/each}
-        {/each}
-      </div>
-    {/if}
+    <slot />
 
-    {#if cabin === 'economy'}
-      <div class='flex flex-col justify-between'>
-        <div class='flex flex-col gap-2'>
-          {#each options as option}
-            <OptionLabel {option} showQuantity />
-          {/each}
-        </div>
-      </div>
-    {/if}
+    <!--{#if cabin === 'economy'}-->
+    <!--  <div class='flex flex-col justify-between'>-->
+    <!--    <div class='flex flex-col gap-2'>-->
+    <!--      {#each options as option}-->
+    <!--        <OptionLabel {option} showQuantity />-->
+    <!--      {/each}-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--{/if}-->
 
-    <SpecialMealList {cabin} {title} />
+    <SpecialMealList {title} />
     <div>
       <Divider />
       <div class='flex justify-between pt-2'>
         <p>Total meals</p>
-        <span>{total}</span>
+        <span>0</span>
       </div>
     </div>
   </div>

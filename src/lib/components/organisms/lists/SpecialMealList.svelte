@@ -4,8 +4,7 @@
   import { OptionLabel } from "$molecules";
   import { slide } from 'svelte/transition'
 
-  export let cabin
-  export let title
+  export let title = ''
 
   let show = false
   $: $page.url.pathname, show = false

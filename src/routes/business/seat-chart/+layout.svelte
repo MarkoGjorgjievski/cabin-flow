@@ -12,7 +12,7 @@
 </script>
 
 <div class='sticky top-4 z-10'>
-  <PageTitle title='Seat Chart' stackedTabs='{zones}'  />
+  <PageTitle title='Seat Chart' stackedTabs='{zones}' />
 </div>
 
 <slot />

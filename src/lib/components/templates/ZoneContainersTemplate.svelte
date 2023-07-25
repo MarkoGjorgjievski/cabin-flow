@@ -1,47 +1,33 @@
 <script>
-  import { getContext } from "svelte";
   import { ZoneMealList, SeatingMap } from "$organisms";
+  import MealList from "../organisms/lists/MealList.svelte";
 
   export let cabin;
   export let serviceZones = [];
-  export let options;
-
-  const { food } = getContext('menu');
+  export let food = [];
 </script>
 
 <div class='flex gap-4 relative pb-4'>
-  <div class='h-fit w-full {cabin === "economy" && "sticky top-4"}'>
+  <!--{cabin === "economy" && "sticky top-4"}-->
+  <div class='h-fit w-full '>
     <div class='w-full flex flex-col gap-4'>
       {#each serviceZones as position, i}
-        <ZoneMealList
-          services='{food}'
-          {cabin}
-          showSpecialMeals
-          buttonLabel='Details'
-          title='{position[0]}'
-          rows='10-19'
-          passengerNumber='40'
-          {options}
-        />
+        <ZoneMealList title={position[0]}>
+          <MealList services='{food}' position='{0}' />
+        </ZoneMealList>
       {/each}
     </div>
   </div>
 
   <SeatingMap {cabin} />
 
-  <div class='h-fit w-full {cabin === "economy" && "sticky top-4"}'>
+  <!--{cabin === "economy" && "sticky top-4"}-->
+  <div class='h-fit w-full'>
     <div class='w-full flex flex-col gap-4'>
       {#each serviceZones as position, i}
-        <ZoneMealList
-          services='{food}'
-          {cabin}
-          showSpecialMeals
-          buttonLabel='Details'
-          title='{position[1]}'
-          rows='10-19'
-          passengerNumber='40'
-          {options}
-        />
+        <ZoneMealList title={position[1]}>
+          <MealList services='{food}' position='{1}' />
+        </ZoneMealList>
       {/each}
     </div>
   </div>

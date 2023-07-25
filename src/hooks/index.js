@@ -32,9 +32,18 @@ export const createAcronymObject = (arr) => {
   }, {});
 }
 
+/**
+ * [{...}, {...}]
+ * [{...}, {...}]
+ */
+
 export const getServiceZones = (positions) => {
   let serviceZones = [];
   Object.values(positions).map(position => position.cabin.map(cabin => serviceZones.push(cabin)));
 
   return serviceZones
 }
+
+export const splitMeals = (positions) => Object.entries(positions).map(([key, value]) => {
+  return [key, value];
+})

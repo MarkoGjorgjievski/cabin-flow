@@ -5,7 +5,7 @@
   import { MinusSmallIcon } from "$icons";
 
   export let option;
-  export let quantity = 40;
+  export let quantity = 0;
   export let showQuantity = false;
   export let count = false;
   export let range = false;

@@ -29,21 +29,21 @@
   <div class='w-full flex flex-col sticky top-4'>
     {#each seating as row, i}
       <div class='w-fit flex flex-col'>
+        {#if config.rowGapAfter.includes(config.rowStart + i)}
+          <div class='h-8'>EXIT</div>
+        {/if}
         <GalleyIndicator rowNumber='{i}' {cabin} position='beforeRow' />
 
-        {#if config?.ghostRow - config?.rowStart !== i}
+        <RowDividerDnd items='{dividers[i]}' handleDnd='{e => handleDnd(e, i)}' />
 
-          <RowDividerDnd items='{dividers[i]}' handleDnd='{e => handleDnd(e, i)}' />
+        <div class='flex w-fit gap-1'>
+          {#each row as seat}
+            <Seat seat={seat} cabin='{cabin}' />
+          {/each}
+        </div>
 
-          <div class='flex w-fit gap-2'>
-            {#each row as seat}
-              <Seat seat={seat} cabin='{cabin}' />
-            {/each}
-          </div>
-
-          {#if config.rowEnd - config.rowStart === i}
-            <RowDividerDnd />
-          {/if}
+        {#if config.rowEnd - config.rowStart === i}
+          <RowDividerDnd />
         {/if}
 
         <GalleyIndicator rowNumber='{i}' {cabin} position='afterRow' />

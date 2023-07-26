@@ -1,17 +1,48 @@
 <script>
-  import { createAcronymObject, getServiceZones } from "$hooks";
-  import { ZoneContainersTemplate } from "$templates";
-  import { getContext } from "svelte";
+  import { SeatingMap, ZoneMealList } from "$organisms";
+  import { OptionLabel } from "$molecules";
 
-  export let data;
-
-  const { food } = getContext('menu')
-  const services = createAcronymObject(food);
-
-  const cabin = 'economy';
-  const { positions } = getContext('config')
-  const serviceZones = getServiceZones(positions)
+  export let data
 </script>
 
-<ZoneContainersTemplate {data} {serviceZones} {cabin} options='{services[data.service].options}' />
+<div class='flex gap-4 relative pb-4'>
+  <div class='h-fit w-full sticky top-4'>
+    <div class='w-full flex flex-col gap-4'>
+      {#each Object.entries(data.positions) as [galley, position], i}
+        {#each position.cabin as cabin, j}
+          <ZoneMealList title={cabin[0]} upperCorner='{galley}'>
+            {#each data.food as foodService}
+              {#if foodService.acronym === data.service}
+                <h6 class='text-xs uppercase pt-2 pl-1'>{foodService.label}</h6>
+                {#each foodService.options as option, i}
+                  <OptionLabel {option} quantity='{30}' showQuantity />
+                {/each}
+              {/if}
+            {/each}
+          </ZoneMealList>
+        {/each}
+      {/each}
+    </div>
+  </div>
 
+  <SeatingMap cabin='economy' />
+
+  <div class='h-fit w-full sticky top-4'>
+    <div class='w-full flex flex-col gap-4'>
+      {#each Object.entries(data.positions) as [galley, position], i}
+        {#each position.cabin as cabin, j}
+          <ZoneMealList title={cabin[1]} upperCorner='{galley}'>
+            {#each data.food as foodService}
+              {#if foodService.acronym === data.service}
+                <h6 class='text-xs uppercase pt-2 pl-1'>{foodService.label}</h6>
+                {#each foodService.options as option, i}
+                  <OptionLabel {option} quantity='{30}' showQuantity />
+                {/each}
+              {/if}
+            {/each}
+          </ZoneMealList>
+        {/each}
+      {/each}
+    </div>
+  </div>
+</div>

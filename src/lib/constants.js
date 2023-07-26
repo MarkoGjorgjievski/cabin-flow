@@ -29,7 +29,9 @@ export const CONFIGURATION = {
   business: {
     rowStart: 1,
     rowEnd: 7,
+    rowGapAfter: [],
     seats: ['A', 'B', 'E', 'F', 'J', 'K'],
+    aisleAfterSeat: ['B', 'F'],
     ghostRows: null,
     ghostSeats: [],
     galleys: [{ slug: 'FWD', label: 'FWD', beforeRow: 1 }, { slug: 'MID', label: 'MID', afterRow: 4 }],
@@ -51,7 +53,9 @@ export const CONFIGURATION = {
   economy: {
     rowStart: 10,
     rowEnd: 43,
+    rowGapAfter: [17],
     seats: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K'],
+    aisleAfterSeat: ['C', 'G'],
     ghostRow: 13,
     ghostSeats: ['10D', '11D', '12D', '17C', '17H'],
     galleys: [{ slug: 'MID', label: 'MID', afterRow: 29 }, { slug: 'AFT', label: 'AFT', afterRow: 43 }],
@@ -818,7 +822,7 @@ export const MENU = {
       {
         slug: 'breakfast',
         acronym: 'HB',
-        name: 'Hot Breakfast',
+        label: 'Hot Breakfast',
         options: [
           {
             id: 71,
@@ -848,7 +852,7 @@ export const MENU = {
       {
         slug: 'warm-sandwich',
         acronym: 'WS',
-        name: 'Warm Sandwich',
+        label: 'Warm Sandwich',
         options: [
           {
             id: 74,
@@ -869,7 +873,7 @@ export const MENU = {
       {
         slug: 'lunch-dinner',
         acronym: 'LD',
-        name: 'Lunch/Dinner',
+        label: 'Lunch/Dinner',
         options: [
           {
             id: 76,

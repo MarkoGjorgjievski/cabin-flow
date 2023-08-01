@@ -18,6 +18,28 @@ export const SPECIAL_MEALS = [
   { label: 'NLML', title: 'Non-Lactose Meal', color: 'white' },
   { label: 'KSML', title: 'Kosher Meal', color: 'slate' },
 ];
+export const NAMES = [
+  "Alice",
+  "Bob",
+  "Charlie",
+  "Daisy",
+  "Eva",
+  "Frank",
+  "Grace",
+  "Henry",
+  "Isabel",
+  "Jack",
+  "Katie",
+  "Liam",
+  "Mia",
+  "Noah",
+  "Olivia",
+  "Peter",
+  "Quinn",
+  "Riley",
+  "Sophia",
+  "Thomas"
+];
 
 export const SERVICE_TYPES = {
   FOOD: 'food',
@@ -31,6 +53,7 @@ export const CONFIGURATION = {
     rowEnd: 7,
     rowGapAfter: [],
     seats: ['A', 'B', 'E', 'F', 'J', 'K'],
+    seatingConfig: [3, 3],
     aisleAfterSeat: ['B', 'F'],
     ghostRows: null,
     ghostSeats: [],
@@ -55,6 +78,7 @@ export const CONFIGURATION = {
     rowEnd: 43,
     rowGapAfter: [17],
     seats: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K'],
+    seatingConfig: [3, 4, 3],
     aisleAfterSeat: ['C', 'G'],
     ghostRow: 13,
     ghostSeats: ['10D', '11D', '12D', '17C', '17H'],
@@ -623,7 +647,8 @@ export const MENU = {
                 title: 'Soup of the day',
                 label: 'Soup',
                 color: 'lime',
-                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },              }
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
+              }
             ],
           },
           {
@@ -636,7 +661,8 @@ export const MENU = {
                 description: 'hummus, baba ghanoush and tabouleh served with Arabic bread',
                 label: 'Mezze',
                 color: 'emerald',
-                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },              },
+                quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
+              },
               {
                 id: 51,
                 title: 'Lobster cocktail with marinated pan-fried jumbo prawn',

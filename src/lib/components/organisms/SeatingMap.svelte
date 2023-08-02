@@ -1,5 +1,5 @@
 <script>
-  import { getDividers, seatingConfig } from "$hooks";
+import { getDividers, seatingConfig } from "$hooks";
   import { Seat, GalleyIndicator } from "$molecules";
   import { RowDividerDnd } from "$organisms";
   import { getContext } from "svelte";
@@ -8,6 +8,7 @@
 
   const config = getContext('config');
   const seating = seatingConfig(config);
+
   /*
    * onConsider
    * consider the output so that the crew order is consistent (sorted)

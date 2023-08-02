@@ -39,7 +39,27 @@ export const NAMES = [
   "Quinn",
   "Riley",
   "Sophia",
-  "Thomas"
+  "Thomas",
+  "Sophia",
+  "Jackson",
+  "Olivia",
+  "Liam",
+  "Emma",
+  "Noah",
+  "Ava",
+  "Lucas",
+  "Isabella",
+  "Liam",
+  "Mia",
+  "Elijah",
+  "Aria",
+  "Oliver",
+  "Harper",
+  "Ethan",
+  "Amelia",
+  "Aiden",
+  "Evelyn",
+  "Caden"
 ];
 
 export const SERVICE_TYPES = {

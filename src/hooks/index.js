@@ -12,7 +12,31 @@ export const seatingConfig = (configuration) => {
   return config
 }
 
-export const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
+const generatePassengers = (configuration, seating) => {
+  const pax = {}
+
+  for (const row of seating) {
+    for (const seat of row) {
+      const random = Math.random();
+
+      if (!configuration.ghostSeats.includes(seat) && random > 0.15) {
+        pax[seat] = {
+          seat,
+          name: NAMES[Math.floor(Math.random() * NAMES.length)],
+          specialMeal: random > 0.9 ? SPECIAL_MEALS[Math.floor(Math.random() * SPECIAL_MEALS.length)] : null
+        }
+      }
+    }
+  }
+
+  return pax
+}
+
+const passengerLoad = passengers => {
+  return Object.keys(passengers).length
+}
+
+const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
   let result = [];
   let leftTotal = 0;
   let rightTotal = 0;
@@ -20,7 +44,7 @@ export const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
 
   for (const pair of arrayData) {
     const [leftArr, rightArr] = pair;
-
+    // (leftTotal < maxLength && rightTotal < maxLength) shows better results, but || is more technically accurate.
     if (leftTotal < maxLength && rightTotal < maxLength) {
       currentSlice.push(pair);
       leftTotal += leftArr.length;
@@ -43,7 +67,7 @@ export const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
   return result;
 }
 
-export const zoneDetails = (subArray) => {
+const zoneConfig = (subArray) => {
   const result = []
 
   for (const nestedArray of subArray) {
@@ -71,29 +95,12 @@ export const zoneDetails = (subArray) => {
   return result;
 };
 
-
-export const passengerSeating = (configuration) => {
-  const config = seatingConfig(configuration);
+const passengerSeatingConfig = (configuration, seating, passengers) => {
   const middleIndex = Math.floor(configuration.seats.length / 2);
 
-  const pax = config.map(row => {
-    // assign random passenger to a seat or leave it empty
-    // Should be fetched directly from JSON
-    const currentRow = row.map(seat => {
-      const random = Math.random();
+  const pax = seating.map(row => {
+    const currentRow = row.map(seat => passengers[seat]);
 
-      if (configuration.ghostSeats.includes(seat) || random < 0.2) {
-        return null
-      }
-      
-      return {
-        seat: seat,
-        name: NAMES[Math.floor(Math.random() * NAMES.length)],
-        specialMeal: random > 0.9 ? SPECIAL_MEALS[Math.floor(Math.random() * SPECIAL_MEALS.length)] : null
-      }
-    });
-
-    // split row in two zones
     const firstHalf = currentRow.slice(0, middleIndex).filter(Boolean);
     const secondHalf = currentRow.slice(middleIndex).filter(Boolean);
 
@@ -102,6 +109,51 @@ export const passengerSeating = (configuration) => {
 
   return pax
 }
+
+export const useConfig = configuration => {
+  const seating = seatingConfig(configuration)
+  const passengerList = generatePassengers(configuration, seating)
+  const load = passengerLoad(passengerList)
+
+  const passengerSeating = passengerSeatingConfig(configuration,  seating, passengerList)
+
+  const splitByQuantity = splitArrayDataByMaxLength(passengerSeating)
+  const zones = zoneConfig(splitByQuantity)
+
+
+  return {
+    seating, 
+    passengerList,
+    load,
+    passengerSeating,
+    zones,
+    splitByQuantity,
+  }
+}
+
+/*
+[
+  [{}, {}],
+  [{}, {}],
+  [{}, {}],
+  [{}, {}],
+],
+---
+[
+  {
+    position: L3,
+    galley: FWD,
+    standardMeals: { HB: [20, 29, 54], WS: [30, 38], LD: [48, 38, 95] },
+    specialMeals: [],
+  },
+  {
+    position: R3,
+    galley: FWD,
+    standardMeals: { HB: [20, 29, 54], WS: [30, 38], LD: [48, 38, 95] },
+    specialMeals: [],
+  }
+], ...
+*/
 
 export const getDividers = (config, zones) => config.map((_, i) => {
   const findZone = zones.find(zone => zone.row === i);

@@ -18,6 +18,7 @@ export const SPECIAL_MEALS = [
   { label: 'NLML', title: 'Non-Lactose Meal', color: 'white' },
   { label: 'KSML', title: 'Kosher Meal', color: 'slate' },
 ];
+
 export const NAMES = [
   "Alice",
   "Bob",
@@ -99,6 +100,7 @@ export const CONFIGURATION = {
         galley: 'L5A',
       }
     },
+    cartMaxCapacity: 40,
   }
 };
 

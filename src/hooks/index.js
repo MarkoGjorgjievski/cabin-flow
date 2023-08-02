@@ -12,42 +12,93 @@ export const seatingConfig = (configuration) => {
   return config
 }
 
-// reason for having both functions is that the latter will change
-// for odd config seats (3-3-3) -> 9
+export const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
+  let result = [];
+  let leftTotal = 0;
+  let rightTotal = 0;
+  let currentSlice = [];
 
-export const calculations = (configuration) => {
+  for (const pair of arrayData) {
+    const [leftArr, rightArr] = pair;
+
+    if (leftTotal < maxLength && rightTotal < maxLength) {
+      currentSlice.push(pair);
+      leftTotal += leftArr.length;
+      rightTotal += rightArr.length;
+    } else {
+      if (currentSlice.length > 0) {
+        result.push([...currentSlice]);
+        currentSlice = [];
+      }
+      currentSlice.push(pair);
+      leftTotal = leftArr.length;
+      rightTotal = rightArr.length;
+    }
+  }
+
+  if (currentSlice.length > 0) {
+    result.push([...currentSlice]);
+  }
+
+  return result;
+}
+
+export const zoneDetails = (subArray) => {
+  const result = []
+
+  for (const nestedArray of subArray) {
+    let left = { total: 0, specialMeals: 0 }
+    let right = { total: 0, specialMeals: 0 }
+
+    for (const pair of nestedArray) {
+      const [leftArr, rightArr] = pair;
+      for (const leftSide of leftArr) {
+        if (leftSide.specialMeal) left.specialMeals++;
+      }
+      left.total = left.total + leftArr.length
+
+      for (const rightSide of rightArr) {
+        if (rightSide.specialMeal) right.specialMeals++;
+      }
+      right.total = right.total + rightArr.length
+    }
+
+    result.push([left, right])
+    left = { total: 0, specialMeals: 0 }
+    right = { total: 0, specialMeals: 0 }
+  }
+
+  return result;
+};
+
+
+export const passengerSeating = (configuration) => {
   const config = seatingConfig(configuration);
   const middleIndex = Math.floor(configuration.seats.length / 2);
 
-  const configSplit = config.map(row => {
-    const firstHalf = row.slice(0, middleIndex);
-    const secondHalf = row.slice(middleIndex);
+  const pax = config.map(row => {
+    // assign random passenger to a seat or leave it empty
+    // Should be fetched directly from JSON
+    const currentRow = row.map(seat => {
+      const random = Math.random();
 
-    return [firstHalf, secondHalf]
-  })
-
-  return configSplit
-}
-
-export const passengerSeating = (configuration) => {
-  const zones = calculations(configuration);
-
-  const pax = zones.map(row => row.map(zone => zone.map(seat => {
-    if (configuration.ghostSeats.includes(seat)) {
-      return { 
-        seat,
-        passenger: null,
+      if (configuration.ghostSeats.includes(seat) || random < 0.2) {
+        return null
       }
-    }
-
-    return { 
-      seat,
-      passenger: {
+      
+      return {
+        seat: seat,
         name: NAMES[Math.floor(Math.random() * NAMES.length)],
-        specialMeal: Math.random() > 0.9 ? SPECIAL_MEALS[Math.floor(Math.random() * SPECIAL_MEALS.length)] : null
+        specialMeal: random > 0.9 ? SPECIAL_MEALS[Math.floor(Math.random() * SPECIAL_MEALS.length)] : null
       }
-    }
-  })));
+    });
+
+    // split row in two zones
+    const firstHalf = currentRow.slice(0, middleIndex).filter(Boolean);
+    const secondHalf = currentRow.slice(middleIndex).filter(Boolean);
+
+    return [firstHalf, secondHalf];
+  });
 
   return pax
 }

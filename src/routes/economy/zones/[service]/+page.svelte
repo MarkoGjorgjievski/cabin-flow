@@ -1,8 +1,18 @@
 <script>
   import { SeatingMap, ZoneMealList } from "$organisms";
   import { OptionLabel } from "$molecules";
+import { passengerSeating, splitArrayDataByMaxLength, zoneDetails } from "$hooks";
+import { getContext } from "svelte";
 
   export let data
+
+  const config = getContext('config');
+
+  const pax = passengerSeating(config);
+  const splitByMaxLength = splitArrayDataByMaxLength(pax);
+  const zoneDet = zoneDetails(splitByMaxLength);
+
+  console.log(zoneDet)
 </script>
 
 <div class='flex gap-4 relative pb-4'>

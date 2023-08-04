@@ -1,18 +1,17 @@
 <script>
   import { SeatingMap, ZoneMealList } from "$organisms";
   import { OptionLabel } from "$molecules";
-import { useConfig } from "$hooks";
-import { getContext } from "svelte";
+  import { getContext } from "svelte";
 
   export let data
 
   const config = getContext('config');
-  const { load, zones, passengerList, splitByQuantity } = useConfig(config)
 
-  $: console.log(load, zones, passengerList, splitByQuantity)
 </script>
 
 <div class='flex gap-4 relative pb-4'>
+  <SeatingMap cabin='economy' />
+
   <div class='h-fit w-full sticky top-4'>
     <div class='w-full flex flex-col gap-4'>
       {#each Object.entries(data.positions) as [galley, position], i}
@@ -31,8 +30,6 @@ import { getContext } from "svelte";
       {/each}
     </div>
   </div>
-
-  <SeatingMap cabin='economy' />
 
   <div class='h-fit w-full sticky top-4'>
     <div class='w-full flex flex-col gap-4'>

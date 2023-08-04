@@ -3,14 +3,15 @@
   import { flip } from 'svelte/animate';
 
   export let items = [];
-  export let handleDnd = () => null;
+  export let handleConsider = () => false;
+  export let handleFinalize = () => false;
 </script>
 
 
 <section
   class='py-1 min-h-[1rem] w-full'
-  on:consider={handleDnd}
-  on:finalize={handleDnd}
+  on:consider={handleConsider}
+  on:finalize={handleFinalize}
   use:dndzone={{items}}
 >
   {#each items as item (item.id)}

@@ -1,135 +1,3 @@
-import { SPECIAL_MEALS, NAMES } from "$lib/constants";
-
-export const seatingConfig = (configuration) => {
-  const config = []
-  for (let i = configuration.rowStart; i <= configuration.rowEnd; i++) {
-    if (configuration.ghostRow !== i) {
-      let row = configuration.seats.map(seat => `${i}${seat}`)
-      config.push(row)
-    }
-  }
-
-  return config
-}
-
-const generatePassengers = (configuration, seating) => {
-  const pax = {}
-
-  for (const row of seating) {
-    for (const seat of row) {
-      const random = Math.random();
-
-      if (!configuration.ghostSeats.includes(seat) && random > 0.15) {
-        pax[seat] = {
-          seat,
-          name: NAMES[Math.floor(Math.random() * NAMES.length)],
-          specialMeal: random > 0.9 ? SPECIAL_MEALS[Math.floor(Math.random() * SPECIAL_MEALS.length)] : null
-        }
-      }
-    }
-  }
-
-  return pax
-}
-
-const passengerLoad = passengers => {
-  return Object.keys(passengers).length
-}
-
-const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
-  let result = [];
-  let leftTotal = 0;
-  let rightTotal = 0;
-  let currentSlice = [];
-
-  for (const pair of arrayData) {
-    const [leftArr, rightArr] = pair;
-    // (leftTotal < maxLength && rightTotal < maxLength) shows better results, but || is more technically accurate.
-    if (leftTotal < maxLength && rightTotal < maxLength) {
-      currentSlice.push(pair);
-      leftTotal += leftArr.length;
-      rightTotal += rightArr.length;
-    } else {
-      if (currentSlice.length > 0) {
-        result.push([...currentSlice]);
-        currentSlice = [];
-      }
-      currentSlice.push(pair);
-      leftTotal = leftArr.length;
-      rightTotal = rightArr.length;
-    }
-  }
-
-  if (currentSlice.length > 0) {
-    result.push([...currentSlice]);
-  }
-
-  return result;
-}
-
-const zoneConfig = (subArray) => {
-  const result = []
-
-  for (const nestedArray of subArray) {
-    let left = { total: 0, specialMeals: 0 }
-    let right = { total: 0, specialMeals: 0 }
-
-    for (const pair of nestedArray) {
-      const [leftArr, rightArr] = pair;
-      for (const leftSide of leftArr) {
-        if (leftSide.specialMeal) left.specialMeals++;
-      }
-      left.total = left.total + leftArr.length
-
-      for (const rightSide of rightArr) {
-        if (rightSide.specialMeal) right.specialMeals++;
-      }
-      right.total = right.total + rightArr.length
-    }
-
-    result.push([left, right])
-    left = { total: 0, specialMeals: 0 }
-    right = { total: 0, specialMeals: 0 }
-  }
-
-  return result;
-};
-
-const passengerSeatingConfig = (configuration, seating, passengers) => {
-  const middleIndex = Math.floor(configuration.seats.length / 2);
-
-  const pax = seating.map(row => {
-    const currentRow = row.map(seat => passengers[seat]);
-
-    const firstHalf = currentRow.slice(0, middleIndex).filter(Boolean);
-    const secondHalf = currentRow.slice(middleIndex).filter(Boolean);
-
-    return [firstHalf, secondHalf];
-  });
-
-  return pax
-}
-
-export const useConfig = configuration => {
-  const seating = seatingConfig(configuration)
-  const passengerList = generatePassengers(configuration, seating)
-  const load = passengerLoad(passengerList)
-
-  const passengerSeating = passengerSeatingConfig(configuration,  seating, passengerList)
-
-  const splitByQuantity = splitArrayDataByMaxLength(passengerSeating)
-  const zones = zoneConfig(splitByQuantity)
-
-
-  return {
-    seating, 
-    passengerList,
-    load,
-    passengerSeating,
-    zones,
-    splitByQuantity,
-  }
-}
 
 /*
 [
@@ -154,6 +22,50 @@ export const useConfig = configuration => {
   }
 ], ...
 */
+
+/*
+positions: {
+      FWD: {
+        cabin: [
+          ['L1', 'R5A'],
+        ],
+        galley: 'R1',
+      },
+      MID: {
+        cabin: [
+          ['L2', 'R2A'],
+        ],
+        galley: 'R2',
+      }
+    },
+*/
+
+export const getArrayOfPositions = (positions) => {
+  let arr = []
+  Object.values(positions).map(value => value.cabin.map(position => arr.push(position)))
+  return arr
+}
+
+export const getNonEmptyIndexes = (arrOfArrays) => {
+  return arrOfArrays.reduce((acc, currArr, index) => {
+    if (currArr.length > 0) {
+      acc.push(index);
+    }
+    return acc;
+  }, []);
+}
+
+export const subArrayLengthCounter = (array) => {
+  let counter = 0;
+  const result = array.map((obj) => obj[0].rowSpan).reduce((acc, curr) => {
+    counter += curr;
+    acc.push(counter);
+    return acc;
+  }, []);
+
+  result.unshift(0)
+  return result.slice(0, result.length - 1)
+};
 
 export const getDividers = (config, zones) => config.map((_, i) => {
   const findZone = zones.find(zone => zone.row === i);

@@ -1,3 +1,4 @@
+import { getArrayOfPositions } from "$hooks";
 import { MENU } from "$lib/constants";
 import { CONFIGURATION } from "../../constants";
 
@@ -10,6 +11,10 @@ export const getMeals = async () => {
 
 export const getPositions = async () => {
   return positions
+}
+
+export const getPositionsArray = async() => {
+  return getArrayOfPositions(positions)
 }
 
 export const updateCounter = async (galley, data) => {

@@ -1,10 +1,11 @@
-import { getMeals, getPositions } from "$lib/server/economy/database";
+import { getMeals, getPositions, getPositionsArray } from "$lib/server/economy/database";
 
 export const load = async ({ params }) => {
   return {
     service: params.service,
     food: getMeals(),
-    positions: getPositions()
+    positions: getPositions(),
+    positionsArray: getPositionsArray(),
   };
 };
 

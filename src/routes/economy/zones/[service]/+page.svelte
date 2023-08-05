@@ -1,5 +1,5 @@
 <script>
-  import { SeatingMap, ZoneMealList } from "$organisms";
+  import { SeatingMap2, ZoneMealList } from "$organisms";
   import { OptionLabel } from "$molecules";
   import { getContext } from "svelte";
 
@@ -10,7 +10,7 @@
 </script>
 
 <div class='flex gap-4 relative pb-4'>
-  <SeatingMap cabin='economy' />
+  <SeatingMap2 cabin='economy' />
 
   <div class='h-fit w-full sticky top-4'>
     <div class='w-full flex flex-col gap-4'>

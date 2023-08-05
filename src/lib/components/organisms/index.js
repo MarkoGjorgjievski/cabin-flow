@@ -16,3 +16,4 @@ export { default as DndCopy } from './drag-n-drop/DndCopy.svelte'
 
 export { default as PageTitle } from './PageTitle.svelte'
 export { default as SeatingMap } from './SeatingMap.svelte'
+export { default as SeatingMap2 } from './SeatingMap2.svelte'

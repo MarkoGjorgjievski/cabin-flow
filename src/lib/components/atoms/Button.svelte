@@ -16,6 +16,7 @@
   export let width = '';
   export let self = 'start';
   export let id = '';
+  export let join = false
 </script>
 
 <button
@@ -35,6 +36,7 @@
       outlined && 'btn-outline',
       isLoading && 'loading',
       disabled && 'btn-disabled',
+      join && 'join-item',
       'whitespace-nowrap',
     )}"
   disabled="{disabled}"

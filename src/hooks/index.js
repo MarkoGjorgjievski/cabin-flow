@@ -108,12 +108,30 @@ export const intialMealSplit = (zones, meals, service) => {
   const meal = meals.find(meal => meal.acronym === service)
   const quantity = meal.options.map(option => option.quantity)
 
-  const addMealsToZones = zones.map(zone => zone.map(side => ({ ...side, meals: quantity.map(opt => opt[side.galley])})))
+  const quantityPerGalley = totalSum(meal.options)
+  const percentagePerMeal = percentagesArray(quantity, quantityPerGalley)
+
+  console.log(quantity)
+  console.log(percentagePerMeal)
 
   const allExceptLast = zones.slice(0, zones.length - 1);
   const lastItem = zones.slice(zones.length - 1);
 
-  return addMealsToZones
+  const standardLoad = allExceptLast.map(group => group.map(zone => {
+    return {
+      ...zone,
+      meals: percentagePerMeal.map(opt => Math.round((MAX_MEALS - zone.specialMeals)*opt[zone.galley]))
+    }
+  }))
+
+  const adjustedLoad = lastItem.map(group => group.map(zone => {
+    return {
+      ...zone,
+      meals: percentagePerMeal.map(opt => Math.round((zone.totalOccupants - zone.specialMeals)*opt[zone.galley]))
+    }
+  }))
+
+  return [...standardLoad, ...adjustedLoad]
 }
 
 const transformedPositions = (data) => 
@@ -123,4 +141,21 @@ const transformedPositions = (data) =>
         return { galley, position };
       });
   });
+});
+
+const totalSum = (options) => options.reduce((acc, option) => {
+  acc.FWD += option.quantity.FWD;
+  acc.MID += option.quantity.MID;
+  acc.AFT += option.quantity.AFT;
+  return acc;
+}, { FWD: 0, MID: 0, AFT: 0 });
+
+const percentagesArray = (options, totalOptions) => options.map(option => {
+  const percentages = { FWD: 0, MID: 0, AFT: 0 };
+  for (const key in option) {
+    if (key !== 'total' && totalOptions[key] !== 0) {
+      percentages[key] = +(option[key] / totalOptions[key]).toFixed(5);
+    }
+  }
+  return percentages;
 });

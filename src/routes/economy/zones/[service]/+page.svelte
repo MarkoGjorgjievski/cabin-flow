@@ -10,8 +10,6 @@
   const split = splitArrayDataByMaxLength($passengerGrid);
   const zoneSplit = zoneConfig(split, data.positions)
 
-  $: console.log(zoneSplit)
-
   $: meal = data.meals.find(meal => meal.acronym === data.service)
 
   $: initialSplit = intialMealSplit(zoneSplit, data.meals, data.service)

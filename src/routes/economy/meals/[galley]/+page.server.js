@@ -3,7 +3,7 @@ import { getMeals, updateCounter } from "$lib/server/economy/database";
 export const load = async ({ params }) => {
   return {
     galley: params.galley,
-    food: await getMeals(),
+    meals: await getMeals(),
   };
 };
 

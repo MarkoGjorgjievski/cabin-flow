@@ -3,8 +3,9 @@ import { getMeals, getPositions, getPositionsArray } from "$lib/server/economy/d
 export const load = async ({ params }) => {
   return {
     service: params.service,
-    food: getMeals(),
-    positions: getPositions(),
-    positionsArray: getPositionsArray(),
+    meals: await getMeals(),
+    positions: await getPositions(),
+    positionsArray: await getPositionsArray(),
+    
   };
 };

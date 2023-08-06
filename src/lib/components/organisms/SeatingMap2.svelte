@@ -1,13 +1,12 @@
 <script>
     import { Button } from "$atoms";
     import { useZone } from "$hooks/useZone";
-    import ArrowSmallDown from "$icons/ArrowSmallDown.svelte";
-    import ArrowSmallUp from "$icons/ArrowSmallUp.svelte";
-
-    import { GalleyIndicator, Seat } from "$molecules";
+    import { ArrowSmallUp, ArrowSmallDown } from "$icons";
+    import { Seat } from "$molecules";
     import clsx from "clsx";
-    import { getContext, onMount } from "svelte";
+    import { getContext } from "svelte";
 
+    export let meal
     export let cabin = 'economy';
 
     const config = getContext('config');

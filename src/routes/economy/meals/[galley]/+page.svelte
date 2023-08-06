@@ -11,8 +11,7 @@
 
   const handleEdit = () => editMode = true;
 
-  $: $page.url.pathname, editMode = false;
-  $: editMode
+  $: $page.url.pathname, editMode = false
 </script>
 
 <form method='POST' use:enhance={() => async ({ result }) => await applyAction(result)}>
@@ -30,9 +29,9 @@
   </div>
 
   <div class='flex justify-between gap-4 py-4 h-fit'>
-    {#each data.food as service}
+    {#each data.meals as service}
       <div class='flex flex-col gap-4 w-full'>
-        <h6 class='text-xs uppercase pl-1'>{service.name}</h6>
+        <h6 class='text-xs uppercase pl-1'>{service.label}</h6>
         <div class='w-full flex flex-col gap-4'>
           {#each service.options as option, i}
             <MealListItem {option} {showDescription} range='{!!editMode}' {editMode}

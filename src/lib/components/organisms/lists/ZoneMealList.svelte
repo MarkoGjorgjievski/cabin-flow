@@ -4,7 +4,7 @@
 
   export let title;
   export let upperCorner;
-  export let rows;
+  export let rows = [];
   export let passengerNumber = 40;
 </script>
 

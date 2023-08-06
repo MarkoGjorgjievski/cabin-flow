@@ -1,6 +1,7 @@
 import { getArrayOfPositions } from "$hooks";
 import { MENU } from "$lib/constants";
 import { CONFIGURATION } from "../../constants";
+import { economyMeals } from "$lib/stores/economy";
 
 const meals = [...MENU.economy.food];
 const positions = { ...CONFIGURATION.economy.positions }

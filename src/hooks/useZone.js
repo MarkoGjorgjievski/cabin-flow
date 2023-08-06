@@ -22,12 +22,13 @@ const generatePassengers = (configuration, seating) => {
 
         pax[seat] = {
             seat,
-            passenger: !configuration.ghostSeats.includes(seat) && random > 0.15  ? {
-                name: NAMES[Math.floor(Math.random() * NAMES.length)],
-                specialMeal: random > 0.9 ? SPECIAL_MEALS[Math.floor(Math.random() * SPECIAL_MEALS.length)] : null
-            } : null
+            passenger: 
+                !configuration.ghostSeats.includes(seat) && random > 0.15  ? {
+                    name: NAMES[Math.floor(Math.random() * NAMES.length)],
+                    specialMeal: random > 0.9 ? SPECIAL_MEALS[Math.floor(Math.random() * SPECIAL_MEALS.length)] : null
+                } : null
+            }
         }
-    }
       
     }
   
@@ -35,7 +36,7 @@ const generatePassengers = (configuration, seating) => {
   }
 
 const passengerLoad = passengers => {
-    return Object.keys(passengers).length
+    return Object.values(passengers).filter(slot => !!slot.passenger).length
 }
 
 const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
@@ -75,8 +76,8 @@ const zoneConfig = (subArray) => {
     const result = []
 
     for (const nestedArray of subArray) {
-        let left = { total: 0, specialMeals: 0, rowSpan: 0 }
-        let right = { total: 0, specialMeals: 0, rowSpan: 0 }
+        let left = { total: 0, specialMeals: 0 }
+        let right = { total: 0, specialMeals: 0 }
         let counter = 0
 
         for (const pair of nestedArray) {
@@ -90,14 +91,11 @@ const zoneConfig = (subArray) => {
                 if (rightSide?.specialMeal) right.specialMeals++;
             }
             right.total = right.total + rightArr.length
-
-            left.rowSpan++
-            right.rowSpan++
         }
 
         result.push([left, right])
-        left = { total: 0, specialMeals: 0, rowSpan: 0 }
-        right = { total: 0, specialMeals: 0, rowSpan: 0 }
+        left = { total: 0, specialMeals: 0 }
+        right = { total: 0, specialMeals: 0 }
     }
 
     return result;

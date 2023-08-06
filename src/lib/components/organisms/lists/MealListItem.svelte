@@ -1,5 +1,7 @@
 <script>
   import { OptionLabel, OptionCounter } from "$molecules";
+  import { passengerLoad } from "$lib/stores/economy.js";
+
 
   export let option;
   export let showDescription;
@@ -24,7 +26,7 @@
 
       <OptionLabel {option} {range} bind:count={count}>
         {#if range}
-          <input type='range' min='0' max='100' bind:this={el} bind:value={count} class='range bg-inherit w-full h-full absolute bottom-0 left-0 mix-blend-soft-light rounded-lg' />
+          <input type='range' min='0' max={$passengerLoad} bind:this={el} bind:value={count} class='range bg-inherit w-full h-full absolute bottom-0 left-0 mix-blend-soft-light rounded-lg' />
         {/if}
       </OptionLabel>
     </div>

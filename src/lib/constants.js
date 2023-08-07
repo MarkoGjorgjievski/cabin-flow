@@ -879,7 +879,6 @@ export const MENU = {
             label: 'Eggs',
             color: 'yellow',
             quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
-            percentagePerGalley: { FWD: 0, MID: 0, AFT: 0 },
           },
           {
             id: 72,
@@ -888,7 +887,6 @@ export const MENU = {
             label: 'Congee',
             color: 'blue',
             quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
-            percentagePerGalley: { FWD: 0, MID: 0, AFT: 0 },
           },
           {
             id: 73,
@@ -896,7 +894,6 @@ export const MENU = {
             label: 'Noodles',
             color: 'green',
             quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
-            percentagePerGalley: { FWD: 0, MID: 0, AFT: 0 },
           },
         ]
       },
@@ -911,7 +908,6 @@ export const MENU = {
             label: 'Tuna',
             color: 'pink',
             quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
-            percentagePerGalley: { FWD: 0, MID: 0, AFT: 0 },
           },
           {
             id: 75,
@@ -919,7 +915,6 @@ export const MENU = {
             label: 'Veggie',
             color: 'green',
             quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
-            percentagePerGalley: { FWD: 0, MID: 0, AFT: 0 },
           },
         ]
       },
@@ -935,7 +930,6 @@ export const MENU = {
             label: 'Chicken',
             color: 'yellow',
             quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
-            percentagePerGalley: { FWD: 0, MID: 0, AFT: 0 },
           },
           {
             id: 77,
@@ -944,7 +938,6 @@ export const MENU = {
             label: 'Beef',
             color: 'red',
             quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
-            percentagePerGalley: { FWD: 0, MID: 0, AFT: 0 },
           },
           {
             id: 78,
@@ -953,11 +946,9 @@ export const MENU = {
             label: 'Pasta',
             color: 'green',
             quantity: { FWD: 0, MID: 0, AFT: 0, total: 0 },
-                        percentagePerGalley: { FWD: 0, MID: 0, AFT: 0 },
           },
         ]
       },
     ]
   }
 };
-

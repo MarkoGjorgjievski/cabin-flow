@@ -26,6 +26,7 @@
   "type": "module",
   "dependencies": {
     "clsx": "^1.2.1",
+    "lodash.clonedeep": "^4.5.0",
     "lodash.isequal": "^4.5.0",
     "svelte-dnd-action": "^0.9.24",
     "svelte-gestures": "^1.5.2",

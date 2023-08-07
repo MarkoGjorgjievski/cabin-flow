@@ -41,8 +41,10 @@ export const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
 
   for (const pair of arrayData) {
       const [leftArr, rightArr] = pair;
+
       const occupiedLeft = leftArr.filter(spot => !!spot.passenger)
       const occupiedRight = rightArr.filter(spot => !!spot.passenger)
+
       // (leftTotal < maxLength && rightTotal < maxLength) shows better results, but || is more technically accurate.
       if (leftTotal < maxLength && rightTotal < maxLength) {
           currentSlice.push(pair);
@@ -78,7 +80,6 @@ export const zoneConfig = (subArray, positions) => {
 
     for (const pair of nestedArray) {
         const [leftArr, rightArr] = pair;
-
         const occupantsLeft = leftArr.filter(spot => !!spot.passenger)
         const occupantsRight = rightArr.filter(spot => !!spot.passenger)
 
@@ -105,14 +106,12 @@ export const zoneConfig = (subArray, positions) => {
 export const intialMealSplit = (zones, meals, service) => {
   const MAX_MEALS = 40
 
+
   const meal = meals.find(meal => meal.acronym === service)
   const quantity = meal.options.map(option => option.quantity)
 
   const quantityPerGalley = totalSum(meal.options)
   const percentagePerMeal = percentagesArray(quantity, quantityPerGalley)
-
-  console.log(quantity)
-  console.log(percentagePerMeal)
 
   const allExceptLast = zones.slice(0, zones.length - 1);
   const lastItem = zones.slice(zones.length - 1);
@@ -159,3 +158,9 @@ const percentagesArray = (options, totalOptions) => options.map(option => {
   }
   return percentages;
 });
+
+export const sumArrays = (arr1, arr2) => {
+  return arr1.map((row, rowIndex) =>
+    row.map((value, colIndex) => value + arr2[rowIndex][colIndex])
+  );
+}

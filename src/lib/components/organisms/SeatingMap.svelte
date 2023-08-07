@@ -21,7 +21,6 @@ import { seatingConfig, useConfig } from "$hooks/useConfig";
 
   const handleFinalize = (e, i) => {
     dividers[i] = e.detail.items;
-    console.log(getNonEmptyIndexes(dividers))
     return true;
   };
 </script>

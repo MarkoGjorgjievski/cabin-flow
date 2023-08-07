@@ -2,14 +2,29 @@
   import { OptionLabel, OptionCounter } from "$molecules";
   import { passengerLoad } from "$lib/stores/economy.js";
 
-
   export let option;
   export let showDescription;
   export let editMode = false;
   export let range = false;
   export let count = null;
+  export let i = null;
+  export let j = null;
+  export let galley = null;
+  export let updateCount = (count, galley, i, j) => null;
 
   let el
+
+  const onIncrement = () => {
+    updateCount(count++, galley, i, j)
+    el?.stepUp(+1)
+  }
+
+  const onDecrement = () => {
+    updateCount(count--, galley, i, j)
+    el?.stepUp(-1)
+  }
+
+  $: editMode, updateCount(count, galley, i, j)
 </script>
 
 <div class='w-full max-w-[298px]'>
@@ -31,6 +46,6 @@
       </OptionLabel>
     </div>
 
-    <OptionCounter {editMode} id='{option.id}' count={count} onIncrement='{() => el?.stepUp(+1)}' onDecrement='{() => el?.stepUp(-1)}'  />
+    <OptionCounter {editMode} id='{option.id}' count={count} {onIncrement} {onDecrement} />
   </div>
 </div>

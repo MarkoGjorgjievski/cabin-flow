@@ -3,17 +3,16 @@
   import { OptionLabel } from "$molecules";
   import { passengerLoad, passengerGrid } from "$lib/stores/economy.js";
   import { intialMealSplit, splitArrayDataByMaxLength, zoneConfig } from "$hooks";
+  import { mealQuantity, totalMealsPerOption } from "$lib/stores/economyMeals.js";
 
   export let data
 
-  console.log($passengerLoad)
   const split = splitArrayDataByMaxLength($passengerGrid);
   const zoneSplit = zoneConfig(split, data.positions)
 
   $: meal = data.meals.find(meal => meal.acronym === data.service)
 
   $: initialSplit = intialMealSplit(zoneSplit, data.meals, data.service)
-  $: console.log(initialSplit)
 </script>
 
 <div class='flex gap-4 relative pb-4'>

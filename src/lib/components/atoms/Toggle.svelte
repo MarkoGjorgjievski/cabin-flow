@@ -7,6 +7,7 @@
   export let labelOn = ''
   export let size = 'medium'
   export let state = 'primary'
+  export let disabled = false
 </script>
 
 <div class="form-control">
@@ -14,7 +15,7 @@
     {#if labelOff}
       <span class="label-text pr-1">{labelOff}</span>
     {/if}
-    <input type="checkbox" class={clsx("toggle", [toggleState.get(state),toggleSize.get(size)])} bind:checked={checked} />
+    <input type="checkbox" class={clsx("toggle", [toggleState.get(state), toggleSize.get(size)])} bind:checked={checked} {disabled} />
     {#if labelOn}
       <span class="label-text pl-1">{labelOn}</span>
     {/if}

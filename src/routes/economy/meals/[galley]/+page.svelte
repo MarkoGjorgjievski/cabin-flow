@@ -3,25 +3,26 @@
   import { Button, Toggle } from "$atoms";
   import { enhance, applyAction } from '$app/forms';
   import { MealListItem } from "$organisms";
+  import { mealQuantity, totalMealsPerService, totalMealsPerOption } from "$lib/stores/economyMeals.js";
 
   export let data;
 
   let showDescription = false;
   let editMode = false;
 
-  const handleEdit = () => editMode = true;
-
-  $: $page.url.pathname, editMode = false
+  const updateCount = (count, galley, i, j) => {
+    if (galley !== 'total') {
+      $mealQuantity[galley][i][j] = count
+    }
+  }
 </script>
 
 <form method='POST' use:enhance={() => async ({ result }) => await applyAction(result)}>
   <div class='flex justify-between w-full'>
     <h2 class='capitalize'>{data.galley}</h2>
-    {#if editMode}
-      <Button state='primary' type='submit'>Save quantity</Button>
-    {:else}
-      <Button state='ghost' disabled='{data.galley === "total"}' on:click={handleEdit}>Edit quantity</Button>
-    {/if}
+    <div class='flex justify-end mt-1'>
+      <Toggle bind:checked='{editMode}' labelOff='Edit mode' disabled={data.galley === 'total'} />
+    </div>
   </div>
 
   <div class='flex justify-end mt-1'>
@@ -29,14 +30,15 @@
   </div>
 
   <div class='flex justify-between gap-4 py-4 h-fit'>
-    {#each data.meals as service}
+    {#each data.meals as service, i}
       <div class='flex flex-col gap-4 w-full'>
         <h6 class='text-xs uppercase pl-1'>{service.label}</h6>
         <div class='w-full flex flex-col gap-4'>
-          {#each service.options as option, i}
+          {#each service.options as option, j}
             <MealListItem {option} {showDescription} range='{!!editMode}' {editMode}
-                          count='{option.quantity[data.galley]}' />
+                          count='{data.galley === 'total' ? $totalMealsPerOption[i][j] : $mealQuantity[data.galley][i][j]}' {i} {j} {updateCount} galley={data.galley} />
           {/each}
+          {#if data.galley !== 'total'}<pre>total {$totalMealsPerService[data.galley][i]}</pre>{/if}
         </div>
       </div>
     {/each}

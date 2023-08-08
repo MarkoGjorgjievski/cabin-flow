@@ -1,5 +1,6 @@
 <script>
-  import { PlusSmallIcon, MinusSmallIcon } from "$icons";
+  import { PlusSmallIcon, MinusSmallIcon, ChevronUp } from "$icons";
+import ChevronDown from "$icons/ChevronDown.svelte";
 
   export let count = 0;
   export let id = '';
@@ -23,16 +24,16 @@
 </script>
 
 <div>
-  <div class='flex flex-col w-fit h-full justify-between items-center'>
-    <button class='btn btn-ghost btn-sm {!editMode && "invisible"}' on:click={increment} type='button'>
-      <PlusSmallIcon />
+  <div class='flex flex-col w-fit h-full justify-center items-center '>
+    <button class='btn btn-ghost btn-sm opacity-70 {!editMode && "invisible"}' on:click={increment} type='button'>
+      <ChevronUp size={4} />
     </button>
 
-    <span class='text-center text-lg'>{count}</span>
+    <span class='text-center text-lg px-1'>{count}</span>
     <input type='number' name={id} class='hidden text-center text-lg' bind:value={count} />
 
-    <button class='btn btn-ghost btn-sm {!editMode && "invisible"}' on:click={decrement} type='button'>
-      <MinusSmallIcon />
+    <button class='btn btn-ghost btn-sm opacity-70 {!editMode && "invisible"}' on:click={decrement} type='button'>
+      <ChevronDown size={4} />
     </button>
   </div>
 </div>

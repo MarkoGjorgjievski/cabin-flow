@@ -16,7 +16,7 @@
 </script>
 
 <div class='flex gap-4 relative pb-4'>
-  <SeatingMap2 cabin='economy' meal={meal} />
+  
 
   <div class='h-fit w-full sticky top-4'>
     <div class='w-full flex flex-col gap-4'>
@@ -36,6 +36,8 @@
       {/each}
     </div>
   </div>
+
+  <SeatingMap2 cabin='economy' meal={meal} />
 
   <div class='h-fit w-full sticky top-4'>
     <div class='w-full flex flex-col gap-4'>

@@ -1,5 +1,6 @@
 export { default as BeakerIcon } from './BeakerIcon.svelte'
 export { default as CakeIcon } from './CakeIcon.svelte'
+export { default as ChevronUp } from './ChevronUp.svelte'
 export { default as ChevronDown } from './ChevronDown.svelte'
 export { default as ChevronRight } from './ChevronRight.svelte'
 export { default as ClipboardIcon } from './ClipboardIcon.svelte'

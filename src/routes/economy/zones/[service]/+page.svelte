@@ -2,8 +2,8 @@
   import { SeatingMap2, ZoneMealList } from "$organisms";
   import { OptionLabel } from "$molecules";
   import { passengerLoad, passengerGrid } from "$lib/stores/economy.js";
-  import { intialMealSplit, splitArrayDataByMaxLength, zoneConfig } from "$hooks";
-  import { mealQuantity, totalMealsPerOption } from "$lib/stores/economyMeals.js";
+  import { intialMealSplit, mealSplit, splitArrayDataByMaxLength, zoneConfig } from "$hooks";
+  import { mealQuantity, totalMealsPerOption, mealPercentages } from "$lib/stores/economyMeals.js";
 
   export let data
 
@@ -12,12 +12,17 @@
 
   $: meal = data.meals.find(meal => meal.acronym === data.service)
 
-  $: initialSplit = intialMealSplit(zoneSplit, data.meals, data.service)
+  let serviceIndex = 0
+  $: data.service, data.serviceAcronyms, serviceIndex = data.serviceAcronyms.findIndex(acronym => acronym === data.service)
+
+  let mealSplitting = mealSplit($mealQuantity, zoneSplit, serviceIndex)
+
+  $: console.log($passengerLoad)
+
+  $: data.service, serviceIndex, mealSplit($mealQuantity, zoneSplit, serviceIndex)
 </script>
 
 <div class='flex gap-4 relative pb-4'>
-  
-
   <div class='h-fit w-full sticky top-4'>
     <div class='w-full flex flex-col gap-4'>
       {#each Object.entries(data.positions) as [galley, position], i}
@@ -37,7 +42,7 @@
     </div>
   </div>
 
-  <SeatingMap2 cabin='economy' meal={meal} />
+  <SeatingMap2 cabin='economy' meal={meal} zones={split} />
 
   <div class='h-fit w-full sticky top-4'>
     <div class='w-full flex flex-col gap-4'>

@@ -1,4 +1,4 @@
-export const badgeColor = new Map([
+const badgeColor = new Map([
   ['blue', 'bg-blue-700 text-blue-200'],
   ['orange', 'bg-orange-700 text-orange-200'],
   ['red', 'bg-red-700 text-red-200'],
@@ -20,7 +20,29 @@ export const badgeColor = new Map([
   ['white', 'bg-gray-700 text-gray-200'],
 ]);
 
-export const badgeBorderColor = new Map([
+const badgeTextColor = new Map([
+  ['blue', 'text-blue-700'],
+  ['orange', 'text-orange-700'],
+  ['red', 'text-red-700'],
+  ['green', 'text-green-700'],
+  ['yellow', 'text-yellow-700'],
+  ['amber', 'text-amber-700'],
+  ['purple', 'text-purple-700'],
+  ['violet', 'text-violet-700'],
+  ['pink', 'text-pink-700'],
+  ['rose', 'text-rose-700'],
+  ['slate', 'text-slate-700'],
+  ['sky', 'text-sky-700'],
+  ['cyan', 'text-cyan-700'],
+  ['indigo', 'text-indigo-700'],
+  ['teal', 'text-teal-700'],
+  ['lime', 'text-lime-700'],
+  ['emerald', 'text-emerald-700'],
+  ['stone', 'text-stone-400'],
+  ['white', 'text-gray-400'],
+]);
+
+const badgeBorderColor = new Map([
   ['blue', 'border-blue-300'],
   ['orange', 'border-orange-300'],
   ['red', 'border-red-300'],
@@ -42,20 +64,20 @@ export const badgeBorderColor = new Map([
   ['white', 'border-gray-300'],
 ]);
 
-export const badgeSize = new Map([
+const badgeSize = new Map([
   ['small', 'badge-sm'],
   ['medium', 'badge-md'],
   ['large', 'badge-lg'],
   ['extra-large', 'px-2.5 py-3.5 text-xl'],
 ]);
 
-export const badgeMaxWidth = new Map([
+const badgeMaxWidth = new Map([
   ['small', 'max-w-[60px]'],
   ['medium', 'max-w-[80px]'],
   ['large', 'max-w-[110px]'],
 ])
 
-export const badgeState = new Map([
+const badgeState = new Map([
   ['primary', 'badge-primary'],
   ['secondary', 'badge-secondary'],
   ['accent', 'badge-accent'],
@@ -67,4 +89,4 @@ export const badgeState = new Map([
   ['ghost', 'badge-ghost'],
 ]);
 
-
+export { badgeState, badgeMaxWidth, badgeSize, badgeBorderColor, badgeTextColor, badgeColor }

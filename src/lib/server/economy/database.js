@@ -1,13 +1,16 @@
 import { getArrayOfPositions } from "$hooks";
 import { MENU } from "$lib/constants";
 import { CONFIGURATION } from "../../constants";
-import { economyMeals } from "$lib/stores/economy";
 
 const meals = [...MENU.economy.food];
 const positions = { ...CONFIGURATION.economy.positions }
 
 export const getMeals = async () => {
   return meals
+}
+
+export const getServiceAcronyms = () => {
+  return meals.map(service => service.acronym)
 }
 
 export const getPositions = async () => {

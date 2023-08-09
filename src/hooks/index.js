@@ -79,19 +79,19 @@ export const zoneConfig = (subArray, positions) => {
     let right = { totalOccupants: 0, specialMeals: 0 }
 
     for (const pair of nestedArray) {
-        const [leftArr, rightArr] = pair;
-        const occupantsLeft = leftArr.filter(spot => !!spot.passenger)
-        const occupantsRight = rightArr.filter(spot => !!spot.passenger)
+      const [leftArr, rightArr] = pair;
+      const occupantsLeft = leftArr.filter(spot => !!spot.passenger)
+      const occupantsRight = rightArr.filter(spot => !!spot.passenger)
 
-        for (const leftSide of leftArr) {
-            if (leftSide.passenger?.specialMeal) left.specialMeals++;
-        }
-        left.totalOccupants = left.totalOccupants + occupantsLeft.length
+      for (const leftSide of occupantsLeft) {
+        if (leftSide.passenger.specialMeal) left.specialMeals++;
+      }
+      left.totalOccupants = left.totalOccupants + occupantsLeft.length
 
-        for (const rightSide of rightArr) {
-            if (rightSide.passenger?.specialMeal) right.specialMeals++;
-        }
-        right.totalOccupants = right.totalOccupants + occupantsRight.length
+      for (const rightSide of occupantsRight) {
+        if (rightSide.passenger.specialMeal) right.specialMeals++;
+      }
+      right.totalOccupants = right.totalOccupants + occupantsRight.length
     }
 
     result.push([{ ...left, ...adjustedPositions[index][0] }, { ...right, ...adjustedPositions[index][1] }])
@@ -105,7 +105,6 @@ export const zoneConfig = (subArray, positions) => {
 
 export const intialMealSplit = (zones, meals, service) => {
   const MAX_MEALS = 40
-
 
   const meal = meals.find(meal => meal.acronym === service)
   const quantity = meal.options.map(option => option.quantity)
@@ -163,4 +162,62 @@ export const sumArrays = (arr1, arr2) => {
   return arr1.map((row, rowIndex) =>
     row.map((value, colIndex) => value + arr2[rowIndex][colIndex])
   );
+}
+
+export const getPercentage = data => {
+  const output = {};
+
+  for (const section in data) {
+    output[section] = data[section].map(subArray => {
+      const totalSum = subArray.reduce((sum, value) => sum + value, 0);
+  
+      if (totalSum === 0) {
+        return subArray.map(() => 0);
+      }
+  
+      return subArray.map(value => +(value / totalSum).toFixed(3));
+    });
+  }
+
+  return output
+}
+
+export const mealSplit = (meals, zones, serviceIndex, maxMeals = 40) => {
+  const result = zones.map(group => group.map(zone => {
+    const totalMeals = meals[zone.galley][serviceIndex].reduce((sum, value) => sum + value);
+    const percentage = meals[zone.galley][serviceIndex].map(value => +(value / totalMeals).toFixed(3));
+
+    let currentService = [...meals[zone.galley][serviceIndex]]
+    let totalOccupants = zone.totalOccupants
+
+    if (zone.totalOccupants > maxMeals) {
+      totalOccupants = maxMeals
+    }
+
+    const mealSplit = currentService.reduce((accumulator, option, i) => {
+      if (i !== currentService.length - 1) {
+        let currentOptionQuantity = Math.round((totalOccupants - zone.specialMeals) * percentage[i]);
+    
+        if (currentOptionQuantity > option) {
+          currentOptionQuantity = option;
+        }
+    
+        option -= currentOptionQuantity;
+        accumulator.push(currentOptionQuantity);
+      } else {
+        const sumOfPrevious = accumulator.reduce((sum, quantity) => sum + quantity, 0);
+
+        const lastOption = totalOccupants - zone.specialMeals - sumOfPrevious
+        accumulator.push(lastOption < 0 ? 0 : lastOption);
+      }
+    
+      return accumulator;
+    }, []);
+
+    return { ...zone, mealSplit }
+  }))
+
+  console.log(result)
+
+  return result
 }

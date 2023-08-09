@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 import { derived, writable, get } from 'svelte/store';
 import { MENU } from '$lib/constants';
 import cloneDeep from 'lodash.clonedeep'
-import { sumArrays } from '$hooks';
+import { getPercentage, sumArrays } from '$hooks';
 
 const initialMealQuantities = MENU.economy.food.map(service => service.options.map(_ => 0))
 
@@ -30,7 +30,7 @@ const totalMealsPerService = derived(mealQuantity, $mealQuantity => {
 
 const totalMealsPerOption = derived(mealQuantity, $mealQuantity => Object.values($mealQuantity).reduce(sumArrays));
 
-// mealQuantity.update(val => ({ ...val, total: get(totalMealsPerOption)}))
+const mealPercentages = derived(mealQuantity, $mealQuantity => getPercentage($mealQuantity))
   
 // totalMealQuantity.subscribe((value) => {
 //     if (browser) {
@@ -38,4 +38,4 @@ const totalMealsPerOption = derived(mealQuantity, $mealQuantity => Object.values
 //     }
 // });
 
-export { mealQuantity, totalMealsPerService, totalMealsPerOption };
+export { mealQuantity, totalMealsPerService, totalMealsPerOption, mealPercentages };

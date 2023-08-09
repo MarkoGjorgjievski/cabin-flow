@@ -183,41 +183,67 @@ export const getPercentage = data => {
 }
 
 export const mealSplit = (meals, zones, serviceIndex, maxMeals = 40) => {
-  const result = zones.map(group => group.map(zone => {
-    const totalMeals = meals[zone.galley][serviceIndex].reduce((sum, value) => sum + value);
-    const percentage = meals[zone.galley][serviceIndex].map(value => +(value / totalMeals).toFixed(3));
+  const result = zones.map(group => {
+    let idealSplits = []
 
-    let currentService = [...meals[zone.galley][serviceIndex]]
-    let totalOccupants = zone.totalOccupants
+    const groupMap = group.map((zone, i) => {
+      const totalMeals = meals[zone.galley][serviceIndex].reduce((sum, value) => sum + value);
+      const percentage = meals[zone.galley][serviceIndex].map(value => totalMeals > 0 ? +(value / totalMeals).toFixed(3) : 0);
 
-    if (zone.totalOccupants > maxMeals) {
-      totalOccupants = maxMeals
-    }
+      let currentService = [...meals[zone.galley][serviceIndex]]
+      let totalOccupants = zone.totalOccupants
 
-    const mealSplit = currentService.reduce((accumulator, option, i) => {
-      if (i !== currentService.length - 1) {
-        let currentOptionQuantity = Math.round((totalOccupants - zone.specialMeals) * percentage[i]);
-    
-        if (currentOptionQuantity > option) {
-          currentOptionQuantity = option;
-        }
-    
-        option -= currentOptionQuantity;
-        accumulator.push(currentOptionQuantity);
-      } else {
-        const sumOfPrevious = accumulator.reduce((sum, quantity) => sum + quantity, 0);
-
-        const lastOption = totalOccupants - zone.specialMeals - sumOfPrevious
-        accumulator.push(lastOption < 0 ? 0 : lastOption);
+      if (zone.totalOccupants > maxMeals) {
+        totalOccupants = maxMeals
       }
-    
-      return accumulator;
-    }, []);
 
-    return { ...zone, mealSplit }
-  }))
+      const idealSplit = optimisticSplit(currentService, totalOccupants, zone.specialMeals, percentage)
+      idealSplits = [...idealSplits, idealSplit]
+
+      if (i === group.length - 1) {
+        let [left, right] = idealSplits
+        
+        left.map((leftQuantity, quantityIndex) => {
+          if (currentService[quantityIndex] < leftQuantity + right[quantityIndex]) {
+            const splitQuantity = currentService[quantityIndex] / 2
+            leftQuantity = Math.min(leftQuantity, Math.ceil(splitQuantity));
+            right[quantityIndex] = Math.min(right[quantityIndex], Math.floor(splitQuantity));
+            return
+          }
+        })
+
+        currentService.map((value, index) => value - left[index] - right[index]);
+      }
+
+      return { ...zone, mealSplit: idealSplits[i] }
+    })
+
+    idealSplits = []
+    return groupMap
+  })
 
   console.log(result)
 
   return result
+}
+
+const optimisticSplit = (currentService, totalOccupants, zoneSpecials, percentage) => {
+  return  currentService.reduce((accumulator, option, i) => {
+    if (i !== currentService.length - 1) {
+      let currentOptionQuantity = Math.round((totalOccupants - zoneSpecials) * percentage[i]);
+
+      if (currentOptionQuantity > option) {
+        currentOptionQuantity = option;
+      }
+
+      accumulator.push(currentOptionQuantity);
+    } else {
+      const sumOfPrevious = accumulator.reduce((sum, quantity) => sum + quantity, 0);
+
+      const lastOption = sumOfPrevious > 0 ? totalOccupants - zoneSpecials - sumOfPrevious : 0
+      accumulator.push(lastOption < 0 ? 0 : lastOption);
+    }
+
+    return accumulator;
+  }, []);
 }

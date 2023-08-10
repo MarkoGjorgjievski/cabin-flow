@@ -7,6 +7,8 @@
   export let upperCorner;
   export let rows = [];
   export let specialMeals = [];
+  export let totalMeals = 0
+  export let totalOccupants = 0
   export let passengerNumber = 40;
   export let border = 'border-none';
 </script>
@@ -26,7 +28,11 @@
       <Divider my={0} />
       <div class='flex justify-between pt-2'>
         <p>Total meals</p>
-        <span>0</span>
+        <span>{totalMeals}</span>
+      </div>
+      <div class='flex justify-between text-xs opacity-50'>
+        <p>Total occupants</p>
+        <span class='{clsx(totalOccupants > totalMeals && 'text-warning')}'>{totalOccupants}</span>
       </div>
     </div>
   </div>

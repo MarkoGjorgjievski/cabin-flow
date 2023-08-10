@@ -202,20 +202,33 @@ export const mealSplit = (meals, zones, serviceIndex, maxMeals = 40) => {
 
       if (i === group.length - 1) {
         let [left, right] = idealSplits
+
+        // reverse
+        left.reverse()
+        right.reverse()
+        currentService.reverse()
         
         left.map((leftQuantity, quantityIndex) => {
           if (currentService[quantityIndex] < leftQuantity + right[quantityIndex]) {
-            const splitQuantity = currentService[quantityIndex] / 2
+            const splitQuantity =  currentService[quantityIndex] / 2
             leftQuantity = Math.min(leftQuantity, Math.ceil(splitQuantity));
             right[quantityIndex] = Math.min(right[quantityIndex], Math.floor(splitQuantity));
-            return
           }
         })
+
+        // reverse back
+        left.reverse()
+        right.reverse()
+        currentService.reverse()
+
+        /* SNIP SNAP SNIP SNAP */
 
         currentService.map((value, index) => value - left[index] - right[index]);
       }
 
-      return { ...zone, mealSplit: idealSplits[i] }
+      const zoneTotal = idealSplits[i].reduce((a,b) => a+b) + zone.specialMeals.length
+
+      return { ...zone, mealSplit: idealSplits[i], totalMeals: zoneTotal }
     })
 
     idealSplits = []
@@ -245,3 +258,47 @@ const optimisticSplit = (currentService, totalOccupants, zoneSpecials, percentag
     return accumulator;
   }, []);
 }
+
+export const rearrangeZones = (arr, subarrayIndex, slicePosition) => {
+  const result = [...arr];
+
+  if (subarrayIndex >= 0 && subarrayIndex < result.length) {
+    const subarrayToManipulate = result[subarrayIndex];
+
+    if (slicePosition === 'start' && subarrayIndex > 0) {
+      const elementToMove = result[subarrayIndex - 1].pop();
+      subarrayToManipulate.unshift(elementToMove);
+    } else if (slicePosition === 'end' && subarrayIndex < result.length - 1) {
+      const elementToMove = result[subarrayIndex + 1].shift();
+      subarrayToManipulate.push(elementToMove);
+    }
+  }
+
+  return result;
+}
+
+export const sortTotalSpecialMeals = specialMeals => {
+  return Object.values(specialMeals.reduce((acc, { seat, passenger }) => {
+    const { specialMeal } = passenger;
+    
+    if (!acc[specialMeal.label]) {
+      acc[specialMeal.label] = {
+        specialMeal,
+        passengers: []
+      };
+    }
+
+    acc[specialMeal.label].passengers.push({ name: passenger.name, seat });
+
+    return acc;
+  }, {}))
+  .sort((a, b) => b.passengers.length - a.passengers.length);
+}
+
+export const splitArray = (array) => {
+  const middleIndex = Math.floor(array.length / 2);
+  const firstHalf = array.slice(0, middleIndex);
+  const secondHalf = array.slice(middleIndex);
+  return [firstHalf, secondHalf];
+}
+

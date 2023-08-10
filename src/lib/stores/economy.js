@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { splitArray, splitArrayDataByMaxLength } from '$hooks';
 import { useZone } from '$hooks/useZone';
 import { CONFIGURATION } from '$lib/constants';
 import { writable } from 'svelte/store';
@@ -13,6 +14,9 @@ const { load, passengerSeating } = useZone(CONFIGURATION.economy)
 
 const passengerLoad = writable(load);
 const passengerGrid = writable(passengerSeating);
+
+const mainServiceSplit = writable(splitArrayDataByMaxLength(passengerSeating))
+const minorServiceSplit = writable(splitArray(passengerSeating))
  
 // passengerLoad.subscribe((value) => {
 //     if (browser) {
@@ -26,4 +30,4 @@ const passengerGrid = writable(passengerSeating);
 //     }
 // });
 
-export { passengerLoad, passengerGrid };
+export { passengerLoad, passengerGrid, mainServiceSplit, minorServiceSplit };

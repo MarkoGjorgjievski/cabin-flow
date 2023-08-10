@@ -10,11 +10,12 @@
         padding: 48px 60px;
         background: black;
         border-radius: 21px;
-        border: 4px solid #c7cbce;
-        box-shadow: 5px 19px 39px #757575;
+        border: 4px solid #babcbd;
+        box-shadow: 5px 19px 39px hsl(0, 0%, 2%);
         overflow: hidden;
         transform: scale(0.75) translateZ(0);
-        backface-visibility: hidden;}
+        backface-visibility: hidden;
+    }
 
     .camera {
         border-radius: 10px;

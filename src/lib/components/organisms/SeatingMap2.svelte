@@ -1,8 +1,8 @@
 <script>
+    import clsx from "clsx";
     import { Button } from "$atoms";
     import { ChevronDown, ChevronUp } from "$icons";
     import { Seat } from "$molecules";
-    import clsx from "clsx";
 
     export let meal
     export let zones
@@ -11,17 +11,15 @@
     const handleZoneShift = (direction, zone) => {
         console.log(direction, zones)
     }
-
-    const borders = ['info', 'accent', 'secondary', 'success', 'primary']
 </script>
 
 <div class='relative'>
     <div class='w-full flex flex-col sticky top-4 gap-1'>
         {#if zones}
         {#each zones as zone, i}
-        <div class={clsx('flex flex-col gap-1 p-2 rounded-md border border-info/40 relative', `bg-${borders[i]} bg-opacity-20`, i == 0 && 'mb-6', i == zones.length - 1 && 'mt-6', i > 0 && i < zones.length - 1 && 'my-6')}>
+        <div class={clsx('flex flex-col gap-1 p-2 rounded-xl border relative bg-opacity-5', i % 2 === 0 ? 'bg-info border-info/40' : 'bg-secondary border-secondary/40', i == 0 && 'mb-6', i == zones.length - 1 && 'mt-6', i > 0 && i < zones.length - 1 && 'my-6')}>
             {#if i > 0}
-            <span class='absolute -top-6 left-1/2 -translate-x-1/2 text-info'>
+            <span class='absolute -top-6 left-1/2 -translate-x-1/2 {i % 2 === 0 ? 'text-info' : 'text-secondary'}'>
                 <Button size='smaller' state='ghost' on:click={() => handleZoneShift('up', i)}><ChevronUp size={4} /></Button>
             </span>
             {/if}
@@ -39,7 +37,7 @@
             </div>
             {/each}
             {#if i !== zones.length - 1}
-            <span class='absolute -bottom-6 left-1/2 -translate-x-1/2 text-info'>
+            <span class='absolute -bottom-6 left-1/2 -translate-x-1/2 {i % 2 === 0 ? 'text-info' : 'text-secondary'}'>
                 <Button size='smaller' state='ghost' on:click={() => handleZoneShift('down', i)}><ChevronDown size={4} /></Button>
             </span>
             {/if}

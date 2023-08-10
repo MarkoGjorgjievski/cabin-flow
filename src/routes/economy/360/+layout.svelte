@@ -28,10 +28,10 @@
             <div>
               <div class='flex flex-col mb-2'>
                 <label class='text-xs pb-0.5 opacity-60'>Start heating</label>
-                <Badge rounded='medium' size='large' state='primary' label='15:00' />
+                <Badge rounded='medium' size='large' state='base-200' label='15:00' />
               </div>
               <div class='flex flex-col'>
-                <label class='text-xs pb-0.5 opacity-60'>Commence</label>
+                <label class='text-xs pb-0.5 opacity-60'>Start service</label>
                 <Badge rounded='medium' size='large' state='primary'>15:35</Badge>
               </div>
             </div>

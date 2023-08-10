@@ -1,7 +1,7 @@
 <script>
   import clsx from "clsx";
   import { badgeColor } from "$system/badge";
-  import { Badge, Button } from "$atoms";
+  import { Badge, Button, Divider } from "$atoms";
   import { MinusSmallIcon } from "$icons";
 
   export let option;
@@ -13,7 +13,8 @@
   export let onFilter = () => null;
 </script>
 
-<div class={clsx('flex items-center justify-between p-2 rounded-lg relative mix-blend-color-hard-light', showQuantity || range ? 'w-full' : 'w-fit', option.label, [badgeColor.get(option.color)])}>
+<div class='flex items-center w-full justify-between'>
+<div class={clsx('flex items-center justify-between p-2 rounded-lg relative mix-blend-color-hard-light', range ? 'w-full' : 'w-fit', option.label, [badgeColor.get(option.color)])}>
   <div class='flex items-center gap-2 justify-between w-full flex-1'>
     <Badge color={option.color} label={option.label} className='label-badge bg-opacity-0' />
     {#if filter}
@@ -21,7 +22,13 @@
         <MinusSmallIcon />
       </Button>
     {/if}
-    {#if Number.isInteger(quantity) && showQuantity}<span class='w-fit text-right'>{quantity}</span>{/if}
   </div>
   <slot />
+</div>
+{#if Number.isInteger(quantity) && showQuantity}
+  <div class='w-full flex items-center'>
+    <div class='divider w-full px-3 my-1'></div>
+    <span class='w-fit text-right'>{quantity}</span>
+  </div>
+{/if}
 </div>

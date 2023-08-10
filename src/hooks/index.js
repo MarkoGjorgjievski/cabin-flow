@@ -75,8 +75,8 @@ export const zoneConfig = (subArray, positions) => {
   let index = 0
 
   for (const nestedArray of subArray) {
-    let left = { totalOccupants: 0, specialMeals: 0 }
-    let right = { totalOccupants: 0, specialMeals: 0 }
+    let left = { totalOccupants: 0, specialMeals: [] }
+    let right = { totalOccupants: 0, specialMeals: [] }
 
     for (const pair of nestedArray) {
       const [leftArr, rightArr] = pair;
@@ -84,19 +84,19 @@ export const zoneConfig = (subArray, positions) => {
       const occupantsRight = rightArr.filter(spot => !!spot.passenger)
 
       for (const leftSide of occupantsLeft) {
-        if (leftSide.passenger.specialMeal) left.specialMeals++;
+        if (leftSide.passenger.specialMeal) (left.specialMeals = [...left.specialMeals, leftSide])
       }
       left.totalOccupants = left.totalOccupants + occupantsLeft.length
 
       for (const rightSide of occupantsRight) {
-        if (rightSide.passenger.specialMeal) right.specialMeals++;
+        if (rightSide.passenger.specialMeal) (right.specialMeals = [...right.specialMeals, rightSide])
       }
       right.totalOccupants = right.totalOccupants + occupantsRight.length
     }
 
     result.push([{ ...left, ...adjustedPositions[index][0] }, { ...right, ...adjustedPositions[index][1] }])
-    left = { totalOccupants: 0, specialMeals: 0 }
-    right = { totalOccupants: 0, specialMeals: 0 }
+    left = { totalOccupants: 0, specialMeals: [] }
+    right = { totalOccupants: 0, specialMeals: [] }
     index++
   }
 
@@ -197,7 +197,7 @@ export const mealSplit = (meals, zones, serviceIndex, maxMeals = 40) => {
         totalOccupants = maxMeals
       }
 
-      const idealSplit = optimisticSplit(currentService, totalOccupants, zone.specialMeals, percentage)
+      const idealSplit = optimisticSplit(currentService, totalOccupants, zone.specialMeals.length, percentage)
       idealSplits = [...idealSplits, idealSplit]
 
       if (i === group.length - 1) {
@@ -221,8 +221,6 @@ export const mealSplit = (meals, zones, serviceIndex, maxMeals = 40) => {
     idealSplits = []
     return groupMap
   })
-
-  console.log(result)
 
   return result
 }

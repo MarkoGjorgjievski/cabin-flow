@@ -3,7 +3,7 @@
 
   export let tabs = [];
   export let stackedTabs = [];
-  export let stackedTabsContainerClass = 'flex flex-col-reverse rounded-lg bg-base-200';
+  export let stackedTabsContainerClass = 'flex flex-col-reverse rounded-lg bg-base-300';
   export let direction = 'row';
   export let size = 'medium'
   export let title = 'Page Title';

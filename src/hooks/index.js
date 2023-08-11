@@ -183,14 +183,22 @@ export const getPercentage = data => {
 }
 
 export const mealSplit = (meals, zones, serviceIndex, maxMeals = 40) => {
+  console.log(serviceIndex)
+  let currentGalley = ''
+  let currentService = []
+
   const result = zones.map(group => {
     let idealSplits = []
 
     const groupMap = group.map((zone, i) => {
-      const totalMeals = meals[zone.galley][serviceIndex].reduce((sum, value) => sum + value);
-      const percentage = meals[zone.galley][serviceIndex].map(value => totalMeals > 0 ? +(value / totalMeals).toFixed(3) : 0);
+      if (currentGalley !== zone.galley) {
+        currentGalley = zone.galley
+        currentService = [...meals[currentGalley][serviceIndex]]
+      }
 
-      let currentService = [...meals[zone.galley][serviceIndex]]
+      const totalMeals = meals[currentGalley][serviceIndex].reduce((sum, value) => sum + value);
+      const percentage = meals[currentGalley][serviceIndex].map(value => totalMeals > 0 ? +(value / totalMeals).toFixed(3) : 0);
+      
       let totalOccupants = zone.totalOccupants
 
       if (zone.totalOccupants > maxMeals) {
@@ -198,32 +206,25 @@ export const mealSplit = (meals, zones, serviceIndex, maxMeals = 40) => {
       }
 
       const idealSplit = optimisticSplit(currentService, totalOccupants, zone.specialMeals.length, percentage)
+
       idealSplits = [...idealSplits, idealSplit]
 
       if (i === group.length - 1) {
         let [left, right] = idealSplits
-
-        // reverse
-        left.reverse()
-        right.reverse()
-        currentService.reverse()
         
-        left.map((leftQuantity, quantityIndex) => {
-          if (currentService[quantityIndex] < leftQuantity + right[quantityIndex]) {
-            const splitQuantity =  currentService[quantityIndex] / 2
-            leftQuantity = Math.min(leftQuantity, Math.ceil(splitQuantity));
-            right[quantityIndex] = Math.min(right[quantityIndex], Math.floor(splitQuantity));
+        currentService.forEach((quantity, index) => {
+          if (quantity <= 0) {
+            left[index] = 0
+            right[index] = 0
+          }
+          if (quantity < left[index] + right[index]) {
+            const [left1, right1] = equalRatio(left[index], right[index], quantity)
+            left[index] = left1
+            right[index] = right1
           }
         })
 
-        // reverse back
-        left.reverse()
-        right.reverse()
-        currentService.reverse()
-
-        /* SNIP SNAP SNIP SNAP */
-
-        currentService.map((value, index) => value - left[index] - right[index]);
+        currentService = currentService.map((value, index) => value - left[index] - right[index]);
       }
 
       const zoneTotal = idealSplits[i].reduce((a,b) => a+b) + zone.specialMeals.length
@@ -239,21 +240,14 @@ export const mealSplit = (meals, zones, serviceIndex, maxMeals = 40) => {
 }
 
 const optimisticSplit = (currentService, totalOccupants, zoneSpecials, percentage) => {
-  return  currentService.reduce((accumulator, option, i) => {
-    if (i !== currentService.length - 1) {
-      let currentOptionQuantity = Math.round((totalOccupants - zoneSpecials) * percentage[i]);
+  return currentService.reduce((accumulator, option, i) => {
+    let currentOptionQuantity = Math.round((totalOccupants - zoneSpecials) * percentage[i]);
 
-      if (currentOptionQuantity > option) {
-        currentOptionQuantity = option;
-      }
-
-      accumulator.push(currentOptionQuantity);
-    } else {
-      const sumOfPrevious = accumulator.reduce((sum, quantity) => sum + quantity, 0);
-
-      const lastOption = sumOfPrevious > 0 ? totalOccupants - zoneSpecials - sumOfPrevious : 0
-      accumulator.push(lastOption < 0 ? 0 : lastOption);
+    if (currentOptionQuantity > option) {
+      currentOptionQuantity = option;
     }
+
+    accumulator.push(currentOptionQuantity);
 
     return accumulator;
   }, []);
@@ -300,5 +294,25 @@ export const splitArray = (array) => {
   const firstHalf = array.slice(0, middleIndex);
   const secondHalf = array.slice(middleIndex);
   return [firstHalf, secondHalf];
+}
+
+const equalRatio = (left, right, total) => {
+  const ratio = left / right;
+  const totalParts = left + right;
+
+  const partsForBucket1 = ratio / (1 + ratio) * totalParts;
+  const partsForBucket2 = 1 / (1 + ratio) * totalParts;
+
+  let left1 = Math.round((partsForBucket1 / totalParts) * total);
+  let right1 = Math.round((partsForBucket2 / totalParts) * total);
+
+  if ((left1 + right1) > total) {
+    right1 = right1 - 1
+  }
+
+  console.log(left, right, total)
+  console.log(left1, right1, total)
+
+  return [left1, right1];
 }
 

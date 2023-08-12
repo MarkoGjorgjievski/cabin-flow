@@ -17,6 +17,7 @@ const passengerGrid = writable(passengerSeating);
 
 const mainServiceSplit = writable(splitArrayDataByMaxLength(passengerSeating))
 const minorServiceSplit = writable(splitArray(passengerSeating))
+
  
 // passengerLoad.subscribe((value) => {
 //     if (browser) {

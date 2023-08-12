@@ -160,7 +160,7 @@ body:has(.backdrop) {
   }
 
   .position-zone {
-    @apply relative border border-primary bg-base-300 border-dashed rounded-lg text-center flex justify-center items-center w-full h-full;
+    @apply relative border border-neutral bg-base-300 border-dashed rounded-lg text-center flex justify-center items-center w-full h-full;
   }
 
   .position-zone .crew-card {
@@ -176,7 +176,7 @@ body:has(.backdrop) {
   }
 
   .position-zone h2 {
-    @apply text-xl uppercase font-semibold text-primary absolute top-1/2 -translate-y-1/2;
+    @apply text-xl uppercase font-semibold text-neutral absolute top-1/2 -translate-y-1/2;
   }
 
   .spml-collapse .collapse-title {

@@ -316,3 +316,18 @@ const equalRatio = (left, right, total) => {
   return [left1, right1];
 }
 
+export const crewKeys = (inputDict) => {
+  const result = [];
+
+  for (const key in inputDict) {
+      if (inputDict.hasOwnProperty(key)) {
+          const values = inputDict[key];
+          values.forEach(value => {
+              const valueWithKey = { ...value, key }; // Spread operator to add the key
+              result.push(valueWithKey);
+          });
+      }
+  }
+
+  return result;
+}

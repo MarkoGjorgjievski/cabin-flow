@@ -9,7 +9,7 @@ export const [send, receive] = crossfade({
 		const transform = style.transform === 'none' ? '' : style.transform;
 
 		return {
-			duration: 1000,
+			duration: 0,
 			easing: quintOut,
 			css: (t) => `
 				transform: ${transform} scale(${t});

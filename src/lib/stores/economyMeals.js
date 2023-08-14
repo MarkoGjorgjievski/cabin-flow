@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import { derived, writable, get } from 'svelte/store';
 import { MENU } from '$lib/constants';
-import cloneDeep from 'lodash.clonedeep'
+import { cloneDeep } from 'lodash'
 import { getPercentage, sumArrays } from '$hooks';
 
 const initialMealQuantities = MENU.economy.food.map(service => service.options.map(_ => 0))

@@ -11,7 +11,7 @@
   export let handleCrossfade = (i, j) => null
 </script>
 
-<div class='w-fit h-full flex flex-col gap-4'>
+<div class='w-fit h-full flex flex-col gap-4 p-2 bg-base-300 rounded-xl'>
   {#each jumpSeats as row, i}
     <div class='flex w-full h-full gap-4'>
       {#each row as jumpSeat, j (jumpSeat)}

@@ -1,6 +1,7 @@
 <script>
   import clsx from "clsx";
   import Person from '$lib/assets/images/person.jpeg'
+  import { scale } from 'svelte/transition'
 
   export let firstName = '';
   export let lastName = '';

@@ -160,7 +160,7 @@ body:has(.backdrop) {
   }
 
   .position-zone {
-    @apply relative border border-neutral bg-base-300 border-dashed rounded-lg text-center flex justify-center items-center w-full h-full;
+    @apply relative border border-neutral bg-base-200 border-dashed rounded-lg text-center flex justify-center items-center w-full h-full;
   }
 
   .position-zone .crew-card {
@@ -168,7 +168,7 @@ body:has(.backdrop) {
   }
 
   .position-zone-empty {
-    @apply border-none bg-base-200 shadow-none;
+    @apply border-none bg-base-300 shadow-none;
   }
 
   .position-zone-empty h2 {

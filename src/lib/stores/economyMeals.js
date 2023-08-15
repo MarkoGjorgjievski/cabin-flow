@@ -1,8 +1,8 @@
 import { browser } from '$app/environment';
 import { derived, writable, get } from 'svelte/store';
 import { MENU } from '$lib/constants';
-import { cloneDeep } from 'lodash'
-import { getPercentage, sumArrays } from '$hooks';
+import { cloneDeep, getPercentage, sumArrays } from '$hooks';
+import { fromLocalStorage, toLocalStorage } from '$hooks/localStorage';
 
 const initialMealQuantities = MENU.economy.food.map(service => service.options.map(_ => 0))
 
@@ -12,30 +12,19 @@ const quantityPerGalley = {
     AFT: cloneDeep(initialMealQuantities),
 }
 
-const initialMeals = browser ? window.localStorage.getItem('economyMeals') ?? quantityPerGalley : quantityPerGalley;
+const mealQuantity = writable(fromLocalStorage('economyMeals', quantityPerGalley));
+toLocalStorage(mealQuantity, 'economyMeals');
 
-const mealQuantity = writable(initialMeals);
+const totalMealsPerOption = derived(mealQuantity, $mealQuantity => Object.values($mealQuantity).reduce(sumArrays));
+toLocalStorage(totalMealsPerOption, 'totalMealsPerOption');
 
-mealQuantity.subscribe((value) => {
-    if (browser) {
-        window.localStorage.setItem('meals', value);
-    }
-});
+const mealPercentages = derived(mealQuantity, $mealQuantity => getPercentage($mealQuantity));
 
 const totalMealsPerService = derived(mealQuantity, $mealQuantity => {
     let result = { FWD: [], MID: [], AFT: [] }
     Object.entries($mealQuantity).map(([key, value]) => value.map(item => result[key].push(item.reduce((a,b) => a+b))))
     return result
 });
-
-const totalMealsPerOption = derived(mealQuantity, $mealQuantity => Object.values($mealQuantity).reduce(sumArrays));
-
-const mealPercentages = derived(mealQuantity, $mealQuantity => getPercentage($mealQuantity))
-  
-// totalMealQuantity.subscribe((value) => {
-//     if (browser) {
-//         window.localStorage.setItem('totalMeals', value);
-//     }
-// });
+toLocalStorage(totalMealsPerService, 'totalMealsPerService');
 
 export { mealQuantity, totalMealsPerService, totalMealsPerOption, mealPercentages };

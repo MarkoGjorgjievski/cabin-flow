@@ -331,3 +331,23 @@ export const crewKeys = (inputDict) => {
 
   return result;
 }
+
+export const cloneDeep = (value) => {
+  if (value === null || typeof value !== 'object') {
+    return value;
+  }
+
+  if (Array.isArray(value)) {
+    const newArray = [];
+    for (const item of value) {
+      newArray.push(cloneDeep(item));
+    }
+    return newArray;
+  }
+
+  const newObj = {};
+  for (const key in value) {
+    newObj[key] = cloneDeep(value[key]);
+  }
+  return newObj;
+}

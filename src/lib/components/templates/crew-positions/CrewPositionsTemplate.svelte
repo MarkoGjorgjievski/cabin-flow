@@ -15,22 +15,15 @@ const onSeatSelect = (row, seat) => {
     }
     $prevPosition = $jumpSeats[row][seat].position;
     $crew = $jumpSeats[row][seat].crew[0];
-
-    console.log($crew?.position, $position)
     return
   }
 
   if ($position === $jumpSeats[row][seat].position) {
-    console.log('tuj li sam 1')
-
     $position = null;
   } else {
-    console.log('tuj li sam 2')
     $position = $jumpSeats[row][seat].position;
   }
 };
-
-console.log($position)
 
 const onCrewSelect = cc => {
   if (cc.id !== $crew?.id) {
@@ -82,8 +75,6 @@ const updateGrid = () => {
 $: if ($position && $crew) {
   updateGrid();
 }
-
-$: console.log($prevPosition)
 </script>
 
 <div class="flex gap-6 h-full">

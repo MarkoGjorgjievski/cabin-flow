@@ -182,7 +182,7 @@ export const CREW = {
       id: 6789,
       firstName: 'Henry',
       lastName: 'Clark',
-      languages: ['English']
+      languages: ['English', 'Spanish']
     },
     {
       id: 6790,

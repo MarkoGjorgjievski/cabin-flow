@@ -16,7 +16,7 @@ export let handleCrossfade = (rank, crew) => null;
       <section class="h-full min-h-[52px] w-full flex flex-col gap-4">
         {#each batch as crew (crew)}
           <button class="w-full" on:click="{() => handleCrossfade(crew)}">
-            <CrewDetailsListItem {...crew} selected="{activeId === crew.id}" />
+            <CrewDetailsListItem {crew} selected="{activeId === crew.id}" />
           </button>
         {/each}
       </section>

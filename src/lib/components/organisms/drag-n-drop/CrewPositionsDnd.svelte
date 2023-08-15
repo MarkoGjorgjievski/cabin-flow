@@ -1,8 +1,6 @@
 <script>
 import { Divider } from '$atoms';
 import { PageTitle } from '$organisms';
-import { flip } from 'svelte/animate';
-import { send, receive } from '$templates/crew-positions/crossfade.js';
 import CrewDetailsListItem from '$organisms/lists/CrewDetailsListItem.svelte';
 
 export let crew = null;

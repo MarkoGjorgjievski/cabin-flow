@@ -3,8 +3,6 @@ import { CrewJumpSeatsDnd, CrewPositionsDnd } from '$organisms';
 import { cabinCrew, jumpSeats } from '$lib/stores/shared';
 import { writable } from 'svelte/store';
 
-// [crew, seat]
-
 const position = writable(null);
 const crew = writable(null);
 const prevPosition = writable(null);
@@ -15,7 +13,12 @@ const onSeatSelect = (row, seat) => {
     $crew = $jumpSeats[row][seat].crew[0];
     return;
   }
-  $position = $jumpSeats[row][seat].position;
+
+  if ($position === $jumpSeats[row][seat].position) {
+    $position = null;
+  } else {
+    $position = $jumpSeats[row][seat].position;
+  }
 };
 
 const onCrewSelect = cc => {
@@ -46,16 +49,14 @@ const updateGrid = () => {
   $crew = null;
 };
 
-// $: selected[0] && selected[1] && updateGrid();
-
 $: if ($position && $crew) {
   updateGrid();
 }
 
-$: console.log($position, $crew);
+$: console.log($jumpSeats);
 </script>
 
 <div class="flex gap-6 h-full">
-  <CrewPositionsDnd handleCrossfade="{onCrewSelect}" crew="{$cabinCrew}" activeId="{3294}" />
-  <CrewJumpSeatsDnd handleCrossfade="{onSeatSelect}" jumpSeats="{$jumpSeats}" activeRow="{9}" activeSeat="{9}" />
+  <CrewPositionsDnd handleCrossfade="{onCrewSelect}" crew="{$cabinCrew}" activeId="{$crew?.id}" />
+  <CrewJumpSeatsDnd handleCrossfade="{onSeatSelect}" jumpSeats="{$jumpSeats}" activeSeat="{$position}" />
 </div>

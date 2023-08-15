@@ -22,18 +22,15 @@ export let handleCrossfade = (i, j) => null;
             {:else if jumpSeat.crew.length}
               {#each jumpSeat.crew as crew (crew)}
                 <button
-                  class="{clsx('position-zone w-20', activeRow === i && activeSeat === j && 'border border-info')}"
+                  class="{clsx('position-zone w-20', activeSeat === jumpSeat.position && 'border border-info')}"
                   on:click="{() => handleCrossfade(i, j)}"
                   animate:flip>
-                  <CrewCard
-                    firstName="{crew.firstName}"
-                    size="small"
-                    selected="{activeRow === i && activeSeat === j}" />
+                  <CrewCard firstName="{crew.firstName}" size="small" selected="{activeSeat === jumpSeat.position}" />
                 </button>
               {/each}
             {:else}
               <button
-                class="{clsx('position-zone w-20', activeRow === i && activeSeat === j && 'border border-info')}"
+                class="{clsx('position-zone w-20', activeSeat === jumpSeat.position && 'border border-info')}"
                 on:click="{() => handleCrossfade(i, j)}">
                 <h2>{jumpSeat.position}</h2>
               </button>

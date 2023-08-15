@@ -1,76 +1,61 @@
 <script>
-  import { CrewJumpSeatsDnd, CrewPositionsDnd } from "$organisms";
-  import { cabinCrew, jumpSeats, jumpSeatPositions } from "$lib/stores/shared";
-  import CrewCard from "$molecules/cards/CrewCard.svelte";
+import { CrewJumpSeatsDnd, CrewPositionsDnd } from '$organisms';
+import { cabinCrew, jumpSeats } from '$lib/stores/shared';
+import { writable } from 'svelte/store';
 
-  let activeCrew = null
-  let activeRank = null
-  let activeRow = null
-  let activeSeat = null
+// [crew, seat]
 
-  const updateJumpSeatStore = (row, seat) => {
-    $jumpSeats[row][seat].crew.push(activeCrew);
-    $jumpSeats = $jumpSeats
+const position = writable(null);
+const crew = writable(null);
+const prevPosition = writable(null);
+
+const onSeatSelect = (row, seat) => {
+  if ($jumpSeats[row][seat].crew.length) {
+    $prevPosition = $jumpSeats[row][seat].position;
+    $crew = $jumpSeats[row][seat].crew[0];
+    return;
   }
+  $position = $jumpSeats[row][seat].position;
+};
 
-  const updateCrewStore = (rank, crew) => {
-    console.log('crew')
-    $cabinCrew[rank].find(cc => cc.id == crew.id).position = $jumpSeats[activeRow][activeSeat].position
-    $cabinCrew = $cabinCrew
-  }
+const onCrewSelect = cc => {
+  $crew = cc;
+};
 
-  const occupiedSeat = (row, seat) => {
-    activeRow = row
-    activeSeat = seat
-    activeCrew = $jumpSeats[activeRow][activeSeat].crew[0]
-    activeRank = $jumpSeats[activeRow][activeSeat].rank
-  }
+const updateJumpSeat = () => {
+  $jumpSeats.map(row =>
+    row.map(seat => {
+      seat.position === $position && seat.crew.push($crew);
+      seat.position === $prevPosition && seat.crew.pop();
+    }),
+  );
 
-  const onCrewSelect = (rank, crew) => {
-    activeCrew = crew
-    activeRank = rank
+  $jumpSeats = $jumpSeats;
+};
 
-    if (activeRow !== null && activeSeat !== null) {
-      updateJumpSeatStore(activeRow, activeSeat)
-      updateCrewStore(rank, crew)
-      console.log('crew select update')
-      activeCrew = null
-      activeRank = null
-      return
-    }
+const updateCrew = () => {
+  Object.values($cabinCrew).map(crew => (crew.position = $position));
 
-    if (activeCrew == crew && activeRank == rank) {
-      activeCrew = null
-      activeRank = null
-    }
-  }
+  $cabinCrew = $cabinCrew;
+};
 
-  const onSeatSelect = (row, seat) => {
-    if ($jumpSeats[row][seat].crew.length) {
-      occupiedSeat(row, seat)
-      return
-    }
-    if (activeCrew) {
-      updateJumpSeatStore(row, seat)
-      updateCrewStore(activeRank, activeCrew)
+const updateGrid = () => {
+  updateCrew();
+  updateJumpSeat();
+  $position = null;
+  $crew = null;
+};
 
-      activeCrew = null
-      activeRank = null
-      return
-    }
-    if(row !== activeRow && activeSeat !== seat) {
-      activeRow = row
-      activeSeat = seat
-    } else {
-      activeRow = null
-      activeSeat = null
-    }
-  }
+// $: selected[0] && selected[1] && updateGrid();
 
-  $: $jumpSeats, $cabinCrew
+$: if ($position && $crew) {
+  updateGrid();
+}
+
+$: console.log($position, $crew);
 </script>
 
-<div class='flex gap-6 h-full'>
-  <CrewPositionsDnd handleCrossfade='{onCrewSelect}' crew='{$cabinCrew}' activeId={activeCrew?.id} />
-  <CrewJumpSeatsDnd handleCrossfade='{onSeatSelect}' jumpSeats='{$jumpSeats}' {activeRow} {activeSeat} />
+<div class="flex gap-6 h-full">
+  <CrewPositionsDnd handleCrossfade="{onCrewSelect}" crew="{$cabinCrew}" activeId="{3294}" />
+  <CrewJumpSeatsDnd handleCrossfade="{onSeatSelect}" jumpSeats="{$jumpSeats}" activeRow="{9}" activeSeat="{9}" />
 </div>

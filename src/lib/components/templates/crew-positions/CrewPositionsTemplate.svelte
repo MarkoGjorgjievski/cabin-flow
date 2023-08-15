@@ -9,22 +9,42 @@ const prevPosition = writable(null);
 
 const onSeatSelect = (row, seat) => {
   if ($jumpSeats[row][seat].crew.length) {
+    if ($jumpSeats[row][seat].crew[0]?.id === $crew?.id) {
+      $crew = null
+      return
+    }
     $prevPosition = $jumpSeats[row][seat].position;
     $crew = $jumpSeats[row][seat].crew[0];
-    return;
+
+    console.log($crew?.position, $position)
+    return
   }
 
   if ($position === $jumpSeats[row][seat].position) {
+    console.log('tuj li sam 1')
+
     $position = null;
   } else {
+    console.log('tuj li sam 2')
     $position = $jumpSeats[row][seat].position;
   }
 };
 
+console.log($position)
+
 const onCrewSelect = cc => {
-  $crew = cc;
-  if ($crew.position) {
-    $prevPosition = $crew.position
+  if (cc.id !== $crew?.id) {
+    $crew = cc;
+
+    if ($crew.position) {
+      $prevPosition = $crew.position
+    } else {
+      $prevPosition = null
+    }
+    return
+  }
+  if (cc.id === $crew?.id) {
+    $crew = null
   }
 };
 
@@ -42,7 +62,6 @@ const updateJumpSeat = () => {
 const updateCrew = () => {
   Object.values($cabinCrew).map(_crew => {
     return _crew.map(cc => {
-      console.log(cc.id, $crew?.id, $position)
       if (cc.id === $crew?.id) {
         cc.position = $position
       }
@@ -64,7 +83,7 @@ $: if ($position && $crew) {
   updateGrid();
 }
 
-$: console.log("cabin crew",$cabinCrew)
+$: console.log($prevPosition)
 </script>
 
 <div class="flex gap-6 h-full">

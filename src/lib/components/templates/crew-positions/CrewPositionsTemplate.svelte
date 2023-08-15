@@ -23,6 +23,9 @@ const onSeatSelect = (row, seat) => {
 
 const onCrewSelect = cc => {
   $crew = cc;
+  if ($crew.position) {
+    $prevPosition = $crew.position
+  }
 };
 
 const updateJumpSeat = () => {
@@ -37,7 +40,14 @@ const updateJumpSeat = () => {
 };
 
 const updateCrew = () => {
-  Object.values($cabinCrew).map(crew => (crew.position = $position));
+  Object.values($cabinCrew).map(_crew => {
+    return _crew.map(cc => {
+      console.log(cc.id, $crew?.id, $position)
+      if (cc.id === $crew?.id) {
+        cc.position = $position
+      }
+    })
+  });
 
   $cabinCrew = $cabinCrew;
 };
@@ -47,16 +57,17 @@ const updateGrid = () => {
   updateJumpSeat();
   $position = null;
   $crew = null;
+  $prevPosition = null
 };
 
 $: if ($position && $crew) {
   updateGrid();
 }
 
-$: console.log($jumpSeats);
+$: console.log("cabin crew",$cabinCrew)
 </script>
 
 <div class="flex gap-6 h-full">
   <CrewPositionsDnd handleCrossfade="{onCrewSelect}" crew="{$cabinCrew}" activeId="{$crew?.id}" />
-  <CrewJumpSeatsDnd handleCrossfade="{onSeatSelect}" jumpSeats="{$jumpSeats}" activeSeat="{$position}" />
+  <CrewJumpSeatsDnd handleCrossfade="{onSeatSelect}" jumpSeats="{$jumpSeats}" activeSeat="{$position || $crew?.position}" />
 </div>

@@ -9,6 +9,7 @@ const addPositionProp = (data) => {
             entry.position = null
         }
     }
+    console.log(data)
 
     return data
 }

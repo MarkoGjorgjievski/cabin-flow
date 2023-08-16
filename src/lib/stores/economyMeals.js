@@ -1,5 +1,4 @@
-import { browser } from '$app/environment';
-import { derived, writable, get } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 import { MENU } from '$lib/constants';
 import { cloneDeep, getPercentage, sumArrays } from '$hooks';
 import { fromLocalStorage, toLocalStorage } from '$hooks/localStorage';

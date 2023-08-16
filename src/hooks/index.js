@@ -164,6 +164,10 @@ export const sumArrays = (arr1, arr2) => {
   );
 }
 
+export const sumNestedArrays = (data) => {
+  return data.FWD.map((service, serviceIndex) => service.map((category, categoryIndex) => category.map((option, optionIndex) => option + data.MID[serviceIndex][categoryIndex][optionIndex] + data.AFT[serviceIndex][categoryIndex][optionIndex])))
+}
+
 export const getPercentage = data => {
   const output = {};
 
@@ -183,7 +187,6 @@ export const getPercentage = data => {
 }
 
 export const mealSplit = (meals, zones, serviceIndex, maxMeals = 40) => {
-  console.log(serviceIndex)
   let currentGalley = ''
   let currentService = []
 
@@ -309,9 +312,6 @@ const equalRatio = (left, right, total) => {
   if ((left1 + right1) > total) {
     right1 = right1 - 1
   }
-
-  console.log(left, right, total)
-  console.log(left1, right1, total)
 
   return [left1, right1];
 }

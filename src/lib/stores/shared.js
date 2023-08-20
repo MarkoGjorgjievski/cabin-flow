@@ -1,3 +1,4 @@
+import { useConfig } from "$hooks/useConfig2";
 import { JUMP_SEATS, CREW } from "$lib/constants";
 import { derived, writable } from "svelte/store";
 

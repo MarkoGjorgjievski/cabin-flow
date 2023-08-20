@@ -13,7 +13,7 @@ export const seatingConfig = (configuration) => {
   return config
 }
 
-const generatePassengers = (configuration, seating) => {
+export const generatePassengers = (configuration, seating) => {
     const pax = {}
   
     for (const row of seating) {
@@ -33,13 +33,13 @@ const generatePassengers = (configuration, seating) => {
     }
   
     return pax
-  }
+}
 
-const passengerLoad = passengers => {
+export const passengerLoad = passengers => {
     return Object.values(passengers).filter(slot => !!slot.passenger).length
 }
 
-const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
+export const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
     let result = [];
     let leftTotal = 0;
     let rightTotal = 0;
@@ -72,7 +72,7 @@ const splitArrayDataByMaxLength = (arrayData, maxLength = 40) => {
     return result;
 }
 
-const zoneConfig = (subArray) => {
+export const zoneConfig = (subArray) => {
     const result = []
 
     for (const nestedArray of subArray) {
@@ -101,7 +101,7 @@ const zoneConfig = (subArray) => {
     return result;
 };
 
-const passengerSeatingConfig = (configuration, seating, passengers) => {
+export const passengerSeatingConfig = (configuration, seating, passengers) => {
     const middleIndex = Math.floor(configuration.seats.length / 2);
 
     const pax = seating.map(row => {
@@ -116,7 +116,7 @@ const passengerSeatingConfig = (configuration, seating, passengers) => {
     return pax
 }
 
-const getZonesByPosition = (configuration, zones) => {
+export const getZonesByPosition = (configuration, zones) => {
     const positionsArray = getArrayOfPositions(configuration.positions);
     const zoneRows = subArrayLengthCounter(zones);
     

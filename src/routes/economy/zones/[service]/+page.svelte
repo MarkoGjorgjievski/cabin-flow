@@ -1,8 +1,8 @@
 <script>
   import { SeatingMap2, ZoneMealList } from "$organisms";
   import { OptionLabel } from "$molecules";
-  import { passengerLoad, passengerGrid, mainServiceSplit, minorServiceSplit } from "$lib/stores/economy.js";
-  import { mealSplit, zoneConfig, rearrangeZones, splitArray } from "$hooks";
+  import { passengerLoad, mainServiceSplit, minorServiceSplit } from "$lib/stores/economy.js";
+  import { mealSplit, zoneConfig, rearrangeZones } from "$hooks";
   import { mealQuantity } from "$lib/stores/economyMeals.js";
 
   export let data
@@ -25,6 +25,7 @@
     mealSplitting = mealSplit($mealQuantity, zoneSplit, serviceIndex)
     meal = data.meals.find(meal => meal.acronym === data.service)
     serviceIndex = data.serviceAcronyms.findIndex(acr => acr === data.service)
+    console.log($passengerLoad)
     if (data.service === 'WS') {
       zoneSplit = zoneConfig($minorServiceSplit, data.positions)
       mealSplitting = mealSplit($mealQuantity, zoneSplit, serviceIndex, Math.round($passengerLoad/4))

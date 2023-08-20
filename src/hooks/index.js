@@ -292,13 +292,6 @@ export const sortTotalSpecialMeals = specialMeals => {
   .sort((a, b) => b.passengers.length - a.passengers.length);
 }
 
-export const splitArray = (array) => {
-  const middleIndex = Math.floor(array.length / 2);
-  const firstHalf = array.slice(0, middleIndex);
-  const secondHalf = array.slice(middleIndex);
-  return [firstHalf, secondHalf];
-}
-
 const equalRatio = (left, right, total) => {
   const ratio = left / right;
   const totalParts = left + right;

@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { splitArray, splitArrayDataByMaxLength } from '$hooks';
+import { splitArrayDataByMaxLength } from '$hooks';
 import { fromLocalStorage, toLocalStorage } from '$hooks/localStorage';
 import { useZone } from '$hooks/useZone';
 import { CONFIGURATION } from '$lib/constants';
@@ -14,6 +14,6 @@ const passengerGrid = writable(fromLocalStorage('economyZones', passengerSeating
 toLocalStorage(passengerGrid, 'economyZones');
 
 const mainServiceSplit = writable(splitArrayDataByMaxLength(passengerSeating))
-const minorServiceSplit = writable(splitArray(passengerSeating))
+const minorServiceSplit = writable(splitArrayDataByMaxLength(passengerSeating, Math.round(load/4)))
 
 export { passengerLoad, passengerGrid, mainServiceSplit, minorServiceSplit };

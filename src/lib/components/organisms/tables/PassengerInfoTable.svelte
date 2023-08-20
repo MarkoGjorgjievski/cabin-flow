@@ -1,3 +1,8 @@
+<script>
+  import { passengerLoad } from "$lib/stores/economy";
+  import { businessPassengerLoad } from "$lib/stores/business";
+</script>
+
 <div class="card w-full border border-base-300 overflow-hidden">
   <div class="card-body">
 <!--    <h5 class="card-title">Passenger Information</h5>-->
@@ -62,15 +67,15 @@
       <thead>
       <tr>
         <th>Load</th>
-        <th>10</th>
-        <th>220</th>
+        <th>{$businessPassengerLoad}</th>
+        <th>{$passengerLoad}</th>
       </tr>
       </thead>
       <thead>
       <tr class='border-none'>
         <th>Capacity</th>
-        <th>12</th>
-        <th>232</th>
+        <th>42</th>
+        <th>293</th>
       </tr>
       </thead>
     </table>

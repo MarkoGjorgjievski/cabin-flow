@@ -4,15 +4,10 @@ import { register } from 'swiper/element/bundle';
 import { enhance, applyAction } from '$app/forms';
 import { page } from '$app/stores';
 import 'swiper/css';
-
 import {
   businessMealQuantity,
   totalBusinessMealsPerOption,
-  businessMealPercentages,
 } from '$lib/stores/businessMeals.js';
-
-$: console.log($businessMealQuantity);
-
 import { Divider, Button, Toggle } from '$atoms';
 import { MealListItem } from '$organisms';
 

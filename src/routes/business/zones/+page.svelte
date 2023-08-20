@@ -1,5 +1,8 @@
 <script>
   import { SeatingMap, ZoneMealList, MealList, PageTitle } from "$organisms";
+  import { businessPassengerLoad, businessPassengerGrid } from '$lib/stores/business.js'
+
+$: console.log($businessPassengerLoad, $businessPassengerGrid);
 
   export let data
 </script>

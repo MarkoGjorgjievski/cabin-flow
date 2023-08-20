@@ -120,7 +120,7 @@ export const CONFIGURATION = {
         galley: 'L5A',
       }
     },
-    cartMaxCapacity: 40,
+    maxCartCapacity: 40,
   }
 };
 

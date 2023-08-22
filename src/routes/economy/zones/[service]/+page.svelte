@@ -25,7 +25,6 @@
     mealSplitting = mealSplit($mealQuantity, zoneSplit, serviceIndex)
     meal = data.meals.find(meal => meal.acronym === data.service)
     serviceIndex = data.serviceAcronyms.findIndex(acr => acr === data.service)
-    console.log($passengerLoad)
     if (data.service === 'WS') {
       zoneSplit = zoneConfig($minorServiceSplit, data.positions)
       mealSplitting = mealSplit($mealQuantity, zoneSplit, serviceIndex, Math.round($passengerLoad/4))

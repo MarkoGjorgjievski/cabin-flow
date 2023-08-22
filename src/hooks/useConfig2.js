@@ -10,24 +10,23 @@ export const useConfig = (configuration) => {
 
         const passengerSeating = passengerSeatingConfig(configuration, seating, passengerList)
 
-        const zonesSplitByQuantity = splitArrayDataByMaxLength(passengerSeating)
-        const zones = zoneConfig(zonesSplitByQuantity);
-        const zoneRows = getZonesByPosition(configuration, zones);
-
+        // const zonesSplitByQuantity = splitArrayDataByMaxLength(passengerSeating)
+        // const zones = zoneConfig(zonesSplitByQuantity);
+        // const zoneRows = getZonesByPosition(configuration, zones);
 
         return {
             seating,
             passengerList,
             load,
 
-            zonesSplitByQuantity,
-            zones,
-            zoneRows
+            // zonesSplitByQuantity,
+            // zones,
+            // zoneRows
         }
     }
 
-    const economy = cabin(configuration.economy)
-    const business = cabin(configuration.business, )
+    const economy = cabin(configuration.economy);
+    const business = cabin(configuration.business);
 
     return {
         economy,

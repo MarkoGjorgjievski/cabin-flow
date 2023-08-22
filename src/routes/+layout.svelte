@@ -5,8 +5,8 @@
   import { Divider } from "$atoms";
   import {
     PlaneIcon,
-    ListIcon,
-    CakeIcon,
+    UserGroupIcon,
+    RoomServiceIcon,
     RectangleGroupIcon,
     ClipboardIcon,
     ArrowsSquare
@@ -20,11 +20,11 @@
   <nav class='w-fit flex h-fit flex-col gap-2 justify-between bg-base-300 p-1 rounded-xl'>
     <ul>
       <li class={clsx($page.url.pathname === '/' && "bg-primary text-primary-content")}><a href='/'><PlaneIcon /></a></li>
-      <li class={clsx($page.url.pathname.includes('positions') && "bg-primary text-primary-content")}><a  href='/positions'><ListIcon /></a></li>
+      <li class={clsx($page.url.pathname.includes('positions') && "bg-primary text-primary-content")}><a  href='/positions'><UserGroupIcon /></a></li>
 
       <Divider />
 
-      <li class={clsx($page.url.pathname.includes('/business/meals') && "bg-primary text-primary-content")}><a href='/business/meals/FWD'><CakeIcon /></a></li>
+      <li class={clsx($page.url.pathname.includes('/business/meals') && "bg-primary text-primary-content text-center")}><a href='/business/meals/FWD'><RoomServiceIcon /></a></li>
       <li class={clsx($page.url.pathname.includes('/business/zones') && "bg-primary text-primary-content")}><a href='/business/zones'><RectangleGroupIcon /></a>
       </li>
 
@@ -32,7 +32,7 @@
       <li class={clsx($page.url.pathname.includes('/business/seat-chart') && "bg-primary text-primary-content")}><a href='/business/seat-chart/FWD/L1'><ClipboardIcon /></a></li>
       <Divider />
 
-      <li class={clsx($page.url.pathname.includes('/economy/meals') && "bg-primary text-primary-content")}><a href='/economy/meals/MID'><CakeIcon /></a></li>
+      <li class={clsx($page.url.pathname.includes('/economy/meals') && "bg-primary text-primary-content")}><a href='/economy/meals/MID'><RoomServiceIcon /></a></li>
       <li class={clsx($page.url.pathname.includes('/economy/zones') && "bg-primary text-primary-content")}><a href='/economy/zones/HB'><RectangleGroupIcon /></a></li>
       <li class={clsx($page.url.pathname.includes('/economy/360') && "bg-primary text-primary-content")}><a href='/economy/360/MID'><ArrowsSquare /></a></li>
     </ul>

@@ -28,7 +28,9 @@
             {/if}
             <div class='flex gap-2 items-center px-2'>
               {#if option?.food}
+              <div class='w-fit'>
                 <OptionLabel option='{option.food}' filter onFilter='{() => filterOptionType(option, FOOD)}' />
+                </div>
               {:else}
                 <Button on:click={() => handleOptionPickerClick(FOOD, option.id)} size='small' state='base'
                         self='center' outlined>

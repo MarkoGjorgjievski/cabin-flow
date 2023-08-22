@@ -15,9 +15,9 @@
 </script>
 
 {#if isOpen}
-  <div role="dialog" class="svelte-modal">
+  <div role="dialog" class="svelte-modal ">
     <div class='relative'>
-    <div class="contents">
+    <div class="contents !scrollbar">
       <h2 class='self-start py-2'>{title}</h2>
       <svelte:component this='{component}' {...props} />
     </div>
@@ -46,7 +46,7 @@
     }
 
     .contents {
-        max-height: 90vh;
+        max-height: 70vh;
         overflow-y: auto;
         min-width: 240px;
         padding: 16px;
